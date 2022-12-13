@@ -12,10 +12,10 @@ export const Footer = (): string => {
             <a href='' class=${styles.menu__item}>Корзина</a>
           </div>
           <div class=${styles.contacts}>Контакты
-            <a href="https://github.com/lina-gritsel">
+            <a href="https://github.com/lina-gritsel" target='_blank'>
               <span class="${styles.github__link}">Lina</span>
             </a>
-            <a href="https://github.com/Pashashchuka">
+            <a href="https://github.com/Pashashchuka" target='_blank'>
               <span class="${styles.github__link}">Pasha</span>
             </a>
           </div>
