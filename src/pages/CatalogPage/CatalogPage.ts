@@ -2,13 +2,16 @@ import { Main } from './Main/Main'
 import { CatalogCardList } from '../CatalogPage/CatalogCardList'
 import mainStyles from './Main/Main.module.scss'
 
-const CatalogPage = async (): Promise<string> => {
-  return `
+export default {
+  render: async () => {
+    return `
     <section class=${mainStyles.main}>${Main()}</section>
     <div class=container>
-      <div>${await CatalogCardList()}</div>
+      <div>${await CatalogCardList.render()}</div>
     </div>
-  `
+    `
+  },
+  afterRender: async () => {
+    await CatalogCardList.afterRender()
+  }
 }
-
-export default CatalogPage

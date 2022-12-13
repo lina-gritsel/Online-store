@@ -25,7 +25,8 @@ export const router = async (route: string) => {
   const app = document.querySelector('#app') as HTMLElement
   app.innerHTML = ''
 
-  const currentPage = getCurrentPage(route)
+  const currentPage = getCurrentPage(route) as any
 
-  return (app.innerHTML = await Layout(currentPage))
+  app.innerHTML = await Layout(await currentPage.render)
+  await currentPage.afterRender()
 }
