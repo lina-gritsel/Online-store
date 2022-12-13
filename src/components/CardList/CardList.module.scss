@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding-bottom: 50px;
+}
+
+.title {
+  color: var(--black-color);
+  font: var(--font-h2);
+  line-height: 59px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(379px, 1fr));
+  gap: 56px 31px;
+}
+
+.link {
+  color: var(--black-color);
+  cursor: pointer;
+  font: var(--font-text-4);
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+}

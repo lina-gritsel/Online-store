@@ -1,0 +1,43 @@
+@import '../../scss/variables';
+
+.header {
+  height: 77px;
+  width: 100%;
+}
+
+.wrapper {
+  background-color: var(--dark-gray-color);
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 0;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.title {
+  color: var(--white-color);
+  font: var(--font-h3);
+}
+
+.nav {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  list-style-type: none;
+}
+
+.navList {
+  color: var(--white-color);
+  cursor: pointer;
+  font: var(--font-text-4);
+  transition: all 0.5s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}

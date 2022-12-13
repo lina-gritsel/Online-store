@@ -1,0 +1,40 @@
+@import '../../../scss/variables';
+
+.main {
+  background-image: url('../../../assets/images/main-bg.jpg');
+  height: 735px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 63px;
+}
+
+.title {
+  color: var(--white-color);
+  font: var(--font-h1);
+  max-width: 700px;
+  width: 100%;
+}
+
+.subtitle {
+  color: var(--white-color);
+  font: var(--font-text-2);
+}
+
+.link {
+  color: var(--white-color);
+  font: var(--font-text-4);
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
