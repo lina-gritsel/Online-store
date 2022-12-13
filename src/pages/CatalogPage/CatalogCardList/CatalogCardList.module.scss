@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 64px 0;
+}
+
+.path {
+  color: var(--black-color);
+  font: var(--font-text-1);
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
+  gap: 32px;
+}
+
+.link {
+  color: var(--black-color);
+  cursor: pointer;
+  font: var(--font-text-4);
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+}

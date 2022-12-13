@@ -21,7 +21,7 @@ const getCurrentPage = (route: string) => {
   }
 }
 
-export const router = async (route) => {
+export const router = async (route: string) => {
   const app = document.querySelector('#app') as HTMLElement
   app.innerHTML = ''
 
