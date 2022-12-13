@@ -6,7 +6,8 @@
 }
 
 .wrapper {
-  background-color: var(--dark-gray-color);
+  position: absolute;
+  width: 100%;
 }
 
 .content {
@@ -21,6 +22,11 @@
 .title {
   color: var(--white-color);
   font: var(--font-h3);
+  transition: all .5s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .nav {
@@ -40,4 +46,12 @@
   &:hover {
     transform: scale(1.1);
   }
+}
+
+.line {
+  background-color: var(--white-color);
+  height: 1px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
