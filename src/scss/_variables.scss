@@ -1,0 +1,19 @@
+:root {
+  --white-color: #fff;
+  --light-gray-color: #f7f6f6;
+  --gray-color: #888888;
+  --dark-gray-color: rgba(0, 0, 0, 0.646);
+  --black-color: #000000;
+
+  --font-family-montserrat: 'Montserrat', sans-serif;
+
+  --font-h1: 600 64px var(--font-family-montserrat);
+  --font-h2: 600 48px var(--font-family-montserrat);
+  --font-h3: 600 36px var(--font-family-montserrat);
+
+  --font-text-1: 600 34px var(--font-family-montserrat);
+  --font-text-2: 400 24px var(--font-family-montserrat);
+  --font-text-3: 400 18px var(--font-family-montserrat);
+  --font-text-4: 400 16px var(--font-family-montserrat);
+  --font-text-5: 400 14px var(--font-family-montserrat);
+}
