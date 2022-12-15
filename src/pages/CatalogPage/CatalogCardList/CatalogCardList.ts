@@ -64,7 +64,6 @@ export const CatalogCardList = {
     sortValues?.addEventListener('click', (e) => {
       sortWrapper?.classList.toggle(styles.showValues)
       e.stopPropagation()
-      // urlParams.delete('sortBy', 'e')
     })
 
     body?.addEventListener('click', () => {
@@ -73,25 +72,23 @@ export const CatalogCardList = {
       }
     })
 
-    //     const urlParams = new URLSearchParams(window.location.href) as any
-    // console.log(window.location.href);
-
     const sorting = async () => {
       const products = await getAllProducts()
       btnsSort.forEach((btn) => {
         btn.addEventListener('click', (e) => {
           const selectedBtn = (e as any)?.target
-          console.log(selectedBtn);
           const sortField = (e as any)?.target.id
           const sortArray = sortProducts(sortField, products)
           globalSortBtn.innerHTML = ''
-          globalSortBtn.innerHTML=`${selectedBtn.textContent}`
-          // urlParams.append("enabled", "true");
+          globalSortBtn.innerHTML = `${selectedBtn.textContent}`
+
+
           // window.history.replaceState(
           //   {},
           //   document.title,
-          //   '/' + 'my-new-url.html',
+          //   `${window.location}/${sortField}`
           // )
+
           if (cardsContainer) {
             cardsContainer.innerHTML = ''
             cardsContainer.insertAdjacentHTML(
