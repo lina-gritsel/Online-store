@@ -22,7 +22,7 @@
 .title {
   color: var(--white-color);
   font: var(--font-h3);
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 
   &:hover {
     transform: scale(1.1);
@@ -55,3 +55,28 @@
   margin: 0 auto;
   width: 100%;
 }
+
+.searchForm {
+  background: none;
+  border: 1px solid var(--white-color);
+  border-radius: 20px;
+  width: 220px;
+}
+
+.searchInput {
+  appearance: none;
+  background: none;
+  border: none;
+  color: var(--white-color);
+  font: var(--font-text-4);
+  height: 40px;
+  outline: none;
+  padding: 0 10px;
+  width: 100%;
+
+  &::-webkit-input-placeholder {
+    color: var(--white-color);
+  }
+}
+
+

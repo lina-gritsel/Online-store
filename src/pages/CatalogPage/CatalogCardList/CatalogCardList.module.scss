@@ -65,3 +65,13 @@
 .showValues {
   display: block !important;
 }
+
+.hidden {
+  display: none;
+}
+
+.notFound {
+  color: var(--black-color);
+  display: none;
+  font: var(--font-text-2);
+}

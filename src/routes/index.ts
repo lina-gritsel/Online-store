@@ -29,4 +29,11 @@ export const router = async (route: string) => {
 
   app.innerHTML = await Layout(await currentPage.render)
   await currentPage.afterRender()
+
+  const isHiddenHeader = currentPage !== pages.catalog
+  if (isHiddenHeader) {
+    const search = document.getElementById('searchForm') as HTMLFormElement;
+
+    search.style.display = 'none';
+  }
 }
