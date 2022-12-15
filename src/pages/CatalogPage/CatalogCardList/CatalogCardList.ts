@@ -4,6 +4,8 @@ import { getAllProducts } from '../../../api'
 import { Card } from '../../../components/Card'
 import styles from './CatalogCardList.module.scss'
 import polygon from '../../../assets/svg/polygon.svg'
+import order5 from '../../../assets/svg/order5.svg'
+import order3 from '../../../assets/svg/order3.svg'
 
 enum SortField {
   NAME = 'name',
@@ -15,6 +17,11 @@ enum SortOrder {
   DESC = 'desc',
 }
 
+enum OrderCards {
+  SMALL = 'orderSmall',
+  MANY = 'orderMany',
+}
+
 export const CatalogCardList = {
   render: async () => {
     const data = await getAllProducts()
@@ -23,7 +30,7 @@ export const CatalogCardList = {
     <div class=${styles.container}>
       <div class=${styles.wrapper}>
         <p class=${styles.path}>Главная / Каталог товаров</p>
-        <div  id='sortValues'>
+        <div class=${styles.sortMainButton}  id='sortValues'>
           <button class=${
             styles.sortValues
           } id='globalSortBtn'>Порядок: сперва новые</button>
@@ -42,6 +49,14 @@ export const CatalogCardList = {
           <button class='${
             styles.sortBtn
           } btnSort' id="price-desc">Порядок: по цене (desc)</button>
+        </div>
+        <div class=${styles.orderProducts}>
+          <div class='${styles.order} order' id='orderSmall'>
+            <img class=${styles.orderBtn} src=${order3}/>
+          </div>
+          <div class='${styles.order} order' id='orderMany'>
+            <img class=${styles.orderBtn} src=${order5}/>
+          </div>
         </div>
       </div>
       <div class=${styles.content} id='cardsContainer'>
@@ -82,7 +97,6 @@ export const CatalogCardList = {
           globalSortBtn.innerHTML = ''
           globalSortBtn.innerHTML = `${selectedBtn.textContent}`
 
-
           // window.history.replaceState(
           //   {},
           //   document.title,
@@ -120,5 +134,29 @@ export const CatalogCardList = {
         return 0
       })
     }
+
+    /* ORDER */
+    const newCards = cardsContainer?.children as any
+    const arrayCards = [...newCards]
+
+    const orderBtns = document.querySelectorAll('.order')
+    orderBtns.forEach((btn: any) => {
+      btn.addEventListener('click', () => {
+        if (btn.id === OrderCards.MANY) {
+          // btn.classList.add(`${styles.activeBtnOrder}`)
+          cardsContainer?.classList.add(`${styles.newOrder}`)
+          arrayCards.forEach((card: any) => {
+            card.classList.add(`${styles.newViewCard}`)
+          })
+        }
+        if (btn.id === OrderCards.SMALL) {
+          // btn.classList.add(`${styles.activeBtnOrder}`)
+          cardsContainer?.classList.remove(`${styles.newOrder}`)
+          arrayCards.forEach((card: any) => {
+            card.classList.remove(`${styles.newViewCard}`)
+          })
+        }
+      })
+    })
   },
 }
