@@ -58,12 +58,7 @@ export const useSort: useSort = ({ products }) => {
       const sortArray = sortProducts(sortField, products)
       globalSortBtn.innerHTML = ''
       globalSortBtn.innerHTML = `${selectedBtn.textContent}`
-
-      // window.history.replaceState(
-      //   {},
-      //   document.title,
-      //   `${window.location}/${sortField}`
-      // )
+    //   setLocalStorage(`${sortField}`)
 
       if (cardsContainer) {
         cardsContainer.innerHTML = ''
@@ -85,4 +80,15 @@ export const useSort: useSort = ({ products }) => {
       sortWrapper.classList.remove(styles.showValues)
     }
   })
+
+//   const setLocalStorage = (value: string): void => {
+//     localStorage.setItem('sort', value)
+//   }
+
+//   const getLocalStorage = () =>{
+//     if(localStorage.getItem('sort')){
+//         return localStorage.getItem('sort')
+//     }
+//   }
+//   window.addEventListener('load', getLocalStorage)
 }
