@@ -4,7 +4,8 @@ import styles from './CatalogCardList.module.scss'
 import polygon from '../../../assets/svg/polygon.svg'
 import order5 from '../../../assets/svg/order5.svg'
 import order3 from '../../../assets/svg/order3.svg'
-import {useSort} from './useSort'
+import { useSort } from './useSort'
+import { useSeatch } from './useSeatch'
 
 enum OrderCards {
   SMALL = 'orderSmall',
@@ -57,30 +58,8 @@ export const CatalogCardList = {
   },
   afterRender: async () => {
     const products = await getAllProducts()
-    const cardsContainer = document.getElementById('cardsContainer')
 
-    useSort({products})
-
-    /* ORDER */
-    const newCards = cardsContainer?.children as any
-    const arrayCards = [...newCards]
-
-    const orderBtns = document.querySelectorAll('.order')
-    orderBtns.forEach((btn: any) => {
-      btn.addEventListener('click', () => {
-        if (btn.id === OrderCards.MANY) {
-          cardsContainer?.classList.add(`${styles.newOrder}`)
-          arrayCards.forEach((card: any) => {
-            card.classList.add(`${styles.newViewCard}`)
-          })
-        }
-        if (btn.id === OrderCards.SMALL) {
-          cardsContainer?.classList.remove(`${styles.newOrder}`)
-          arrayCards.forEach((card: any) => {
-            card.classList.remove(`${styles.newViewCard}`)
-          })
-        }
-      })
-    })
+    useSort({ products })
+    useSeatch()
   },
 }

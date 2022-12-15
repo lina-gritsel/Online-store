@@ -24,16 +24,32 @@ export const useSort: useSort = ({ products }) => {
   const body = document.querySelector('body')
   const globalSortBtn = document.getElementById('globalSortBtn') as HTMLElement
 
-  sortValues?.addEventListener('click', (e) => {
-    sortWrapper?.classList.toggle(styles.showValues)
-    e.stopPropagation()
-  })
+  const sortProducts = (sortField: string, products: Products[]) => {
+    const [sortBy, sortOrder] = sortField.split('-')
 
-  body?.addEventListener('click', () => {
-    if (sortWrapper?.classList.contains(styles.showValues)) {
-      sortWrapper.classList.remove(styles.showValues)
-    }
-  })
+    const searchURL = new URL((window as any).location)
+    console.log(window.location)
+    searchURL.searchParams.set('sortBy', sortBy)
+    searchURL.searchParams.set('sortOrder', sortOrder)
+    window.history.pushState({}, '', searchURL)
+
+    return products.sort((productA, productB): any => {
+      if (sortBy === SortField.NAME) {
+        if (sortOrder === SortOrder.ASC) {
+          return productA.title.localeCompare(productB.title)
+        }
+        return productB.title.localeCompare(productA.title)
+      }
+      if (sortBy === SortField.PRICE) {
+        return compareNumbers(
+          productA.price,
+          productB.price,
+          sortOrder === SortOrder.DESC,
+        )
+      }
+      return 0
+    })
+  }
 
   btnsSort.forEach((btn) => {
     btn.addEventListener('click', (e) => {
@@ -59,23 +75,14 @@ export const useSort: useSort = ({ products }) => {
     })
   })
 
-  const sortProducts = (sortField: any, products: Products[]) => {
-    const [sortBy, sortOrder] = sortField.split('-')
-    return products.sort((productA, productB): any => {
-      if (sortBy === SortField.NAME) {
-        if (sortOrder === SortOrder.ASC) {
-          return productA.title.localeCompare(productB.title)
-        }
-        return productB.title.localeCompare(productA.title)
-      }
-      if (sortBy === SortField.PRICE) {
-        return compareNumbers(
-          productA.price,
-          productB.price,
-          sortOrder === SortOrder.DESC,
-        )
-      }
-      return 0
-    })
-  }
+  sortValues?.addEventListener('click', (e: MouseEvent) => {
+    sortWrapper?.classList.toggle(styles.showValues)
+    e.stopPropagation()
+  })
+
+  body?.addEventListener('click', () => {
+    if (sortWrapper?.classList.contains(styles.showValues)) {
+      sortWrapper.classList.remove(styles.showValues)
+    }
+  })
 }
