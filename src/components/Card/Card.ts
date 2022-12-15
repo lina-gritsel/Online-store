@@ -7,7 +7,7 @@ export const Card = (card: Products): string => {
           <img class=${style.cardImage} src=${card.image}/>
           <div class=${style.cardTitle} id='cardTitle'>${card.title}</div>
           <div class=${style.cardDesc}>${card.description}</div>
-          <div class=${style.cardPrice}>${card.price}$</div>
+          <div class=${style.cardPrice} id='cardPrice'>${card.price}$</div>
         </div>
         `
 }

@@ -5,6 +5,7 @@ import { Card } from '../../../components/Card'
 import { debounce } from '../../../functions/debounce'
 import styles from './CatalogCardList.module.scss'
 import polygon from '../../../assets/svg/polygon.svg'
+import { useSearch } from './useSearch'
 
 enum SortField {
   NAME = 'name',
@@ -86,7 +87,6 @@ export const CatalogCardList = {
           globalSortBtn.innerHTML = ''
           globalSortBtn.innerHTML = `${selectedBtn.textContent}`
 
-
           // window.history.replaceState(
           //   {},
           //   document.title,
@@ -125,41 +125,6 @@ export const CatalogCardList = {
       })
     }
 
-    const search = () => {
-      document.getElementById('search')?.addEventListener('keyup', () => {
-        const inputEl = document.getElementById('search') as HTMLInputElement
-        const inputValue = inputEl.value.toUpperCase().trim()
-
-        const cards = [...document.querySelectorAll('#cardsContainer')]
-        const productNames = [...document.querySelectorAll('#cardTitle')]
-        const notFound = document.getElementById(
-          'notFound',
-        ) as HTMLParagraphElement
-        const loadMore = document.getElementById(
-          'loadMore',
-        ) as HTMLParagraphElement
-
-        if (inputValue !== '') {
-          productNames.forEach((nameEl: Element, index: number) => {
-            if (!nameEl.textContent?.toUpperCase().includes(inputValue)) {
-              cards[index].classList.add(styles.hidden)
-              loadMore.style.display = 'none'
-            } else {
-              cards[index].classList.remove(styles.hidden)
-              notFound.style.display = 'none'
-              loadMore.style.display = 'block'
-            }
-          })
-        } else {
-          cards.forEach((card) => {
-            card.classList.remove(styles.hidden)
-            notFound.style.display = 'none'
-            loadMore.style.display = 'block'
-          })
-        }
-      })
-    }
-    search()
-    // debounce(search, 300)
+    useSearch()
   },
 }
