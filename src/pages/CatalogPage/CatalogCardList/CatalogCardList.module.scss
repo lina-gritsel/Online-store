@@ -34,6 +34,16 @@
   position: relative;
 }
 
+.sortMainButton {
+  position: relative;
+}
+
+.sortImg {
+  position: absolute;
+  right: 25px;
+  top: 17px;
+}
+
 .sortValues {
   position: relative;
   border-radius: 20px;
@@ -44,12 +54,6 @@
   padding: 11px 75px 10px 14px;
   font: var(--font-text-4);
   line-height: 20px;
-}
-
-.sortImg {
-  position: absolute;
-  right: 25px;
-  top: 17px;
 }
 
 .sortWrapper {
@@ -63,7 +67,7 @@
   background-color: var(--light-gray-color);
   border-radius: 20px;
   border: 2px solid var(--mittelgrau-color);
-  padding:10px;
+  padding: 10px;
 }
 
 .sortBtn {
@@ -73,11 +77,51 @@
   border-radius: 20px;
   border: 1px solid var(--mittelgrau-color);
   margin: 5px;
-  font: var(--font-text-4)
+  font: var(--font-text-4);
 }
 
 .showValues {
   display: block !important;
+}
+
+.orderProducts {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.orderBtn {
+  width: 30px;
+}
+
+.orderBtn:hover {
+  transform: scale(0.9);
+}
+
+.newOrder {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px 10px;
+}
+
+.newViewCard img {
+  width: 100%;
+  height: 156px;
+}
+
+.newViewCard div:nth-child(2) {
+  font-size: 20px;
+}
+
+.newViewCard div:nth-child(3) {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.newViewCard div:nth-child(4) {
+  font-size: 20px;
 }
 
 .hidden {
