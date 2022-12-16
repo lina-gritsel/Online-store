@@ -98,8 +98,6 @@
   transform: scale(0.9);
 }
 
-
-
 .newOrder {
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px 10px;
@@ -124,4 +122,15 @@
 
 .newViewCard div:nth-child(4) {
   font-size: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.notFound {
+  color: var(--black-color);
+  display: none;
+  font: var(--font-text-2);
+  width: 450px;
 }

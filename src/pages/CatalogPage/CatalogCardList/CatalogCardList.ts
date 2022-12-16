@@ -6,11 +6,7 @@ import order5 from '../../../assets/svg/order5.svg'
 import order3 from '../../../assets/svg/order3.svg'
 import { useSort } from './useSort'
 import { useSeatch } from './useSeatch'
-
-enum OrderCards {
-  SMALL = 'orderSmall',
-  MANY = 'orderMany',
-}
+import { useSearch } from './useSearch'
 
 export const CatalogCardList = {
   render: async () => {
@@ -50,9 +46,12 @@ export const CatalogCardList = {
         </div>
       </div>
       <div class=${styles.content} id='cardsContainer'>
+      <p class=${
+        styles.notFound
+      } id='notFound'>По вашему запросу ничего не найдено</p>
       ${newData.map((data) => `${Card(data)}`).join('')}
       </div>
-      <p class=${styles.link}>Показать ещё</p>
+      <p class=${styles.link} id='loadMore'>Показать ещё</p>
     </div>
     `
   },
@@ -61,5 +60,6 @@ export const CatalogCardList = {
 
     useSort({ products })
     useSeatch()
+    useSearch()
   },
 }
