@@ -41,4 +41,14 @@ export const useSearch: UseSearch = () => {
       })
     }
   })
+
+  inputEl.addEventListener('search', () => {
+    if (inputEl.value === '') {
+      cards.forEach((card: Element) => {
+        card.classList.remove(styles.hidden)
+        notFound.style.display = 'none'
+        loadMore.style.display = 'block'
+      })
+    }
+  })
 }

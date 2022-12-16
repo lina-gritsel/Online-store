@@ -77,6 +77,13 @@
   &::-webkit-input-placeholder {
     color: var(--white-color);
   }
+
+  &::-webkit-search-cancel-button {
+    background: url('../../assets/svg/close.svg');
+    background-repeat: no-repeat;
+    height: 15px;
+    margin-right: 5px;
+    width: 15px;
+    -webkit-appearance: none;
+  }
 }
-
-
