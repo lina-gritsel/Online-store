@@ -1,17 +1,18 @@
-import { getAllProducts } from '../../../api'
+import { getAllProducts, getProduct } from '../../../api'
 import { Card } from '../../../components/Card'
 import styles from './CatalogCardList.module.scss'
 import polygon from '../../../assets/svg/polygon.svg'
 import order5 from '../../../assets/svg/order5.svg'
 import order3 from '../../../assets/svg/order3.svg'
 import { useSort } from './useSort'
-import { useSeatch } from './useSeatch'
+import { useGrid } from './useGrid'
 import { useSearch } from './useSearch'
 
 export const CatalogCardList = {
   render: async () => {
     const data = await getAllProducts()
     const newData = data.splice(0, 12)
+    
     return `
     <div class=${styles.container}>
       <div class=${styles.wrapper}>
@@ -57,9 +58,17 @@ export const CatalogCardList = {
   },
   afterRender: async () => {
     const products = await getAllProducts()
+    const cards = [...document.querySelectorAll('.cardLink')]
+
+    cards.forEach((card) => {
+      card.addEventListener('click', () => {
+        const cardInfo = getProduct(card.id)
+        console.log(cardInfo)
+      })
+    })
 
     useSort({ products })
-    useSeatch()
+    useGrid()
     useSearch()
   },
 }

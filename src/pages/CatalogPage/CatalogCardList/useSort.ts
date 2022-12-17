@@ -28,7 +28,6 @@ export const useSort: useSort = ({ products }) => {
     const [sortBy, sortOrder] = sortField.split('-')
 
     const searchURL = new URL((window as any).location)
-    console.log(window.location)
     searchURL.searchParams.set('sortBy', sortBy)
     searchURL.searchParams.set('sortOrder', sortOrder)
     window.history.pushState({}, '', searchURL)
