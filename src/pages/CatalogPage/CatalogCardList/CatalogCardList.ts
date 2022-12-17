@@ -7,11 +7,13 @@ import order3 from '../../../assets/svg/order3.svg'
 import { useSort } from './useSort'
 import { useSeatch } from './useSeatch'
 import { useSearch } from './useSearch'
+import { useFilter } from './useFilter'
 
 export const CatalogCardList = {
   render: async () => {
     const data = await getAllProducts()
     const newData = data.splice(0, 12)
+
     return `
     <div class=${styles.container}>
       <div class=${styles.wrapper}>
@@ -20,7 +22,7 @@ export const CatalogCardList = {
           <button class=${
             styles.sortValues
           } id='globalSortBtn'>Порядок: сперва новые</button>
-          <image class=${styles.sortImg} src=${polygon} />
+          <image class=${styles.sortImg} id='sortImg' src=${polygon} />
         </div>
         <div class='${styles.sortWrapper}' id='sortWrapper'>
           <button class='${
@@ -36,6 +38,33 @@ export const CatalogCardList = {
             styles.sortBtn
           } btnSort' id="price-desc">Порядок: по цене (desc)</button>
         </div>
+        <div class=${styles.filterMainButton}  id='filterValues'>
+          <button class=${
+            styles.filterValues
+          } id='globalFilterBtn'>Фильтры</button>
+          <image class=${styles.filterImg} id='filterImg' src=${polygon} />
+        </div>
+        <div class='${styles.filterWrapper}' id='filterWrapper'>
+          <p class=${styles.categoryTitle}>Категории</p>
+          <div class=${styles.line}></div>
+          <div class=${styles.categoryBox}>
+            <label class=${styles.categoryName}>
+              <input class=${styles.categoryCheckbox} type=checkbox>Для отдыха
+            </label>
+            <label class=${styles.categoryName}>
+              <input class=${styles.categoryCheckbox} type=checkbox>Для работы
+            </label>
+            <label class=${styles.categoryName}>
+              <input class=${styles.categoryCheckbox} type=checkbox>Для кухни
+            </label>
+            <label class=${styles.categoryName}>
+              <input class=${styles.categoryCheckbox} type=checkbox>Для детской
+            </label>
+            <label class=${styles.categoryName}>
+              <input class=${styles.categoryCheckbox} type=checkbox>Для ванной
+            </label>
+          </div>
+        </div>
         <div class=${styles.orderProducts}>
           <div class='${styles.order} order' id='orderSmall'>
             <img class=${styles.orderBtn} src=${order3}/>
@@ -45,10 +74,10 @@ export const CatalogCardList = {
           </div>
         </div>
       </div>
-      <div class=${styles.content} id='cardsContainer'>
       <p class=${
         styles.notFound
       } id='notFound'>По вашему запросу ничего не найдено</p>
+      <div class=${styles.content} id='cardsContainer'>
       ${newData.map((data) => `${Card(data)}`).join('')}
       </div>
       <p class=${styles.link} id='loadMore'>Показать ещё</p>
@@ -61,5 +90,6 @@ export const CatalogCardList = {
     useSort({ products })
     useSeatch()
     useSearch()
+    useFilter()
   },
 }

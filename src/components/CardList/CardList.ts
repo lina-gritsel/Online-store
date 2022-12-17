@@ -1,4 +1,4 @@
-import { getAllProducts, Products } from '../../api'
+import { getAllProducts } from '../../api'
 import { Card } from '../Card'
 import styles from './CardList.module.scss'
 

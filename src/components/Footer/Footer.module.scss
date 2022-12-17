@@ -17,8 +17,15 @@
   padding-top: 32px;
 }
 
-.content {
+.logo {
+  color: var(--black-color);
   font: var(--font-h3);
+  text-decoration: none;
+  transition: all 0.5s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .menu {

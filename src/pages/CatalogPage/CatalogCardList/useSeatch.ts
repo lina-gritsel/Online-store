@@ -14,9 +14,7 @@ export const useSeatch = () => {
   const orderBtns = document.querySelectorAll('.order')
   orderBtns.forEach((btn: any) => {
     btn.addEventListener('click', () => {
-
       const searchURL = new URL((window as any).location)
-      console.log(window.location)
       searchURL.searchParams.set('order', btn.id)
       window.history.pushState({}, '', searchURL)
 
