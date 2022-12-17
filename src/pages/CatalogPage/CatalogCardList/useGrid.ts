@@ -5,7 +5,7 @@ enum OrderCards {
   MANY = 'orderMany',
 }
 
-export const useSeatch = () => {
+export const useGrid = () => {
   const cardsContainer = document.getElementById('cardsContainer')
 
   const newCards = cardsContainer?.children as any
