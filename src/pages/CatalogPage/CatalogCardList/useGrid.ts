@@ -16,7 +16,6 @@ export const useGrid = () => {
     btn.addEventListener('click', () => {
 
       const searchURL = new URL((window as any).location)
-      console.log(window.location)
       searchURL.searchParams.set('order', btn.id)
       window.history.pushState({}, '', searchURL)
 
