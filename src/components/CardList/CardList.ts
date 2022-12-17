@@ -12,7 +12,7 @@ export const CardList = {
               <div class=${styles.content}>
               ${newData.map((data) => `${Card(data)}`).join('')}
               </div>
-              <a href='#catalog' class=${styles.link}>Перейти в каталог</a>
+              <a href='#/catalog' class=${styles.link}>Перейти в каталог</a>
             </div>`
   },
 

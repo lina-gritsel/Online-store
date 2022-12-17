@@ -5,10 +5,10 @@ export const Footer = (): string => {
   return `
       <footer class=${styles.footer}>
         <div class=${styles.wrapper}>
-          <a href='#' class=${styles.logo}>Интерьер.</a>
+          <a href='#/' class=${styles.logo}>Интерьер.</a>
           <div class=${styles.menu}>Меню
-            <a href='#' class=${styles.menu__item}>Главная</a>
-            <a href='#catalog' class=${styles.menu__item}>Каталог</a>
+            <a href='#/' class=${styles.menu__item}>Главная</a>
+            <a href='#/catalog' class=${styles.menu__item}>Каталог</a>
             <a href='' class=${styles.menu__item}>Корзина</a>
           </div>
           <div class=${styles.contacts}>Контакты
