@@ -1,4 +1,3 @@
-// import { useSort } from './useSort'
 import styles from './CatalogCardList.module.scss'
 import { Card } from '../../../components/Card'
 import { compareNumbers } from './../../../utils/index'
@@ -23,6 +22,7 @@ export const useSort: useSort = ({ products }) => {
   const cardsContainer = document.getElementById('cardsContainer')
   const body = document.querySelector('body')
   const globalSortBtn = document.getElementById('globalSortBtn') as HTMLElement
+  const sortImg = document.getElementById('sortImg') as HTMLImageElement
 
   const sortProducts = (sortField: string, products: Products[]) => {
     const [sortBy, sortOrder] = sortField.split('-')
@@ -57,7 +57,7 @@ export const useSort: useSort = ({ products }) => {
       const sortArray = sortProducts(sortField, products)
       globalSortBtn.innerHTML = ''
       globalSortBtn.innerHTML = `${selectedBtn.textContent}`
-    //   setLocalStorage(`${sortField}`)
+      //   setLocalStorage(`${sortField}`)
 
       if (cardsContainer) {
         cardsContainer.innerHTML = ''
@@ -71,23 +71,28 @@ export const useSort: useSort = ({ products }) => {
 
   sortValues?.addEventListener('click', (e: MouseEvent) => {
     sortWrapper?.classList.toggle(styles.showValues)
+    sortImg.classList.toggle(styles.imgRotate)
     e.stopPropagation()
   })
 
   body?.addEventListener('click', () => {
-    if (sortWrapper?.classList.contains(styles.showValues)) {
+    if (
+      sortWrapper?.classList.contains(styles.showValues) &&
+      sortImg?.classList.contains(styles.imgRotate)
+    ) {
       sortWrapper.classList.remove(styles.showValues)
+      sortImg.classList.remove(styles.imgRotate)
     }
   })
 
-//   const setLocalStorage = (value: string): void => {
-//     localStorage.setItem('sort', value)
-//   }
+  //   const setLocalStorage = (value: string): void => {
+  //     localStorage.setItem('sort', value)
+  //   }
 
-//   const getLocalStorage = () =>{
-//     if(localStorage.getItem('sort')){
-//         return localStorage.getItem('sort')
-//     }
-//   }
-//   window.addEventListener('load', getLocalStorage)
+  //   const getLocalStorage = () =>{
+  //     if(localStorage.getItem('sort')){
+  //         return localStorage.getItem('sort')
+  //     }
+  //   }
+  //   window.addEventListener('load', getLocalStorage)
 }

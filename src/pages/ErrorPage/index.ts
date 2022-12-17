@@ -1,6 +1,6 @@
 const ErrorPage = {
     render: async () => `
-      We can't found this page.
+      Мы не можем найти эту страницу.
       `,
     afterRender: async () => {},
   }
