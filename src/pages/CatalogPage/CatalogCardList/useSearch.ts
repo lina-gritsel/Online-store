@@ -3,12 +3,17 @@ import styles from './CatalogCardList.module.scss'
 type UseSearch = () => void
 
 export const useSearch: UseSearch = () => {
+  const cardsContainer = document.getElementById(
+    'cardsContainer',
+  ) as HTMLDivElement
   const inputEl = document.getElementById('search') as HTMLInputElement
   const notFound = document.getElementById('notFound') as HTMLParagraphElement
   const loadMore = document.getElementById('loadMore') as HTMLParagraphElement
-  const cards = [...document.querySelectorAll('#card')]
+  const btnsSort = document.querySelectorAll('.btnSort')
+  let cards = [...cardsContainer.children]
 
-  inputEl.addEventListener('keyup', () => {
+  const search = () => {
+    cards = [...cardsContainer.children]
     const inputValue = inputEl.value.toUpperCase().trim()
 
     if (inputValue !== '') {
@@ -40,7 +45,15 @@ export const useSearch: UseSearch = () => {
         loadMore.style.display = 'block'
       })
     }
+  }
+
+  inputEl.addEventListener('keyup', () => {
+    search()
   })
+
+  btnsSort.forEach((btn) => btn.addEventListener('click', () => {
+    search()
+  }))
 
   inputEl.addEventListener('search', () => {
     if (inputEl.value === '') {

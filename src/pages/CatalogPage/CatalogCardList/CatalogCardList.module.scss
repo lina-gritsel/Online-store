@@ -34,7 +34,8 @@
   position: relative;
 }
 
-.sortMainButton {
+.sortMainButton,
+.filterMainButton {
   position: relative;
 }
 
@@ -42,6 +43,18 @@
   position: absolute;
   right: 25px;
   top: 17px;
+  transition: all 0.2s ease-in-out;
+}
+
+.filterImg {
+  position: absolute;
+  right: 25px;
+  top: 17px;
+  transition: all 0.2s ease-in-out;
+}
+
+.imgRotate {
+  transform: rotate(-180deg);
 }
 
 .sortValues {
@@ -56,10 +69,22 @@
   line-height: 20px;
 }
 
+.filterValues {
+  position: relative;
+  border-radius: 20px;
+  border: 1px solid var(--mittelgrau-color);
+  background-color: transparent;
+  width: 168px;
+  height: 41px;
+  padding: 11px 75px 10px 14px;
+  font: var(--font-text-4);
+  line-height: 20px;
+}
+
 .sortWrapper {
   display: none;
   position: absolute;
-  right: -2px;
+  right: 390px;
   top: 50px;
   width: 288px;
   height: 200px;
@@ -68,6 +93,20 @@
   border-radius: 20px;
   border: 2px solid var(--mittelgrau-color);
   padding: 10px;
+}
+
+.filterWrapper {
+  background-color: var(--light-gray-color);
+  border: 2px solid var(--mittelgrau-color);
+  border-radius: 20px;
+  display: none;
+  height: 400px;
+  padding: 10px;
+  position: absolute;
+  right: 95px;
+  text-align: center;
+  top: 50px;
+  width: 288px;
 }
 
 .sortBtn {
@@ -133,4 +172,78 @@
   display: none;
   font: var(--font-text-2);
   width: 450px;
+}
+
+.categoryTitle {
+  color: var(--black-color);
+  font: var(--font-text-3);
+}
+
+.categoryBox {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 120px;
+  overflow: auto;
+  padding: 10px 5px;
+  width: 90%;
+
+  &::-webkit-scrollbar {
+    background: none;
+    width: 7px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: var(--gray-color);
+  }
+}
+
+.categoryCheckbox {
+  position: relative;
+  width: 40px;
+  height: 20px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--gray-color);
+  outline: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  box-shadow: inset 0 0 5px rgb(0 0 0 / 50%);
+
+  &::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 0.5s;
+  }
+
+  &:checked::before {
+    transform: translateX(100%);
+    background: #fff;
+  }
+
+  &:checked {
+    background: var(--green-color);
+  }
+}
+
+.categoryName {
+  color: var(--black-color);
+  display: flex;
+  font: var(--font-text-3);
+  gap: 20px;
+  padding-left: 5px;
+}
+
+.line {
+  background-color: var(--gray-color);
+  height: 1px;
+  margin: 10px auto;
+  width: 60%;
 }

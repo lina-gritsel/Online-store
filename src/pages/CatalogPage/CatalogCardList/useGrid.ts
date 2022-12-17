@@ -14,7 +14,6 @@ export const useGrid = () => {
   const orderBtns = document.querySelectorAll('.order')
   orderBtns.forEach((btn: any) => {
     btn.addEventListener('click', () => {
-
       const searchURL = new URL((window as any).location)
       searchURL.searchParams.set('order', btn.id)
       window.history.pushState({}, '', searchURL)
