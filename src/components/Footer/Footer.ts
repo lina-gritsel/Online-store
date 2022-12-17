@@ -7,8 +7,8 @@ export const Footer = (): string => {
         <div class=${styles.wrapper}>
           <div class=${styles.content}>Интерьер.</div>
           <div class=${styles.menu}>Меню
-            <a href='#' class=${styles.menu__item}>Главная</a>
-            <a href='#catalog' class=${styles.menu__item}>Каталог</a>
+            <a href='#/' class=${styles.menu__item}>Главная</a>
+            <a href='#/catalog' class=${styles.menu__item}>Каталог</a>
             <a href='' class=${styles.menu__item}>Корзина</a>
           </div>
           <div class=${styles.contacts}>Контакты
