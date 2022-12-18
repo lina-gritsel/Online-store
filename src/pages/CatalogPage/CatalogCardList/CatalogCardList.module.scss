@@ -100,10 +100,10 @@
   border: 2px solid var(--mittelgrau-color);
   border-radius: 20px;
   display: none;
-  height: 400px;
+  height: 530px;
   padding: 10px;
   position: absolute;
-  right: 95px;
+  right: 90px;
   text-align: center;
   top: 50px;
   width: 288px;
@@ -177,6 +177,7 @@
 .categoryTitle {
   color: var(--black-color);
   font: var(--font-text-3);
+  font-weight:  700;
 }
 
 .categoryBox {

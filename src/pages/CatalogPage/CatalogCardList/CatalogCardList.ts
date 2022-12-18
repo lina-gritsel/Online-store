@@ -64,6 +64,32 @@ export const CatalogCardList = {
               <input class=${styles.categoryCheckbox} type=checkbox>Для ванной
             </label>
           </div>
+          <div class=${styles.line}></div>
+          <p class=${styles.categoryTitle}>Бренды</p>
+          <div class=${styles.line}></div>
+          <div class=${styles.categoryBox}>
+            <label class=${styles.categoryName}>
+              <input class=${styles.categoryCheckbox} type=checkbox>Jonathan Adler
+            </label>
+            <label class=${styles.categoryName}>
+              <input class=${styles.categoryCheckbox} type=checkbox>AllModern
+            </label>
+            <label class=${styles.categoryName}>
+              <input class=${styles.categoryCheckbox} type=checkbox>Burke Decor
+            </label>
+            <label class=${styles.categoryName}>
+              <input class=${styles.categoryCheckbox} type=checkbox>BenchmadeM
+            </label>
+            <label class=${styles.categoryName}>
+              <input class=${styles.categoryCheckbox} type=checkbox>Castlery
+            </label>
+          </div>
+          <div class=${styles.line}></div>
+          <p class=${styles.categoryTitle}>Цена</p>
+          <input type="range" min="1" max="100" value="100" step="1" class=${styles.slider}>
+          <div class=${styles.line}></div>
+          <p class=${styles.categoryTitle}>Количество</p>
+          <input type="range" min="1" max="100" value="100" step="1" class=${styles.slider}>
         </div>
         <div class=${styles.orderProducts}>
           <div class='${styles.order} order' id='orderSmall'>

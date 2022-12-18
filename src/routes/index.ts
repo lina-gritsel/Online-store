@@ -8,7 +8,7 @@ const renderPage = async (url: string, routes: Routres): Promise<void> => {
 
   const { resource, id } = parseRequestURL(url)
 
-  const page = routes[`/${resource}${id ? '/:id' : ''}`] || ErrorPage
+  const page = routes[`/${resource || ''}${id ? '/:id' : ''}`] || ErrorPage
 
   const isHiddenHeader = page !== routes['/catalog']
 
