@@ -12,7 +12,7 @@ export type Routres = Record<string, Component>
 const ROUTES: Routres = {
   '/': Home,
   '/catalog': CatalogPage,
-  '/product/:id': Product,
+  '/products/:id': Product,
 }
 
 export default ROUTES

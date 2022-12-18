@@ -1,5 +1,5 @@
-.link{
-  color: var(--black-color)
+.link {
+  color: var(--black-color);
 }
 
 .card {
@@ -9,8 +9,9 @@
 }
 
 .cardImage {
-  width: 100%;
+  width: 92%;
   height: 250px;
+  margin: 0 auto;
 }
 
 .cardTitle,
@@ -23,4 +24,10 @@
   font: var(--font-text-5);
   color: var(--gray-color);
   line-height: 17px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 53.5px;
 }
