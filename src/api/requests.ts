@@ -1,6 +1,6 @@
 import { Products } from './types'
 
-const baseUrl = 'https://gentle-seal-overshirt.cyclic.app'
+const baseUrl = 'https://strange-shawl-mite.cyclic.app'
 
 export const getAllProducts = async (): Promise<Products[]> => {
   const result = await fetch(`${baseUrl}/products`)
@@ -12,6 +12,5 @@ export const getAllProducts = async (): Promise<Products[]> => {
 export const getProduct = async (id: string): Promise<Products> => {
   const result = await fetch(`${baseUrl}/products/${id}`)
   const  { product }  = await result.json()
-console.log(product);
   return product as Products
 }
