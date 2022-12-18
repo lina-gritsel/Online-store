@@ -12,8 +12,7 @@ import { useFilter } from './useFilter'
 export const CatalogCardList = {
   render: async () => {
     const data = await getAllProducts()
-    const newData = data.splice(0, 12)
-
+console.log(data);
     return `
     <div class=${styles.container}>
       <div class=${styles.wrapper}>
@@ -104,7 +103,7 @@ export const CatalogCardList = {
         styles.notFound
       } id='notFound'>По вашему запросу ничего не найдено</p>
       <div class=${styles.content} id='cardsContainer'>
-      ${newData.map((data) => `${Card(data)}`).join('')}
+      ${data.map((data) => `${Card(data)}`).join('')}
       </div>
       <p class=${styles.link} id='loadMore'>Показать ещё</p>
     </div>
@@ -112,14 +111,6 @@ export const CatalogCardList = {
   },
   afterRender: async () => {
     const products = await getAllProducts()
-    const cards = [...document.querySelectorAll('.cardLink')]
-
-    cards.forEach((card) => {
-      card.addEventListener('click', () => {
-        const cardInfo = getProduct(card.id)
-        console.log(cardInfo)
-      })
-    })
 
     useSort({ products })
     useGrid()
