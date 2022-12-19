@@ -8,11 +8,13 @@ import { useSort } from './useSort'
 import { useGrid } from './useGrid'
 import { useSearch } from './useSearch'
 import { useFilter } from './useFilter'
+import { showAll } from './showAll'
 
 export const CatalogCardList = {
   render: async () => {
     const data = await getAllProducts()
-console.log(data);
+    const newData = data.splice(0, 12)
+
     return `
     <div class=${styles.container}>
       <div class=${styles.wrapper}>
@@ -47,48 +49,53 @@ console.log(data);
           <p class=${styles.categoryTitle}>Категории</p>
           <div class=${styles.line}></div>
           <div class=${styles.categoryBox}>
-            <label class=${styles.categoryName}>
-              <input class=${styles.categoryCheckbox} type=checkbox>Для отдыха
+            <label class='${styles.categoryName}'>
+              <input class='${styles.categoryCheckbox} btnFilter disabled' id='relax' type=checkbox>Для отдыха
             </label>
-            <label class=${styles.categoryName}>
-              <input class=${styles.categoryCheckbox} type=checkbox>Для работы
+            <label class='${styles.categoryName}'>
+              <input class='${styles.categoryCheckbox} btnFilter disabled' id='job' type=checkbox>Для работы
             </label>
-            <label class=${styles.categoryName}>
-              <input class=${styles.categoryCheckbox} type=checkbox>Для кухни
+            <label class='${styles.categoryName}'>
+              <input class='${styles.categoryCheckbox} btnFilter disabled' id='kitchen' type=checkbox>Для кухни
             </label>
-            <label class=${styles.categoryName}>
-              <input class=${styles.categoryCheckbox} type=checkbox>Для детской
+            <label class='${styles.categoryName}'>
+              <input class='${styles.categoryCheckbox} btnFilter disabled' id='kids' type=checkbox>Для детской
             </label>
-            <label class=${styles.categoryName}>
-              <input class=${styles.categoryCheckbox} type=checkbox>Для ванной
+            <label class='${styles.categoryName}'>
+              <input class='${styles.categoryCheckbox} btnFilter disabled' id='bathroom' type=checkbox>Для ванной
             </label>
           </div>
           <div class=${styles.line}></div>
           <p class=${styles.categoryTitle}>Бренды</p>
           <div class=${styles.line}></div>
           <div class=${styles.categoryBox}>
-            <label class=${styles.categoryName}>
-              <input class=${styles.categoryCheckbox} type=checkbox>Jonathan Adler
+            <label class='${styles.categoryName}'>
+              <input class='${styles.categoryCheckbox} btnFilter disabled' id='adler' type=checkbox>Jonathan Adler
             </label>
-            <label class=${styles.categoryName}>
-              <input class=${styles.categoryCheckbox} type=checkbox>AllModern
+            <label class='${styles.categoryName}'>
+              <input class='${styles.categoryCheckbox} btnFilter disabled' id='modern' type=checkbox>AllModern
             </label>
-            <label class=${styles.categoryName}>
-              <input class=${styles.categoryCheckbox} type=checkbox>Burke Decor
+            <label class='${styles.categoryName}'>
+              <input class='${styles.categoryCheckbox} btnFilter disabled' id='burke' type=checkbox>Burke Decor
             </label>
-            <label class=${styles.categoryName}>
-              <input class=${styles.categoryCheckbox} type=checkbox>BenchmadeM
+            <label class='${styles.categoryName}'>
+              <input class='${styles.categoryCheckbox} btnFilter disabled' id='bench' type=checkbox>BenchmadeM
             </label>
-            <label class=${styles.categoryName}>
-              <input class=${styles.categoryCheckbox} type=checkbox>Castlery
+            <label class='${styles.categoryName}'>
+              <input class='${styles.categoryCheckbox} btnFilter disabled' id='castlery' type=checkbox>Castlery
             </label>
           </div>
           <div class=${styles.line}></div>
-          <p class=${styles.categoryTitle}>Цена</p>
-          <input type="range" min="1" max="100" value="100" step="1" class=${styles.slider}>
-          <div class=${styles.line}></div>
-          <p class=${styles.categoryTitle}>Количество</p>
-          <input type="range" min="1" max="100" value="100" step="1" class=${styles.slider}>
+          <div class=${styles.sliderBlock}>
+            <p class=${styles.categoryTitle}>Цена</p>
+            <input type="range" min="1" max="100" value="0" step="1" class=${
+              styles.slider
+            }>
+            <p class=${styles.categoryTitle}>Количество</p>
+            <input type="range" min="1" max="100" value="0" step="1" class=${
+              styles.slider
+            }>
+          </div>
         </div>
         <div class=${styles.orderProducts}>
           <div class='${styles.order} order' id='orderSmall'>
@@ -103,18 +110,19 @@ console.log(data);
         styles.notFound
       } id='notFound'>По вашему запросу ничего не найдено</p>
       <div class=${styles.content} id='cardsContainer'>
-      ${data.map((data) => `${Card(data)}`).join('')}
+      ${newData.map((data) => `${Card(data)}`).join('')}
       </div>
-      <p class=${styles.link} id='loadMore'>Показать ещё</p>
+      <p class=${styles.link} id='loadMore'>Показать все</p>
     </div>
     `
   },
   afterRender: async () => {
     const products = await getAllProducts()
 
+    useFilter({ products })
     useSort({ products })
+    showAll()
     useGrid()
     useSearch()
-    useFilter()
   },
 }

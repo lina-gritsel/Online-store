@@ -12,6 +12,5 @@ export const getAllProducts = async (): Promise<Products[]> => {
 export const getProduct = async (id: string): Promise<Products> => {
   const result = await fetch(`${baseUrl}/products/${id}`)
   const  { product }  = await result.json()
-console.log(product);
   return product as Products
 }
