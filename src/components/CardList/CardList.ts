@@ -8,11 +8,11 @@ export const CardList = {
     const newData = data.splice(0, 6)
 
     return `<div class=${styles.container}>
-              <div class=${styles.title}>Каталог товаров</div>
+              <div class=${styles.title}>Сatalog</div>
               <div class=${styles.content}>
               ${newData.map((data) => `${Card(data)}`).join('')}
               </div>
-              <a href='#/catalog' class=${styles.link}>Перейти в каталог</a>
+              <a href='#/catalog' class=${styles.link}>Go to catalog</a>
             </div>`
   },
 

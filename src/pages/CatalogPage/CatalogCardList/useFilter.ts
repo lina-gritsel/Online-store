@@ -21,9 +21,6 @@ enum FilterBrand {
 }
 
 export const useFilter: useFilter = ({ products }) => {
-  const btnLoadMore = document.getElementById(
-    'loadMore',
-  ) as HTMLParagraphElement
   const filterValues = document.getElementById('filterValues')
   const filterWrapper = document.getElementById('filterWrapper')
   const filterImg = document.getElementById('filterImg') as HTMLImageElement
@@ -80,11 +77,9 @@ export const useFilter: useFilter = ({ products }) => {
       if (selectedBtn.checked) {
         selectedBtn.classList.add('checked')
         selectedBtn.classList.remove('disabled')
-        btnLoadMore.classList.add(styles.hidden)
       } else {
         selectedBtn.classList.remove('checked')
         selectedBtn.classList.add('disabled')
-        btnLoadMore.classList.remove(styles.hidden)
       }
 
       const filterField = (e as any)?.target.id

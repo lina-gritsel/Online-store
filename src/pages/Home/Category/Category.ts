@@ -7,17 +7,17 @@ import bathroomCategory from '../../../assets/images/bathroom.jpg'
 import { Categories } from '../../../api/index'
 
 const categories: Categories[] = [
-  { title: 'отдыха', image: relaxCategory },
-  { title: 'работы', image: workCategory },
-  { title: 'кухни', image: kitchenCategory },
-  { title: 'детской', image: childrenCategory },
-  { title: 'ванной', image: bathroomCategory },
+  { title: 'relax', image: relaxCategory },
+  { title: 'job', image: workCategory },
+  { title: 'kitchen', image: kitchenCategory },
+  { title: 'kids', image: childrenCategory },
+  { title: 'bathroom', image: bathroomCategory },
 ]
 
 export const Category = (): string => {
   return `
       <div class=${styles.wrapper}>
-        <h2 class=${styles.title}>Мебель для ...</h2>
+        <h2 class=${styles.title}>Furniture for ...</h2>
         <div class=${styles.content}>
         ${categories
           .map(

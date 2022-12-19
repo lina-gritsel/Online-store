@@ -8,65 +8,62 @@ import { useSort } from './useSort'
 import { useGrid } from './useGrid'
 import { useSearch } from './useSearch'
 import { useFilter } from './useFilter'
-import { showAll } from './showAll'
 
 export const CatalogCardList = {
   render: async () => {
     const data = await getAllProducts()
-    const newData = data.splice(0, 12)
-
     return `
     <div class=${styles.container}>
       <div class=${styles.wrapper}>
-        <p class=${styles.path}>Главная / Каталог товаров</p>
+        <p class=${styles.path}>Home / Catalog</p>
         <div class=${styles.sortMainButton}  id='sortValues'>
           <button class=${
             styles.sortValues
-          } id='globalSortBtn'>Порядок: сперва новые</button>
+          } id='globalSortBtn'>Order: new first</button>
           <image class=${styles.sortImg} id='sortImg' src=${polygon} />
         </div>
         <div class='${styles.sortWrapper}' id='sortWrapper'>
           <button class='${
             styles.sortBtn
-          } btnSort' id="name-asc">Порядок: по имени (asc)</button>
+          } btnSort' id="name-asc">Order: by name (asc)</button>
           <button class='${
             styles.sortBtn
-          } btnSort' id="name-desc"> Порядок: по имени (desc)</button>
+          } btnSort' id="name-desc">Order: by name (desc)</button>
           <button class='${
             styles.sortBtn
-          } btnSort' id="price-asc">Порядок: по цене (asc)</button>
+          } btnSort' id="price-asc">Order: by price (asc)</button>
           <button class='${
             styles.sortBtn
-          } btnSort' id="price-desc">Порядок: по цене (desc)</button>
+          } btnSort' id="price-desc">Order: by price (desc)</button>
         </div>
         <div class=${styles.filterMainButton}  id='filterValues'>
           <button class=${
             styles.filterValues
-          } id='globalFilterBtn'>Фильтры</button>
+          } id='globalFilterBtn'>Filters</button>
           <image class=${styles.filterImg} id='filterImg' src=${polygon} />
         </div>
         <div class='${styles.filterWrapper}' id='filterWrapper'>
-          <p class=${styles.categoryTitle}>Категории</p>
+          <p class=${styles.categoryTitle}>Categories</p>
           <div class=${styles.line}></div>
           <div class=${styles.categoryBox}>
             <label class='${styles.categoryName}'>
-              <input class='${styles.categoryCheckbox} btnFilter disabled' id='relax' type=checkbox>Для отдыха
+              <input class='${styles.categoryCheckbox} btnFilter disabled' id='relax' type=checkbox>For relax
             </label>
             <label class='${styles.categoryName}'>
-              <input class='${styles.categoryCheckbox} btnFilter disabled' id='job' type=checkbox>Для работы
+              <input class='${styles.categoryCheckbox} btnFilter disabled' id='job' type=checkbox>For work
             </label>
             <label class='${styles.categoryName}'>
-              <input class='${styles.categoryCheckbox} btnFilter disabled' id='kitchen' type=checkbox>Для кухни
+              <input class='${styles.categoryCheckbox} btnFilter disabled' id='kitchen' type=checkbox>For kitchen
             </label>
             <label class='${styles.categoryName}'>
-              <input class='${styles.categoryCheckbox} btnFilter disabled' id='kids' type=checkbox>Для детской
+              <input class='${styles.categoryCheckbox} btnFilter disabled' id='kids' type=checkbox>For children
             </label>
             <label class='${styles.categoryName}'>
-              <input class='${styles.categoryCheckbox} btnFilter disabled' id='bathroom' type=checkbox>Для ванной
+              <input class='${styles.categoryCheckbox} btnFilter disabled' id='bathroom' type=checkbox>For bathroom
             </label>
           </div>
           <div class=${styles.line}></div>
-          <p class=${styles.categoryTitle}>Бренды</p>
+          <p class=${styles.categoryTitle}>Brands</p>
           <div class=${styles.line}></div>
           <div class=${styles.categoryBox}>
             <label class='${styles.categoryName}'>
@@ -87,11 +84,11 @@ export const CatalogCardList = {
           </div>
           <div class=${styles.line}></div>
           <div class=${styles.sliderBlock}>
-            <p class=${styles.categoryTitle}>Цена</p>
+            <p class=${styles.categoryTitle}>Price</p>
             <input type="range" min="1" max="100" value="0" step="1" class=${
               styles.slider
             }>
-            <p class=${styles.categoryTitle}>Количество</p>
+            <p class=${styles.categoryTitle}>Stock</p>
             <input type="range" min="1" max="100" value="0" step="1" class=${
               styles.slider
             }>
@@ -110,9 +107,8 @@ export const CatalogCardList = {
         styles.notFound
       } id='notFound'>По вашему запросу ничего не найдено</p>
       <div class=${styles.content} id='cardsContainer'>
-      ${newData.map((data) => `${Card(data)}`).join('')}
+      ${data.map((data) => `${Card(data)}`).join('')}
       </div>
-      <p class=${styles.link} id='loadMore'>Показать все</p>
     </div>
     `
   },
@@ -121,7 +117,6 @@ export const CatalogCardList = {
 
     useFilter({ products })
     useSort({ products })
-    showAll()
     useGrid()
     useSearch()
   },

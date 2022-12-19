@@ -5,13 +5,13 @@ export const Footer = (): string => {
   return `
       <footer class=${styles.footer}>
         <div class=${styles.wrapper}>
-          <a href='#/' class=${styles.logo}>Интерьер.</a>
-          <div class=${styles.menu}>Меню
-            <a href='#/' class=${styles.menu__item}>Главная</a>
-            <a href='#/catalog' class=${styles.menu__item}>Каталог</a>
-            <a href='' class=${styles.menu__item}>Корзина</a>
+          <a href='#/' class=${styles.logo}>Interior.</a>
+          <div class=${styles.menu}>Menu
+            <a href='#/' class=${styles.menu__item}>Home</a>
+            <a href='#/catalog' class=${styles.menu__item}>Catalog</a>
+            <a href='' class=${styles.menu__item}>Cart</a>
           </div>
-          <div class=${styles.contacts}>Контакты
+          <div class=${styles.contacts}>Contacts
             <a href="https://github.com/lina-gritsel" target='_blank'>
               <span class="${styles.github__link}">Lina</span>
             </a>
