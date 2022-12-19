@@ -12,7 +12,6 @@ import { useFilter } from './useFilter'
 export const CatalogCardList = {
   render: async () => {
     const data = await getAllProducts()
-console.log(data);
     return `
     <div class=${styles.container}>
       <div class=${styles.wrapper}>
