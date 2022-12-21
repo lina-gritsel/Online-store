@@ -8,7 +8,6 @@ export const useSearch: UseSearch = () => {
   ) as HTMLDivElement
   const inputEl = document.getElementById('search') as HTMLInputElement
   const notFound = document.getElementById('notFound') as HTMLParagraphElement
-  const loadMore = document.getElementById('loadMore') as HTMLParagraphElement
   const btnsSort = document.querySelectorAll('.btnSort')
   let cards = [...cardsContainer.children]
 
@@ -27,7 +26,6 @@ export const useSearch: UseSearch = () => {
 
         if (!allValues) {
           cards[index].classList.add(styles.hidden)
-          loadMore.style.display = 'none'
 
           if (cards.every((card) => card.classList.contains(styles.hidden))) {
             notFound.style.display = 'block'
@@ -35,14 +33,12 @@ export const useSearch: UseSearch = () => {
         } else {
           cards[index].classList.remove(styles.hidden)
           notFound.style.display = 'none'
-          loadMore.style.display = 'block'
         }
       })
     } else {
       cards.forEach((card: Element) => {
         card.classList.remove(styles.hidden)
         notFound.style.display = 'none'
-        loadMore.style.display = 'block'
       })
     }
   }
@@ -60,7 +56,6 @@ export const useSearch: UseSearch = () => {
       cards.forEach((card: Element) => {
         card.classList.remove(styles.hidden)
         notFound.style.display = 'none'
-        loadMore.style.display = 'block'
       })
     }
   })

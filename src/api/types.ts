@@ -7,7 +7,7 @@ export interface Products {
   stock: number
   description: string
   category: string
-  image: [string, string, string, string?, string?, string?]
+  image: string[]
 }
 
 export interface Categories {

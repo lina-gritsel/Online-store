@@ -1,8 +1,8 @@
 const ErrorPage = {
-    render: async () => `
-      Мы не можем найти эту страницу.
+  render: async () => `
+    We can't find this page.
       `,
-    afterRender: async () => {},
-  }
-  
-  export default ErrorPage
+  afterRender: async () => {},
+}
+
+export default ErrorPage
