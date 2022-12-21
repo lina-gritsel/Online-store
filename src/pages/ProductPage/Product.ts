@@ -2,6 +2,7 @@ import { getProduct } from '../../api/requests'
 import styles from './Product.module.scss'
 import { parseRequestURL } from '../../utils'
 import arrow from '../../assets/svg/arrow.svg'
+import CreateOrderModal from '../../components/CreateOrderModal/index'
 
 export default {
   render: async () => {
@@ -24,9 +25,12 @@ export default {
         <div class=${styles.imgsWrapper}>
           <img class='${styles.img}' id='mainImg' src=${product.image[0]}/>
           <div class='${styles.imgsValue}' id='imgsValue'>
-            ${arrImages.map((image) : string => 
-              `<img class='${styles.secondImg} secondImg' src=${image}/>`).join('')
-            }
+            ${arrImages
+              .map(
+                (image): string =>
+                  `<img class='${styles.secondImg} secondImg' src=${image}/>`,
+              )
+              .join('')}
           </div>
         </div>
         <div class=${styles.contentWrapper}>
@@ -38,26 +42,25 @@ export default {
           <div><span>Category:</span> ${product.category}</div>
           <div class=${styles.desc}>${product.description}</div>
           <div class=${styles.wrapperBtns}>
-            <button class=${styles.btnBuy}>Add to cart</button>
-            <button class=${styles.btnBuy}>Buy now</button>
+            <button class=${styles.btnBuy} id=addCart>Add to cart</button>
+            <button class=${styles.btnBuy} id=buyNow>Buy now</button>
           </div>
         </div>
+        ${await CreateOrderModal.render()}
     </div>
-      `
+    `
   },
   afterRender: async () => {
-    const mainImages = document.getElementById('mainImg') as HTMLImageElement;
-    console.log(mainImages);
+    await CreateOrderModal.afterRender()
+
+    const mainImages = document.getElementById('mainImg') as HTMLImageElement
     const allImages = [...document.querySelectorAll('.secondImg')]
 
-    allImages.forEach((image)=>{
-      image.addEventListener('click', ()=>{
-        const secondUrl = image.getAttribute('src') as string;
+    allImages.forEach((image) => {
+      image.addEventListener('click', () => {
+        const secondUrl = image.getAttribute('src') as string
         mainImages.src = secondUrl
       })
     })
-
-
-  
   },
 }

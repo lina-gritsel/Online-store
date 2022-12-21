@@ -1,0 +1,139 @@
+/* VALIDATE*/
+
+.formHeader {
+  font: var(--font-text-2);
+  font-weight: 600;
+}
+
+.formWrapper {
+  display: none;
+  z-index: 9;
+}
+
+.visibleForm {
+  display: block;
+}
+
+.form {
+  position: absolute;
+  top: 5%;
+  right: 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--light-gray-color);
+  border-radius: 20px;
+  padding: 30px 30px 25px;
+  text-align: center;
+}
+
+// .wrapperInput {
+//   // position: relative;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+
+// }
+
+.formInput {
+  display: block;
+  width: 230px;
+  height: 40px;
+  // padding: 5px;
+  font: var(--font-text-4);
+  border: none;
+  margin-bottom: 5px;
+  background-color: transparent;
+  border-bottom: 2px solid var(--black-color);
+}
+
+.formInput:focus {
+  outline: none;
+}
+
+.form span {
+  visibility: hidden;
+  font: var(--font-text-5);
+}
+
+.formBtn {
+  cursor: pointer;
+  width: 100%;
+  height: 40px;
+  color: var(--white-color);
+  background-color: rgb(70, 18, 138);
+  border: none;
+  border-radius: 5px;
+}
+
+.error input {
+  border: 3px solid rgb(206, 35, 35);
+}
+
+.success input {
+  border: 3px solid rgb(54, 174, 24);
+}
+
+.error span {
+  visibility: visible;
+  color: rgb(206, 35, 35);
+}
+
+.success span {
+  border: 3px solid rgb(54, 174, 24);
+}
+
+.total {
+  font: var(--font-text-2);
+  padding-bottom: 10px;
+}
+
+.blackout {
+  height: 100vh;
+  width: 100%;
+  opacity: 0;
+  z-index: -10;
+  background-color: #292929;
+  transition: opacity 0.25s linear, z-index 0.25s linear;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+.blackoutActive {
+  display: block;
+  z-index: 7;
+  opacity: 0.6;
+}
+
+.lock {
+  overflow: hidden;
+}
+
+/*CARD*/
+
+.card {
+  background-color: var(--mittelgrau-color);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.cardInfo {
+  display: flex;
+  gap: 10px;
+}
+
+.cardNumberInput{
+  width: 250px;
+  height: 40px;
+}
+
+.cardInfoInput{
+  width: 100px;
+  height: 40px;
+}
