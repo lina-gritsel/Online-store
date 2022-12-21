@@ -47,7 +47,6 @@ export default {
   },
   afterRender: async () => {
     const mainImages = document.getElementById('mainImg') as HTMLImageElement;
-    console.log(mainImages);
     const allImages = [...document.querySelectorAll('.secondImg')]
 
     allImages.forEach((image)=>{

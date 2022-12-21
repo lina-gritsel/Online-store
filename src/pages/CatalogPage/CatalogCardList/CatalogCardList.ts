@@ -47,19 +47,29 @@ export const CatalogCardList = {
           <div class=${styles.line}></div>
           <div class=${styles.categoryBox}>
             <label class='${styles.categoryName}'>
-              <input class='${styles.categoryCheckbox} btnFilter disabled' id='relax' type=checkbox>For relax
+              <input class='${
+                styles.categoryCheckbox
+              } btnFilter disabled' id='relax' type=checkbox>For relax
             </label>
             <label class='${styles.categoryName}'>
-              <input class='${styles.categoryCheckbox} btnFilter disabled' id='job' type=checkbox>For work
+              <input class='${
+                styles.categoryCheckbox
+              } btnFilter disabled' id='job' type=checkbox>For work
             </label>
             <label class='${styles.categoryName}'>
-              <input class='${styles.categoryCheckbox} btnFilter disabled' id='kitchen' type=checkbox>For kitchen
+              <input class='${
+                styles.categoryCheckbox
+              } btnFilter disabled' id='kitchen' type=checkbox>For kitchen
             </label>
             <label class='${styles.categoryName}'>
-              <input class='${styles.categoryCheckbox} btnFilter disabled' id='kids' type=checkbox>For children
+              <input class='${
+                styles.categoryCheckbox
+              } btnFilter disabled' id='kids' type=checkbox>For children
             </label>
             <label class='${styles.categoryName}'>
-              <input class='${styles.categoryCheckbox} btnFilter disabled' id='bathroom' type=checkbox>For bathroom
+              <input class='${
+                styles.categoryCheckbox
+              } btnFilter disabled' id='bathroom' type=checkbox>For bathroom
             </label>
           </div>
           <div class=${styles.line}></div>
@@ -67,19 +77,29 @@ export const CatalogCardList = {
           <div class=${styles.line}></div>
           <div class=${styles.categoryBox}>
             <label class='${styles.categoryName}'>
-              <input class='${styles.categoryCheckbox} btnFilter disabled' id='adler' type=checkbox>Jonathan Adler
+              <input class='${
+                styles.categoryCheckbox
+              } btnFilter disabled' id='adler' type=checkbox>Jonathan Adler
             </label>
             <label class='${styles.categoryName}'>
-              <input class='${styles.categoryCheckbox} btnFilter disabled' id='modern' type=checkbox>AllModern
+              <input class='${
+                styles.categoryCheckbox
+              } btnFilter disabled' id='modern' type=checkbox>AllModern
             </label>
             <label class='${styles.categoryName}'>
-              <input class='${styles.categoryCheckbox} btnFilter disabled' id='burke' type=checkbox>Burke Decor
+              <input class='${
+                styles.categoryCheckbox
+              } btnFilter disabled' id='burke' type=checkbox>Burke Decor
             </label>
             <label class='${styles.categoryName}'>
-              <input class='${styles.categoryCheckbox} btnFilter disabled' id='bench' type=checkbox>BenchmadeM
+              <input class='${
+                styles.categoryCheckbox
+              } btnFilter disabled' id='bench' type=checkbox>BenchmadeM
             </label>
             <label class='${styles.categoryName}'>
-              <input class='${styles.categoryCheckbox} btnFilter disabled' id='castlery' type=checkbox>Castlery
+              <input class='${
+                styles.categoryCheckbox
+              } btnFilter disabled' id='castlery' type=checkbox>Castlery
             </label>
           </div>
           <div class=${styles.line}></div>
@@ -115,7 +135,7 @@ export const CatalogCardList = {
   afterRender: async () => {
     const products = await getAllProducts()
 
-    useFilter({ products })
+    useFilter()
     useSort({ products })
     useGrid()
     useSearch()

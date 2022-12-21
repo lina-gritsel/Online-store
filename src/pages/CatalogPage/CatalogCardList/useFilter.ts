@@ -1,8 +1,6 @@
 import styles from './CatalogCardList.module.scss'
-import { Products } from './../../../api'
-import { Card } from '../../../components/Card'
 
-type useFilter = (args: { products: Products[] }) => void
+type useFilter = () => void
 
 enum FilterCategory {
   RELAX = 'relax',
@@ -20,14 +18,18 @@ enum FilterBrand {
   CASTLERY = 'castlery',
 }
 
-export const useFilter: useFilter = ({ products }) => {
+export const useFilter: useFilter = () => {
   const filterValues = document.getElementById('filterValues')
   const filterWrapper = document.getElementById('filterWrapper')
   const filterImg = document.getElementById('filterImg') as HTMLImageElement
   const btnsFilter = [...document.querySelectorAll('.btnFilter')]
-  const cardsContainer = document.getElementById('cardsContainer') as HTMLDivElement
+  const notFound = document.getElementById('notFound') as HTMLParagraphElement
+  const cardsContainer = document.getElementById(
+    'cardsContainer',
+  ) as HTMLDivElement
+  let products = [...cardsContainer.children]
 
-  const filterProducts = (filterField: string, products: Products[]) => {
+  const filterProducts = (filterField: string, products: Element[]) => {
     const filterBy = filterField
 
     const searchURL = new URL((window as any).location)
@@ -36,42 +38,42 @@ export const useFilter: useFilter = ({ products }) => {
 
     return products.filter((product): any => {
       if (filterBy === FilterCategory.RELAX) {
-        return product.category === 'relax'
+        return product.children[4].textContent === 'relax'
       }
       if (filterBy === FilterCategory.JOB) {
-        return product.category === 'job'
+        return product.children[4].textContent === 'job'
       }
       if (filterBy === FilterCategory.KITCHEN) {
-        return product.category === 'kitchen'
+        return product.children[4].textContent === 'kitchen'
       }
       if (filterBy === FilterCategory.KIDS) {
-        return product.category === 'kids'
+        return product.children[4].textContent === 'kids'
       }
       if (filterBy === FilterCategory.BATHROOM) {
-        return product.category === 'bathroom'
+        return product.children[4].textContent === 'bathroom'
       }
       if (filterBy === FilterBrand.ADLER) {
-        return product.brand === 'Jonathan Adler'
+        return product.children[5].textContent === 'Jonathan Adler'
       }
       if (filterBy === FilterBrand.MODERN) {
-        return product.brand === 'AllModern'
+        return product.children[5].textContent === 'AllModern'
       }
       if (filterBy === FilterBrand.BURKE) {
-        return product.brand === 'Burke Decor'
+        return product.children[5].textContent === 'Burke Decor'
       }
       if (filterBy === FilterBrand.BENCH) {
-        return product.brand === 'Benchmade Modern'
+        return product.children[5].textContent === 'Benchmade Modern'
       }
       if (filterBy === FilterBrand.CASTLERY) {
-        return product.brand === 'Castlery'
+        return product.children[5].textContent === 'Castlery'
       }
     })
   }
 
-  console.log(products)
-
   btnsFilter.forEach((btn) => {
     btn.addEventListener('click', (e) => {
+      products = [...cardsContainer.children]
+      
       const selectedBtn = (e as any)?.target
 
       if (selectedBtn.checked) {
@@ -85,19 +87,18 @@ export const useFilter: useFilter = ({ products }) => {
       const filterField = (e as any)?.target.id
       const filterArray = filterProducts(filterField, products)
 
-      if (cardsContainer) {
-        cardsContainer.innerHTML = ''
-        cardsContainer.insertAdjacentHTML(
-          'beforeend',
-          `${filterArray.map((data) => `${Card(data)}`).join('')}`,
-        )
-      }
+      products.forEach((product) => {
+        product.classList.add(styles.hidden)
+      })
+
+      filterArray.forEach((product) => {
+        product.classList.remove(styles.hidden)
+      })
+
       if (btnsFilter.every((btn) => btn.classList.contains('disabled'))) {
-        cardsContainer.innerHTML = ''
-        cardsContainer.insertAdjacentHTML(
-          'beforeend',
-          `${products.map((data) => `${Card(data)}`).join('')}`,
-        )
+        products.forEach((product) => {
+          product.classList.remove(styles.hidden)
+        })
       }
     })
   })

@@ -9,7 +9,7 @@ export const Footer = (): string => {
           <div class=${styles.menu}>Menu
             <a href='#/' class=${styles.menu__item}>Home</a>
             <a href='#/catalog' class=${styles.menu__item}>Catalog</a>
-            <a href='' class=${styles.menu__item}>Cart</a>
+            <a href='#/cart' class=${styles.menu__item}>Cart</a>
           </div>
           <div class=${styles.contacts}>Contacts
             <a href="https://github.com/lina-gritsel" target='_blank'>
