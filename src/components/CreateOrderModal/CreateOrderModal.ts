@@ -1,62 +1,54 @@
 import { getProduct } from '../../api'
 import { parseRequestURL } from '../../utils'
 import styles from './CreateOrderModal.module.scss'
+import masterCard from '../../assets/svg/masterCard.svg'
+import visa from '../../assets/svg/visa.svg'
+import express from '../../assets/svg/american.svg'
+import discover from '../../assets/svg/discover.svg'
+
 
 export default {
   render: async () => {
     const { id } = parseRequestURL(location.hash.slice(1).toLowerCase())
     const product = await getProduct(id)
 
-  
-
     return `
         <div class=${styles.formWrapper} id=formWrapper>
           <form class=${styles.form} id='form'>
             <div class=${styles.formHeader}>Ordering</div> 
             <div class=${styles.wrapperInput}>
-              <input type=text id='userName' class='${
-                styles.formInput
-              } input' placeholder='First and last name'>
+              <input type=text id='userName' class='${styles.formInput} input' placeholder='First and last name'>
               <span>Error message</span>
             </div>
             <div class='${styles.wrapperInput}'>
-              <input type=text id=phone class='${
-                styles.formInput
-              } input' placeholder='Phone number'>
+              <input type=text id=phone class='${styles.formInput} input' placeholder='Phone number'>
               <span>Error message</span>
             </div>
             <div class=${styles.wrapperInput}>
-              <input type=text id='address' class='${
-                styles.formInput
-              } input' placeholder='Delivery address'>
+              <input type=text id='address' class='${styles.formInput} input' placeholder='Delivery address'>
               <span>Error message</span>
             </div>
             <div class=${styles.wrapperInput}>
-              <input type=email  id=email class='${
-                styles.formInput
-              } input' placeholder='E-mail'>
+              <input type=email  id=email class='${styles.formInput} input' placeholder='E-mail'>
               <span>Error message</span>
             </div>
 
             <div class=${styles.card}>
+              <img class=${styles.map} src='../../assets/images/map.png'/>
+              <div class=${styles.cardHeader}>
+                <img class=${styles.chip} src='../../assets/images/chip.png'/>
+                <img class=${styles.cardLogo} id=cardLogo src='' />
+              </div>
               <div class=${styles.wrapperInput}>
-                <input type=number class=${
-                  styles.cardNumberInput
-                } id=cardNumber placeholder='Number card'  min="0" oninput="validity.valid||(value='')">
-                <span></span>
+                <input type="number" class=${styles.cardNumberInput} id=cardNumber placeholder='**** **** **** ****' oninput="validity.valid||(value='')" onKeyDown="if(this.value.length==16 && event.keyCode>47 && event.keyCode < 58) return false;">
               </div>
               <div class=${styles.cardInfo}>
-                <div class=${styles.wrapperInput}>
-                  <input type=number class=${
-                    styles.cardInfoInput
-                  } id=cardValid placeholder='Valid Thru'>
-                  <span></span>
+                <div class=${styles.expWrapper}>
+                  <input autocomplete="off" class=${styles.exp} id="month" maxlength="2" pattern="[0-9]*" inputmode="numerical" placeholder="MM" type="text" data-pattern-validate />
+                  <input autocomplete="off" class=${styles.exp} id="year" maxlength="2" pattern="[0-9]*" inputmode="numerical" placeholder="YY" type="text" data-pattern-validate />
                 </div>
-                <div class=${styles.wrapperInput}>
-                  <input type=number class=${
-                    styles.cardInfoInput
-                  } id=cvv placeholder='CVV'>
-                  <span></span>
+                <div>
+                  <input type=number class=${styles.cvvInput} id=cvv placeholder='CVV' oninput="validity.valid||(value='')" onKeyDown="if(this.value.length==3 && event.keyCode>47 && event.keyCode < 58) return false;">
                 </div>
               </div>
             </div>
@@ -99,8 +91,10 @@ export default {
     const address = document.getElementById('address') as HTMLInputElement
     const email = document.getElementById('email') as HTMLInputElement
     const cardNumber = document.getElementById('cardNumber') as HTMLInputElement
-    const cardValid = document.getElementById('cardValid') as HTMLInputElement
+    const monthInput = document.getElementById('month') as HTMLInputElement
+    const yearInput = document.getElementById('year') as HTMLInputElement
     const cvv = document.getElementById('cvv') as HTMLInputElement
+    const cardLogo = document.getElementById('cardLogo') as HTMLImageElement
 
     form?.addEventListener('submit', (e) => {
       e.preventDefault()
@@ -117,6 +111,7 @@ export default {
       const addressValue = address.value.trim()
       const emailValue = email.value.trim()
       const cvvValue = cvv.value.trim()
+      const cardNumberValue = cardNumber.value.trim()
 
       const nameArray = userNameValue.split(' ')
       const nameIsString = nameArray.map((namePart) =>
@@ -178,12 +173,16 @@ export default {
 
       if (cvvValue === '') {
         setErrorFor(cvv, 'CVV cannot be blank')
-      } else if (!/^\d+$/.test(cvvValue)) {
-        setErrorFor(cvv, 'CVV should only contain numbers')
-      } else if (cvvValue.length !== 3) {
-        setErrorFor(cvv, 'CVV must be 3 characters long')
       } else {
         setSuccessFor(cvv)
+      }
+
+      if (cardNumberValue === '') {
+        setErrorFor(cardNumber, 'Card Number cannot be blank')
+      } else if (cardNumberValue.length !== 16) {
+        setErrorFor(cardNumber, 'Card length 16 digits')
+      } else {
+        setSuccessFor(cardNumber)
       }
     }
 
@@ -204,5 +203,79 @@ export default {
         emailValue,
       )
     }
+
+    cardNumber.addEventListener('keyup', () => {
+      if (cardNumber.value.slice(0, 1) === '6') {
+        cardLogo.src = discover
+      } else if (cardNumber.value.slice(0, 1) === '5') {
+        cardLogo.src = masterCard
+      } else if (cardNumber.value.slice(0, 1) === '4') {
+        cardLogo.src = visa
+      } else if (cardNumber.value.slice(0, 1) === '3') {
+        cardLogo.src = express
+      } else if (cardNumber.value === '') {
+        cardLogo.src = ''
+      }
+    })
+
+    const focusSibling = function (
+      target: any,
+      direction: any,
+      callback?: any,
+    ) {
+      const nextTarget = target[direction]
+      nextTarget && nextTarget.focus()
+      // if callback is supplied we return the sibling target which has focus
+      callback && callback(nextTarget)
+    }
+
+    monthInput?.addEventListener('input', (event: Event) => {
+      const value = (event.target as HTMLInputElement).value.toString()
+      if (value.length === 1 && +value > 1) {
+        ;(event.target as HTMLInputElement).value = '0' + value
+      }
+      if (value === '00') {
+        ;(event.target as HTMLInputElement).value = '01'
+      } else if (+value > 12) {
+        ;(event.target as HTMLInputElement).value = '12'
+      }
+      2 <= (event.target as HTMLInputElement).value.length &&
+        focusSibling(event.target, 'nextElementSibling')
+      event.stopImmediatePropagation()
+    })
+
+    yearInput.addEventListener('keydown', (event) => {
+      if (
+        event.key === 'Backspace' &&
+        (event.target as HTMLInputElement).selectionStart === 0
+      ) {
+        focusSibling(event.target, 'previousElementSibling')
+        event.stopImmediatePropagation()
+      }
+    })
+
+    const inputMatchesPattern = function (e: any) {
+      const { value, selectionStart, selectionEnd, pattern } = e.target
+
+      const character = String.fromCharCode(e.which)
+      const proposedEntry =
+        value.slice(0, selectionStart) + character + value.slice(selectionEnd)
+      const match = proposedEntry.match(pattern)
+
+      return (
+        e.metaKey || // cmd/ctrl
+        e.which <= 0 || // arrow keys
+        e.which == 8 || // delete key
+        (match && match['0'] === match.input)
+      ) // pattern regex isMatch - workaround for passing [0-9]* into RegExp
+    }
+
+    document.querySelectorAll('input[data-pattern-validate]').forEach((el) =>
+      el.addEventListener('keypress', (e) => {
+        if (!inputMatchesPattern(e)) {
+          return e.preventDefault()
+        }
+      }),
+    )
   },
 }

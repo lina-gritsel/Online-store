@@ -1,4 +1,8 @@
-/* VALIDATE*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
 .formHeader {
   font: var(--font-text-2);
@@ -29,25 +33,15 @@
   text-align: center;
 }
 
-// .wrapperInput {
-//   // position: relative;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-
-// }
-
 .formInput {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid var(--black-color);
   display: block;
+  font: var(--font-text-4);
   width: 230px;
   height: 40px;
-  // padding: 5px;
-  font: var(--font-text-4);
-  border: none;
   margin-bottom: 5px;
-  background-color: transparent;
-  border-bottom: 2px solid var(--black-color);
 }
 
 .formInput:focus {
@@ -117,23 +111,86 @@
 /*CARD*/
 
 .card {
-  background-color: var(--mittelgrau-color);
-  padding: 20px;
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,121,118,1) 100%);
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   gap: 15px;
+  padding: 20px;
+  width: 350px;
+  height: 200px;
+  position: relative;
+  z-index: 1;
 }
+
+.map {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.3;
+  z-index: -1;
+}
+
 .cardInfo {
   display: flex;
-  gap: 10px;
+  gap: 40px;
 }
 
-.cardNumberInput{
+.cardNumberInput {
+  background-color: transparent;
+  border: none;
   width: 250px;
   height: 40px;
+  font: var(--font-text-2);
+  outline: none;
 }
 
-.cardInfoInput{
+.cvvInput {
+  background-color: transparent;
+  border: none;
   width: 100px;
-  height: 40px;
+  height: 36px;
+  font: var(--font-text-3);
+  outline: none;
+}
+
+.expWrapper {
+  position: relative;
+  border: none;
+  display: flex;
+  width: 250px;
+  justify-content: space-around;
+  height: 36px;
+  font-size: 24px;
+}
+
+.expWrapper:after {
+  content: '/';
+  position: absolute;
+  left: 50%;
+  margin-left: -4px;
+  color: #aaa;
+}
+
+.exp {
+  background-color: transparent;
+  border: 0;
+  width: 30px;
+  outline: none;
+  appearance: none;
+  font: var(--font-text-3);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cardLogo {
+  width: 50px;
+}
+
+.chip {
+  width: 50px;
 }
