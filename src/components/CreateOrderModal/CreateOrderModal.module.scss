@@ -19,17 +19,17 @@ input::-webkit-inner-spin-button {
 }
 
 .form {
-  position: absolute;
-  top: 5%;
-  right: 35%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
   background-color: var(--light-gray-color);
   border-radius: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   padding: 30px 30px 25px;
+  position: absolute;
+  right: 35%;
+  top: 5%;
   text-align: center;
 }
 
@@ -54,13 +54,13 @@ input::-webkit-inner-spin-button {
 }
 
 .formBtn {
+  background-color: transparent;
+  border: 2px solid var(--black-color);
+  border-radius: 20px;
   cursor: pointer;
-  width: 100%;
+  color: var(--black-color);
   height: 40px;
-  color: var(--white-color);
-  background-color: rgb(70, 18, 138);
-  border: none;
-  border-radius: 5px;
+  width: 100%;
 }
 
 .error input {
@@ -72,8 +72,8 @@ input::-webkit-inner-spin-button {
 }
 
 .error span {
-  visibility: visible;
   color: rgb(206, 35, 35);
+  visibility: visible;
 }
 
 .success span {
@@ -86,22 +86,22 @@ input::-webkit-inner-spin-button {
 }
 
 .blackout {
+  background-color: #292929;
+  display: none;
   height: 100vh;
   width: 100%;
   opacity: 0;
-  z-index: -10;
-  background-color: #292929;
-  transition: opacity 0.25s linear, z-index 0.25s linear;
   position: fixed;
+  transition: opacity 0.25s linear, z-index 0.25s linear;
   top: 0;
   left: 0;
-  display: none;
+  z-index: -10;
 }
 
 .blackoutActive {
   display: block;
-  z-index: 7;
   opacity: 0.6;
+  z-index: 7;
 }
 
 .lock {
@@ -111,7 +111,11 @@ input::-webkit-inner-spin-button {
 /*CARD*/
 
 .card {
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,121,118,1) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 121, 118, 1) 100%
+  );
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -140,7 +144,10 @@ input::-webkit-inner-spin-button {
 .cardNumberInput {
   background-color: transparent;
   border: none;
-  width: 250px;
+  color: var(--white-color);
+  display: flex;
+  text-align: center;
+  
   height: 40px;
   font: var(--font-text-2);
   outline: none;
@@ -149,6 +156,7 @@ input::-webkit-inner-spin-button {
 .cvvInput {
   background-color: transparent;
   border: none;
+  color: var(--white-color);
   width: 100px;
   height: 36px;
   font: var(--font-text-3);
@@ -156,13 +164,13 @@ input::-webkit-inner-spin-button {
 }
 
 .expWrapper {
-  position: relative;
   border: none;
   display: flex;
-  width: 250px;
-  justify-content: space-around;
-  height: 36px;
   font-size: 24px;
+  justify-content: space-around;
+  position: relative;
+  height: 36px;
+  width: 250px;
 }
 
 .expWrapper:after {
@@ -176,6 +184,7 @@ input::-webkit-inner-spin-button {
 .exp {
   background-color: transparent;
   border: 0;
+  color: var(--white-color);
   width: 30px;
   outline: none;
   appearance: none;
