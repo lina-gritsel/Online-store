@@ -1,0 +1,205 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.formHeader {
+  font: var(--font-text-2);
+  font-weight: 600;
+}
+
+.formWrapper {
+  display: none;
+  z-index: 9;
+}
+
+.visibleForm {
+  display: block;
+}
+
+.form {
+  background-color: var(--light-gray-color);
+  border-radius: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px 30px 25px;
+  position: absolute;
+  right: 35%;
+  top: 5%;
+  text-align: center;
+}
+
+.formInput {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid var(--black-color);
+  display: block;
+  font: var(--font-text-4);
+  width: 230px;
+  height: 40px;
+  margin-bottom: 5px;
+}
+
+.formInput:focus {
+  outline: none;
+}
+
+.form span {
+  visibility: hidden;
+  font: var(--font-text-5);
+}
+
+.formBtn {
+  background-color: transparent;
+  border: 2px solid var(--black-color);
+  border-radius: 20px;
+  cursor: pointer;
+  color: var(--black-color);
+  height: 40px;
+  width: 100%;
+}
+
+.error input {
+  border: 3px solid rgb(206, 35, 35);
+}
+
+.success input {
+  border: 3px solid rgb(54, 174, 24);
+}
+
+.error span {
+  color: rgb(206, 35, 35);
+  visibility: visible;
+}
+
+.success span {
+  border: 3px solid rgb(54, 174, 24);
+}
+
+.total {
+  font: var(--font-text-2);
+  padding-bottom: 10px;
+}
+
+.blackout {
+  background-color: #292929;
+  display: none;
+  height: 100vh;
+  width: 100%;
+  opacity: 0;
+  position: fixed;
+  transition: opacity 0.25s linear, z-index 0.25s linear;
+  top: 0;
+  left: 0;
+  z-index: -10;
+}
+
+.blackoutActive {
+  display: block;
+  opacity: 0.6;
+  z-index: 7;
+}
+
+.lock {
+  overflow: hidden;
+}
+
+/*CARD*/
+
+.card {
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 121, 118, 1) 100%
+  );
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+  width: 350px;
+  height: 200px;
+  position: relative;
+  z-index: 1;
+}
+
+.map {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+.cardInfo {
+  display: flex;
+  gap: 40px;
+}
+
+.cardNumberInput {
+  background-color: transparent;
+  border: none;
+  color: var(--white-color);
+  display: flex;
+  text-align: center;
+  
+  height: 40px;
+  font: var(--font-text-2);
+  outline: none;
+}
+
+.cvvInput {
+  background-color: transparent;
+  border: none;
+  color: var(--white-color);
+  width: 100px;
+  height: 36px;
+  font: var(--font-text-3);
+  outline: none;
+}
+
+.expWrapper {
+  border: none;
+  display: flex;
+  font-size: 24px;
+  justify-content: space-around;
+  position: relative;
+  height: 36px;
+  width: 250px;
+}
+
+.expWrapper:after {
+  content: '/';
+  position: absolute;
+  left: 50%;
+  margin-left: -4px;
+  color: #aaa;
+}
+
+.exp {
+  background-color: transparent;
+  border: 0;
+  color: var(--white-color);
+  width: 30px;
+  outline: none;
+  appearance: none;
+  font: var(--font-text-3);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cardLogo {
+  width: 50px;
+}
+
+.chip {
+  width: 50px;
+}

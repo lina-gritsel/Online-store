@@ -2,6 +2,7 @@ import { getProduct } from '../../api/requests'
 import styles from './Product.module.scss'
 import { parseRequestURL } from '../../utils'
 import arrow from '../../assets/svg/arrow.svg'
+import CreateOrderModal from '../../components/CreateOrderModal/index'
 
 export default {
   render: async () => {
@@ -41,14 +42,17 @@ export default {
           <div><span>Category:</span> ${product.category}</div>
           <div class=${styles.desc}>${product.description}</div>
           <div class=${styles.wrapperBtns}>
-            <button class=${styles.btnBuy} id='addCart'>Add to cart</button>
-            <button class=${styles.btnBuy} id='buyNow'>Buy now</button>
+            <button class=${styles.btnBuy} id=addCart>Add to cart</button>
+            <button class=${styles.btnBuy} id=buyNow>Buy now</button>
           </div>
         </div>
+        ${await CreateOrderModal.render()}
     </div>
-      `
+    `
   },
   afterRender: async () => {
+    await CreateOrderModal.afterRender()
+
     const mainImages = document.getElementById('mainImg') as HTMLImageElement
     const allImages = [...document.querySelectorAll('.secondImg')]
 
