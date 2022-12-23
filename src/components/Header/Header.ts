@@ -1,7 +1,7 @@
 import styles from './Header.module.scss'
 
-export const Header = () => {
-    return `
+export const Header = () =>
+  `
     <header>
       <div class=${styles.wrapper}>
         <div class=${styles.content}>
@@ -20,4 +20,3 @@ export const Header = () => {
       </div>
     </header>
 `
-}

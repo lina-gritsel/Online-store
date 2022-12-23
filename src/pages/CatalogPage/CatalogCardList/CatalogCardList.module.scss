@@ -93,6 +93,7 @@
   border-radius: 20px;
   border: 2px solid var(--mittelgrau-color);
   padding: 10px;
+  z-index: 1;
 }
 
 .filterWrapper {
@@ -107,6 +108,7 @@
   text-align: center;
   top: 50px;
   width: 288px;
+  z-index: 1;
 }
 
 .sortBtn {

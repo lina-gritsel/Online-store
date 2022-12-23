@@ -70,8 +70,8 @@ export const useFilter: useFilter = () => {
     })
   }
 
-  btnsFilter.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
+  const filter = (btn: any) => {
+    btn.addEventListener('click', (e: MouseEvent) => {
       products = [...cardsContainer.children]
       
       const selectedBtn = (e as any)?.target
@@ -101,6 +101,10 @@ export const useFilter: useFilter = () => {
         })
       }
     })
+  }
+
+  btnsFilter.forEach((btn) => {
+    filter(btn)
   })
 
   filterValues?.addEventListener('click', (e: MouseEvent) => {

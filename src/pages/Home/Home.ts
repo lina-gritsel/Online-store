@@ -1,5 +1,5 @@
-import { Main } from './Main/Main'
-import { Category } from './Category/Category'
+import { Main } from './Main'
+import { Category } from './Category'
 import { CardList } from '../../components/CardList'
 import mainStyles from './Main/Main.module.scss'
 import categoryStyles from './Category/Category.module.scss'
