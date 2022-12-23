@@ -9,6 +9,7 @@ export interface Products {
   category: string
   image: string[]
   numberOfUnits: number
+  isInCart: boolean
 }
 
 export interface Categories {

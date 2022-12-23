@@ -36,13 +36,19 @@ export const Cart = {
    `
   },
   afterRender: async () => {
+    const cart = JSON.parse(localStorage.getItem('cart') as string)
     const clearBtn = document.getElementById('clear') as HTMLButtonElement
     const cartContainer = document.getElementById(
       'cartContainer',
     ) as HTMLDivElement
     const totalPrice = document.getElementById('total') as HTMLParagraphElement
-    const totalAmount = document.getElementById('amount') as HTMLParagraphElement
-    const cart = JSON.parse(localStorage.getItem('cart') as string)
+    const totalAmount = document.getElementById(
+      'amount',
+    ) as HTMLParagraphElement
+    const addItemBtns = document.querySelectorAll('#addItem')
+    const removeItemBtns = document.querySelectorAll('#removeItem')
+    const deleteItemBtns = document.querySelectorAll('#deleteItem')
+    const numberOfProducts = document.querySelectorAll('#numberOfUnits')
 
     clearBtn.addEventListener('click', () => {
       localStorage.clear()
@@ -62,12 +68,24 @@ export const Cart = {
       cart.forEach((item: any) => {
         sumArr.push(item.price)
         lengthArr.push(item.numberOfUnits)
+        const total = sumArr.reduce((a, b) => (a * item.numberOfUnits) + (b * item.numberOfUnits), 0)
+        const totalLength = lengthArr.reduce((a, b) => a + b, 0)
+        totalPrice.innerHTML = `Total: ${total}$`
+        totalAmount.innerHTML = `Products: ${totalLength}`
       })
-      
-      const total = sumArr.reduce((a, b) => a + b, 0)
-      const totalLength = lengthArr.reduce((a, b) => a + b, 0)
-      totalPrice.innerHTML = `Total: ${total}$`
-      totalAmount.innerHTML = `Products: ${totalLength}`
+
+      addItemBtns.forEach((btn) => {
+        btn.addEventListener('click', (e: any) => {
+          console.log(e.target.parentNode.parentNode.parentNode)
+
+          cart.forEach((item: any) => {
+            item.numberOfUnits += 1
+            numberOfProducts.forEach((card) => {
+              card.innerHTML = item.numberOfUnits
+            })
+          })
+        })
+      })
     }
   },
 }

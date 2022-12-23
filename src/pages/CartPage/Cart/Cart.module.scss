@@ -56,11 +56,13 @@
 }
 
 .cardsContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    padding-bottom: 60px;
-    width: 100%;
+  color: var(--black-color);
+  display: flex;
+  font: var(--font-text-4);
+  flex-direction: column;
+  gap: 32px;
+  padding-bottom: 60px;
+  width: 100%;
 }
 
 .btnsBlock {
@@ -84,7 +86,7 @@
   width: 200px;
 
   &:hover {
-    box-shadow: 4px 6px 10px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 4px 6px 10px 0px rgba(0, 0, 0, 0.5);
     transform: scale(1.1);
   }
 }
@@ -102,7 +104,7 @@
   width: 200px;
 
   &:hover {
-    box-shadow: 4px 6px 10px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 4px 6px 10px 0px rgba(0, 0, 0, 0.5);
     transform: scale(1.1);
   }
 }
@@ -118,7 +120,7 @@
   width: 200px;
 
   &:hover {
-    box-shadow: 4px 6px 10px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 4px 6px 10px 0px rgba(0, 0, 0, 0.5);
     transform: scale(1.1);
   }
 }

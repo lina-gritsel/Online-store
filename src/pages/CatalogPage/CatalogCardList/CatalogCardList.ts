@@ -128,7 +128,7 @@ export const CatalogCardList = {
         styles.notFound
       } id='notFound'>По вашему запросу ничего не найдено</p>
       <div class=${styles.content} id='cardsContainer'>
-      ${data.map((data) => `${Card(data)}`).join('')}
+      ${data.map((data: any) => `${Card(data)}`).join('')}
       </div>
     </div>
     `
@@ -136,10 +136,14 @@ export const CatalogCardList = {
   afterRender: async () => {
     const products = await getAllProducts()
 
+    products.forEach((product) => {
+      product.isInCart = false
+    })
+
     useFilter()
     useSort({ products })
     useGrid()
-    useSearch()    
+    useSearch()
     addToCart({ products })
   },
 }
