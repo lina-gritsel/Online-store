@@ -1,3 +1,14 @@
-.header{
-    
+.header {
+  background-color: #d8be9b;
+  color: var(--black-color);
+  height: 200px;
+}
+
+.error {
+  background-color: #f9f8f3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: var(--font-h1);
+  height: 520px;
 }
