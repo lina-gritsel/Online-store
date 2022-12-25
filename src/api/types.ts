@@ -1,3 +1,4 @@
+import { Component } from './../routes/routes';
 export interface Products {
   id: number
   title: string
@@ -12,5 +13,5 @@ export interface Products {
 
 export interface Categories {
   title: string
-  image: any
+  image: Component
 }

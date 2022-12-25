@@ -70,18 +70,19 @@ const validateCardNumber = (cardValue: string) => {
 
 const validateCvvCard = (cvvValue: string) => {
   if (isEmpty(cvvValue)) return 'CVV cannot be blank'
+
 }
 
 const setErrorFor = (input: HTMLInputElement, message: string) => {
   const formControl = input.parentElement as HTMLElement
   const span = formControl?.querySelector('span') as HTMLSpanElement
   span.innerText = message
-  formControl.className = `${styles.error}`
+  formControl.className = `${styles.error} ${styles.wrapperInput}`
 }
 
 const setSuccessFor = (input: HTMLInputElement) => {
   const formControl = input.parentElement as HTMLElement
-  formControl.className = `${styles.success}`
+  formControl.className = `${styles.success} ${styles.wrapperInput}`
 }
 
 export const checkIsUserNameValid = (userNameValue: string): void => {
@@ -139,13 +140,15 @@ export const checkIsCardNumberValid = (emailValue: string) => {
   }
 }
 
-export const checkIsCvvValid = (cvvValue: string) => {
-  const cvv = document.getElementById('cvv') as HTMLInputElement
-  const message = validateCvvCard(cvvValue)
 
-  if (message) {
-    setErrorFor(cvv, message)
-  } else {
-    setSuccessFor(cvv)
-  }
+export const onCodeHandler = (): string => {
+  return 'if(this.value.length==3 && event.keyCode>47 && event.keyCode < 58) return false;'
+}
+
+export const onlyNumberValid = (): string => {
+  return "validity.valid||(value='')"
+}
+
+export const onCardNumberHandler = (): string => {
+  return 'if(this.value.length==19 && event.keyCode>47 && event.keyCode < 58) return false; return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))'
 }

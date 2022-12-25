@@ -2,9 +2,11 @@
   height: 100px;
   background-color: rgb(239, 204, 164);
   margin-bottom: 40px;
+
 }
 
 .wrapperPath {
+
   display: flex;
   gap: 20px;
   justify-content: center;
@@ -19,7 +21,7 @@
 }
 
 .container {
-  position: relative;
+  // position: relative;
   background-color: var(--light-gray-color);
   border-radius: 20px;
   display: flex;

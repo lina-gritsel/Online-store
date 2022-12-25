@@ -27,21 +27,25 @@ input::-webkit-inner-spin-button {
   align-items: center;
   flex-direction: column;
   padding: 30px 30px 25px;
-  position: absolute;
-  right: 35%;
-  top: 5%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
+}
+
+.wrapperInput {
+  width: 300px;
 }
 
 .formInput {
   background-color: transparent;
   border: none;
   border-bottom: 2px solid var(--black-color);
-  display: block;
+  // display: block;
   font: var(--font-text-4);
-  width: 230px;
   height: 40px;
-  margin-bottom: 5px;
+  width: 100%;
 }
 
 .formInput:focus {
@@ -64,20 +68,25 @@ input::-webkit-inner-spin-button {
 }
 
 .error input {
-  border: 3px solid rgb(206, 35, 35);
+  border-bottom: 2px solid rgb(170, 35, 35);
+  width: 100%;
+
 }
 
 .success input {
-  border: 3px solid rgb(54, 174, 24);
+  border-bottom: 2px solid rgb(46, 162, 17);
+  width: 100%;
+
 }
 
 .error span {
-  color: rgb(206, 35, 35);
+  color: rgb(180, 41, 41);
   visibility: visible;
+  font-weight: 600;
 }
 
 .success span {
-  border: 3px solid rgb(54, 174, 24);
+  border: 2px solid rgb(46, 162, 17);
 }
 
 .total {
@@ -147,7 +156,7 @@ input::-webkit-inner-spin-button {
   color: var(--white-color);
   display: flex;
   text-align: center;
-  
+
   height: 40px;
   font: var(--font-text-2);
   outline: none;

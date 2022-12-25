@@ -1,18 +1,20 @@
 import { getProduct } from '../../api'
 import { parseRequestURL } from '../../utils'
 import styles from './CreateOrderModal.module.scss'
-
 import {
   checkIsUserNameValid,
   checkIsPhoneNumberValid,
   checkIsAddressValid,
   checkIsEmailValid,
   checkIsCardNumberValid,
-  checkIsCvvValid,
+  onCardNumberHandler,
+  onCodeHandler,
+  onlyNumberValid,
 } from './modules/fieldsValidate'
 import { checkCardTerm } from './modules/cardTerm'
 import { cardNumberSeparation } from './modules/helpers'
 import { setCardImage } from './modules/setCardImage'
+import { FormFields, MonthInput } from './modules/inputs'
 
 export default {
   render: async () => {
@@ -23,54 +25,72 @@ export default {
         <div class=${styles.formWrapper} id=formWrapper>
           <form class=${styles.form} id='form'>
             <div class=${styles.formHeader}>Ordering</div> 
-            <div class=${styles.wrapperInput}>
-              <input type=text id='userName' class='${styles.formInput} input' placeholder='First and last name'>
-              <span>Error message</span>
-            </div>
-            <div class='${styles.wrapperInput}'>
-              <input type="number" id=phone class='${styles.formInput} input' placeholder='Phone number'>
-              <span>Error message</span>
-            </div>
-            <div class=${styles.wrapperInput}>
-              <input type="text" id='address' class='${styles.formInput} input' placeholder='Delivery address'>
-              <span>Error message</span>
-            </div>
-            <div class=${styles.wrapperInput}>
-              <input type=email  id=email class='${styles.formInput} input' placeholder='E-mail'>
-              <span>Error message</span>
-            </div>
-
-            <div class=${styles.card}>
-              <img class=${styles.map} src='../../assets/images/map.png'/>
-              <div class=${styles.cardHeader}>
-                <img class=${styles.chip} src='../../assets/images/chip.png'/>
-                <img class=${styles.cardLogo} id=cardLogo src='' />
+            ${FormFields.render({
+              id: 'userName',
+              placeholder: 'First and last name',
+            })}
+            ${FormFields.render({
+              id: 'phone',
+              type: 'text',
+              placeholder: 'Phone number',
+            })}
+            ${FormFields.render({
+              id: 'address',
+              placeholder: 'Delivery address',
+            })}
+            ${FormFields.render({
+              id: 'email',
+              type: 'email',
+              placeholder: 'E-mail',
+            })}
+            <div class='${styles.card}'>
+              <img class='${styles.map}' src='../../assets/images/map.png'/>
+              <div class='${styles.cardHeader}'>
+                <img class='${styles.chip}' src='../../assets/images/chip.png'/>
+                <img class='${styles.cardLogo}' id='cardLogo' src=''/>
               </div>
-              <div class=${styles.wrapperInput}>
-                <input type="text"
-                 onkeypress="if(this.value.length==19 && event.keyCode>47 && event.keyCode < 58) return false; return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
-                  class=${styles.cardNumberInput}
-                  id=cardNumber
+              <div class='${styles.wrapperInput}'>
+                <input 
+                  id='cardNumber'
+                  type='text'
+                  class='${styles.cardNumberInput}'
+                  onkeypress='${onCardNumberHandler()}'
                   placeholder='**** **** **** ****'
-                <span><span>
+                >
+                <span></span>
               </div>
               <div class=${styles.cardInfo}>
                 <div class=${styles.expWrapper}>
-                  <input autocomplete="off" class=${styles.exp} id="month" maxlength="2" pattern="[0-9]*" inputmode="numerical" placeholder="MM" type="text" data-pattern-validate />
-                  <input autocomplete="off" class=${styles.exp} id="year" maxlength="2" pattern="[0-9]*" inputmode="numerical" placeholder="YY" type="text" data-pattern-validate />
+                  ${MonthInput.render({
+                    id: 'month',
+                    placeholder: 'MM',
+                  })}
+                  ${MonthInput.render({
+                    id: 'year',
+                    placeholder: 'YY',
+                    maxlength: '2',
+                  })}
                 </div>
                 <div>
-                  <input type=number class=${styles.cvvInput} id=cvv placeholder='CVV' oninput="validity.valid||(value='')" onKeyDown="if(this.value.length==3 && event.keyCode>47 && event.keyCode < 58) return false;">
+                  <input 
+                    type='number'
+                    maxlength='3'
+                    class='${styles.cvvInput}'
+                    id='cvv'
+                    placeholder='CVV' 
+                    oninput='${onlyNumberValid()}'
+                    onKeyDown='${onCodeHandler()}'
+                    onkeypress='${onCardNumberHandler()}'
+
+                  >
                 </div>
               </div>
             </div>
-
-
-            <div class=${styles.total}>Total: ${product.price}$</div>
-            <button class=${styles.formBtn}>CONFIRM</button>
+            <div class='${styles.total}'>Total: ${product.price}$</div>
+            <button class='${styles.formBtn}'>CONFIRM</button>
           </form>
         </div>
-        <div class=${styles.blackout} id='blackout'></div>
+        <div class='${styles.blackout}' id='blackout'></div>
     `
   },
 
@@ -91,7 +111,7 @@ export default {
       }
     })
 
-    blackout.addEventListener('click', () => {
+    blackout?.addEventListener('click', () => {
       formWrapper?.classList.remove(`${styles.visibleForm}`)
       blackout.classList.remove(`${styles.blackoutActive}`)
       body?.classList.remove(`${styles.lock}`)
@@ -117,19 +137,17 @@ export default {
       const addressValue = address.value.trim()
       const emailValue = email.value.trim()
       const cardNumberValue = cardNumber.value.trim()
-      const cvvValue = cvv.value.trim()
 
       checkIsUserNameValid(userNameValue)
       checkIsPhoneNumberValid(phoneValue)
       checkIsAddressValid(addressValue)
       checkIsEmailValid(emailValue)
       checkIsCardNumberValid(cardNumberValue)
-      checkIsCvvValid(cvvValue)
     }
 
     checkCardTerm()
 
-    cardNumber.addEventListener('keyup', (e: KeyboardEvent) => {
+    cardNumber?.addEventListener('keyup', (e: KeyboardEvent) => {
       const splittedCardNumber = cardNumberSeparation(cardNumber.value)
       const firstValueNumber = cardNumber.value.slice(0, 1)
 
