@@ -49,27 +49,27 @@ export const CatalogCardList = {
             <label class='${styles.categoryName}'>
               <input class='${
                 styles.categoryCheckbox
-              } btnFilter disabled' id='relax' type=checkbox>For relax
+              } btnFilter disabled category' id='relax' type=checkbox>For relax
             </label>
             <label class='${styles.categoryName}'>
               <input class='${
                 styles.categoryCheckbox
-              } btnFilter disabled' id='job' type=checkbox>For work
+              } btnFilter disabled category' id='job' type=checkbox>For work
             </label>
             <label class='${styles.categoryName}'>
               <input class='${
                 styles.categoryCheckbox
-              } btnFilter disabled' id='kitchen' type=checkbox>For kitchen
+              } btnFilter disabled category' id='kitchen' type=checkbox>For kitchen
             </label>
             <label class='${styles.categoryName}'>
               <input class='${
                 styles.categoryCheckbox
-              } btnFilter disabled' id='kids' type=checkbox>For children
+              } btnFilter disabled category' id='kids' type=checkbox>For children
             </label>
             <label class='${styles.categoryName}'>
               <input class='${
                 styles.categoryCheckbox
-              } btnFilter disabled' id='bathroom' type=checkbox>For bathroom
+              } btnFilter disabled category' id='bathroom' type=checkbox>For bathroom
             </label>
           </div>
           <div class=${styles.line}></div>
@@ -79,27 +79,27 @@ export const CatalogCardList = {
             <label class='${styles.categoryName}'>
               <input class='${
                 styles.categoryCheckbox
-              } btnFilter disabled' id='adler' type=checkbox>Jonathan Adler
+              } btnFilter disabled brand' id='jonathan adler' type=checkbox>Jonathan Adler
             </label>
             <label class='${styles.categoryName}'>
               <input class='${
                 styles.categoryCheckbox
-              } btnFilter disabled' id='modern' type=checkbox>AllModern
+              } btnFilter disabled brand' id='allmodern' type=checkbox>AllModern
             </label>
             <label class='${styles.categoryName}'>
               <input class='${
                 styles.categoryCheckbox
-              } btnFilter disabled' id='burke' type=checkbox>Burke Decor
+              } btnFilter disabled brand' id='burke decor' type=checkbox>Burke Decor
             </label>
             <label class='${styles.categoryName}'>
               <input class='${
                 styles.categoryCheckbox
-              } btnFilter disabled' id='bench' type=checkbox>BenchmadeM
+              } btnFilter disabled brand' id='benchmade modern' type=checkbox>BenchmadeM
             </label>
             <label class='${styles.categoryName}'>
               <input class='${
                 styles.categoryCheckbox
-              } btnFilter disabled' id='castlery' type=checkbox>Castlery
+              } btnFilter disabled brand' id='castlery' type=checkbox>Castlery
             </label>
           </div>
           <div class=${styles.line}></div>

@@ -19,7 +19,12 @@
 .cardPrice {
   font: var(--font-text-2);
   font-weight: 500;
-  color: var(--black-color)
+  color: var(--black-color);
+}
+
+.brand {
+  font: var(--font-text-4);
+  color: var(--black-color);
 }
 
 .cardDesc {
@@ -35,5 +40,5 @@
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
