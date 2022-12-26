@@ -1,8 +1,10 @@
-import { Main } from './Main'
-import { Category } from './Category'
+import { addToCart } from '../CatalogPage/CatalogCardList/addToCart'
+import categoryStyles from './Category/Category.module.scss'
 import { CardList } from '../../components/CardList'
 import mainStyles from './Main/Main.module.scss'
-import categoryStyles from './Category/Category.module.scss'
+import { getAllProducts } from '../../api'
+import { Category } from './Category'
+import { Main } from './Main'
 
 export default {
   render: async () => {
@@ -15,5 +17,12 @@ export default {
     `
   },
   afterRender: async () => {
+    const products = await getAllProducts()
+
+    products.forEach((product) => {
+      product.isInCart = false
+    })
+
+    addToCart({ products })
   },
 }

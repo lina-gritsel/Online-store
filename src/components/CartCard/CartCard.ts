@@ -2,7 +2,7 @@ import { Products } from '../../api'
 import styles from './CartCard.module.scss'
 
 export const CartCard = (card: Products): string => {
-  const { id, image, title, description, price, numberOfUnits } = card
+  const { id, image, title, description, price, numberOfUnits, stock } = card
 
   return `
         <div class=${styles.card} id='card'>
@@ -12,7 +12,7 @@ export const CartCard = (card: Products): string => {
             <div class=${styles.cardInfo}>
               <div class=${styles.cardTitle} id='cardTitle'>${title}</div>
               <div class=${styles.cardDesc}>${description}</div>
-              <div class=${styles.cardPrice} id='cardPrice'>${price}$</div>
+              <div class=${styles.cardPrice} id='cardPrice'>${price * numberOfUnits}$</div>
               <button class=${styles.delete} id='deleteItem'>Delete</button>
             </div>
             <div class=${styles.amountBlock}>
@@ -23,6 +23,7 @@ export const CartCard = (card: Products): string => {
               </div>
             </div>
             <div class=${styles.hidden}>${id}</div>
+            <p class=${styles.stock}>Max: ${stock}</p>
         </div>
         `
 }
