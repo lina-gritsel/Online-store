@@ -37,7 +37,7 @@ export const useSort: useSort = () => {
 
 
     ;[...cards.children]
-      .sort((a: Element, b: Element):any => {
+      .sort((a: Element, b: Element):number => {
         const productA = a.getAttribute(sortBy) as string
         const productB = b.getAttribute(sortBy) as string
 

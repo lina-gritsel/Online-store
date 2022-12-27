@@ -22,6 +22,11 @@
   color: var(--black-color);
 }
 
+.cardTitle{
+  min-height: 50px;
+
+}
+
 .brand {
   font: var(--font-text-4);
   color: var(--black-color);
@@ -36,7 +41,6 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  min-height: 53.5px;
 }
 
 .hidden {

@@ -149,9 +149,13 @@
 
 .newViewCard div:nth-child(2) {
   font-size: 20px;
+  min-height: 46px;
+}
+.newViewCard div:nth-child(3) {
+  font-size: 15px;
 }
 
-.newViewCard div:nth-child(3) {
+.newViewCard div:nth-child(4) {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -159,10 +163,9 @@
   text-overflow: ellipsis;
 }
 
-.newViewCard div:nth-child(4) {
+.newViewCard div:nth-child(5) {
   font-size: 20px;
 }
-
 
 .notFound {
   color: var(--black-color);
