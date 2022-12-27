@@ -25,9 +25,9 @@ export const useSearch: UseSearch = () => {
           productPrice?.toUpperCase().includes(inputValue)
 
         if (!allValues) {
-          cards[index].classList.add('hidden')
+          cards[index].classList.add(styles.hidden)
 
-          if (cards.every((card) => card.classList.contains('hidden'))) {
+          if (cards.every((card) => card.classList.contains(styles.hidden))) {
             notFound.style.display = 'block'
           }
         } else {
@@ -37,7 +37,7 @@ export const useSearch: UseSearch = () => {
       })
     } else {
       cards.forEach((card: Element) => {
-        card.classList.remove('hidden')
+        card.classList.remove(styles.hidden)
         notFound.style.display = 'none'
       })
     }
@@ -54,7 +54,7 @@ export const useSearch: UseSearch = () => {
   inputEl.addEventListener('search', () => {
     if (inputEl.value === '') {
       cards.forEach((card: Element) => {
-        card.classList.remove('hidden')
+        card.classList.remove(styles.hidden)
         notFound.style.display = 'none'
       })
     }
