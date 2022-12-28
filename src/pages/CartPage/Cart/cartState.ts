@@ -1,4 +1,4 @@
-import { Products } from './../../../api/types';
+import { Products } from './../../../api/types'
 import { clearAllValues } from './clearAllValues'
 import { setCartStateToLocalStorage } from './setCartStateToLocalStorage'
 
@@ -11,7 +11,9 @@ export const addItem = (card: Element, cart: Products[]) => {
     (product) => product.id.toString() === cardId,
   ) as Products
 
-  if (currentCard.numberOfUnits === currentCard.stock) {
+  const { numberOfUnits, stock } = currentCard
+
+  if (numberOfUnits === stock) {
     return currentCard.numberOfUnits
   }
 
@@ -22,7 +24,12 @@ export const addItem = (card: Element, cart: Products[]) => {
   localStorage.setItem('cart', JSON.stringify(cart))
 }
 
-export const removeItem = (card: Element, cards: Element[], products: Products[], cart: Products[]) => {
+export const removeItem = (
+  card: Element,
+  cards: Element[],
+  products: Products[],
+  cart: Products[],
+) => {
   const numberOfProducts = card.children[2].children[0]
   const cardId = card.children[3].textContent as string
   const cardPrice = card.children[1].children[2]
@@ -53,16 +60,19 @@ export const removeItem = (card: Element, cards: Element[], products: Products[]
     }
   } else {
     currentCard.numberOfUnits -= 1
-    cardPrice.textContent = `${
-      currentCard.price * currentCard.numberOfUnits
-    }$`
+    cardPrice.textContent = `${currentCard.price * currentCard.numberOfUnits}$`
     numberOfProducts.innerHTML = `${currentCard.numberOfUnits}`
   }
 
   setCartStateToLocalStorage({ products, cart })
 }
 
-export const deleteItem = (card: Element, cards: Element[], products: Products[], cart: Products[]) => {
+export const deleteItem = (
+  card: Element,
+  cards: Element[],
+  products: Products[],
+  cart: Products[],
+) => {
   const cardId = card.children[3].textContent as string
 
   const currentCard = cart.find(

@@ -31,16 +31,14 @@ export const renderSummary = (
     'promoTotal',
   ) as HTMLParagraphElement
 
-  let isUseRS: boolean = JSON.parse(localStorage.getItem('isRS') as string)
-  let isUseEPM: boolean = JSON.parse(localStorage.getItem('isEPM') as string)
+  let isUseRS = JSON.parse(localStorage.getItem('isRS') as string)
+  let isUseEPM = JSON.parse(localStorage.getItem('isEPM') as string)
 
-  cart.map((item) => {
-    cardPrices.push(item.price)
-    cardNumOfUnits.push(item.numberOfUnits)
+  cart.map(({ price, numberOfUnits }) => {
+    cardPrices.push(price)
+    cardNumOfUnits.push(numberOfUnits)
 
-    const totalProductsPrice = cardPrices.reduce((a, b, i) => {
-      return a + b * cardNumOfUnits[i]
-    }, 0)
+    const totalProductsPrice = cardPrices.reduce((a, b, i) => a + b * cardNumOfUnits[i], 0)
     const amountOfProducts = cardNumOfUnits.reduce((a, b) => a + b, 0)
 
     totalPrice.innerHTML = `Total: ${totalProductsPrice}$`

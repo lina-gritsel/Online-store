@@ -4,10 +4,11 @@ import mainStyles from './Main/Main.module.scss'
 
 export default {
   render: async () => {
+    const cards = await Cart.render()
     return `
     <section class=${mainStyles.main}>${Main()}</section>
     <div class=container>
-      <div>${await Cart.render()}</div>
+      <div>${cards}</div>
     </div>
     `
   },

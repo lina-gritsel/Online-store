@@ -19,9 +19,7 @@ export default {
   afterRender: async () => {
     const products = await getAllProducts()
 
-    products.forEach((product) => {
-      product.isInCart = false
-    })
+    products.forEach((product) => product.isInCart = false)
 
     addToCart({ products })
   },
