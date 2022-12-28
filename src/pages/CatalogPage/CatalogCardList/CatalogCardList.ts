@@ -123,9 +123,6 @@ export const CatalogCardList = {
           </div>
         </div>
       </div>
-      <p class=${
-        styles.notFound
-      } id='notFound'>По вашему запросу ничего не найдено</p>
       <div class=${styles.content} id='cardsContainer'>
       ${data.map((data) => `${Card(data)}`).join('')}
       </div>

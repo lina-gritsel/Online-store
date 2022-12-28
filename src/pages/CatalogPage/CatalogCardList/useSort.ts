@@ -22,19 +22,13 @@ export const useSort: useSort = () => {
   const globalSortBtn = document.getElementById('globalSortBtn') as HTMLElement
   const sortImg = document.getElementById('sortImg') as HTMLImageElement
   const cards = document.getElementById('cardsContainer') as HTMLElement
-  console.log(cards);
+ 
   const sort = (sortField: string) => {
     const [sortBy, sortOrder] = sortField.split('-')
     const searchURL = new URL((window as any).location)
     searchURL.searchParams.set('sortBy', sortBy)
     searchURL.searchParams.set('sortOrder', sortOrder)
     window.history.pushState({}, '', searchURL)
-
-
-    // const arrayCards = [...cards.children].filter((item) => {
-    //   return !item.classList.contains('hidden')
-    // })
-
 
     ;[...cards.children]
       .sort((a: Element, b: Element):number => {

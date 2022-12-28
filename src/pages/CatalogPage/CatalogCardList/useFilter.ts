@@ -73,14 +73,21 @@ export const useFilter: useFilter = () => {
         return filteredProductBrand.includes(product)
       })
 
-      showAllProducts(products)
+      hiddenProducts(products)
 
       if (result.length) {
-        hiddenProducts(result)
+        showSelectedProducts(result)
+      } else if (
+        filteredProductBrand.length &&
+        filteredProductCategory.length &&
+        !result.length
+      ) {
+        hiddenProducts(products)
+        cardsContainer.innerText = 'Nothing found for your request'
       } else if (filteredProductBrand.length) {
-        hiddenProducts(filteredProductBrand)
+        showSelectedProducts(filteredProductBrand)
       } else if (filteredProductCategory.length) {
-        hiddenProducts(filteredProductCategory)
+        showSelectedProducts(filteredProductCategory)
       }
 
       if (btnsFilter.every((btn) => btn.classList.contains('disabled'))) {
@@ -110,12 +117,12 @@ export const useFilter: useFilter = () => {
 
 const hiddenProducts = (products: Element[]): void => {
   products.forEach((product) => {
-    product.classList.remove('hidden')
+    product.classList.add('hidden')
   })
 }
 
-const showAllProducts = (products: Element[]) => {
+const showSelectedProducts = (products: Element[]) => {
   products.forEach((product) => {
-    product.classList.add('hidden')
+    product.classList.remove('hidden')
   })
 }
