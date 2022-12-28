@@ -1,7 +1,7 @@
 import Home from '../pages/Home'
 import CatalogPage from '../pages/CatalogPage'
 import Product from '../pages/ProductPage'
-import Cart from '../pages/CartPage/Cart'
+import Cart from '../pages/CartPage/CartPage'
 
 export interface Component {
   render: () => Promise<string>

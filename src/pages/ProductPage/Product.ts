@@ -1,8 +1,9 @@
-import { getProduct } from '../../api/requests'
-import styles from './Product.module.scss'
-import { parseRequestURL } from '../../utils'
-import arrow from '../../assets/svg/arrow.svg'
 import CreateOrderModal from '../../components/CreateOrderModal/index'
+import { addProductToCart } from './addProductToCart'
+import { getProduct } from '../../api/requests'
+import arrow from '../../assets/svg/arrow.svg'
+import { parseRequestURL } from '../../utils'
+import styles from './Product.module.scss'
 
 export default {
   render: async () => {
@@ -13,7 +14,7 @@ export default {
     return `
     <div class=${styles.header}></div>
     <div class=${styles.wrapperPath}>
-      <a href='' class=${styles.path}>Store</a>
+      <a href='#/catalog' class=${styles.path}>Catalog</a>
       <img class=${styles.arrow} src=${arrow}/>
       <div class=${styles.path}>${product.category}</div>
       <img class=${styles.arrow} src=${arrow}/>
@@ -42,7 +43,8 @@ export default {
           <div><span>Category:</span> ${product.category}</div>
           <div class=${styles.desc}>${product.description}</div>
           <div class=${styles.wrapperBtns}>
-            <button class=${styles.btnBuy} id=addCart>Add to cart</button>
+            <button class=${styles.btnAddToCart} id='addToCart'>Add to cart</button>
+            <button class=${styles.btnDropFromCart} id='dropFromCart'>Drop from cart</button>
             <button class=${styles.btnBuy} id=buyNow>Buy now</button>
           </div>
         </div>
@@ -56,11 +58,16 @@ export default {
     const mainImages = document.getElementById('mainImg') as HTMLImageElement
     const allImages = [...document.querySelectorAll('.secondImg')]
 
+    const { id } = parseRequestURL(location.hash.slice(1).toLowerCase())
+    const product = await getProduct(id)
+
     allImages.forEach((image) => {
       image.addEventListener('click', () => {
         const secondUrl = image.getAttribute('src') as string
         mainImages.src = secondUrl
       })
     })
+
+    addProductToCart({ product })
   },
 }

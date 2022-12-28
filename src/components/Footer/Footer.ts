@@ -1,8 +1,8 @@
 import styles from './Footer.module.scss'
 import Logo from '../../assets/svg/rs-school.svg'
 
-export const Footer = (): string => {
-  return `
+export const Footer = (): string =>
+  `
       <footer class=${styles.footer}>
         <div class=${styles.wrapper}>
           <a href='#/' class=${styles.logo}>Interior.</a>
@@ -26,5 +26,4 @@ export const Footer = (): string => {
           </div>
         </div>
       </footer>
-    `
-}
+  `

@@ -1,4 +1,4 @@
-import { getAllProducts, getProduct } from '../../../api'
+import { getAllProducts } from '../../../api'
 import { Card } from '../../../components/Card'
 import styles from './CatalogCardList.module.scss'
 import polygon from '../../../assets/svg/polygon.svg'
@@ -8,6 +8,7 @@ import { useSort } from './useSort'
 import { useGrid } from './useGrid'
 import { useSearch } from './useSearch'
 import { useFilter } from './useFilter'
+import { addToCart } from './addToCart'
 
 export const CatalogCardList = {
   render: async () => {
@@ -135,9 +136,12 @@ export const CatalogCardList = {
   afterRender: async () => {
     const products = await getAllProducts()
 
+    products.forEach((product) => product.isInCart = false)
+
     useFilter()
     useSort({ products })
     useGrid()
     useSearch()
+    addToCart({ products })
   },
 }

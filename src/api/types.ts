@@ -8,6 +8,8 @@ export interface Products {
   description: string
   category: string
   image: string[]
+  numberOfUnits: number
+  isInCart: boolean
 }
 
 export interface Categories {

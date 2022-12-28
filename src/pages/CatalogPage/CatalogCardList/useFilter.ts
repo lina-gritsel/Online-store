@@ -22,12 +22,12 @@ export const useFilter: useFilter = () => {
   const filterValues = document.getElementById('filterValues')
   const filterWrapper = document.getElementById('filterWrapper')
   const filterImg = document.getElementById('filterImg') as HTMLImageElement
-  const btnsFilter = [...document.querySelectorAll('.btnFilter')]
+  const btnsFilter: Element[] = [...document.querySelectorAll('.btnFilter')]
   const notFound = document.getElementById('notFound') as HTMLParagraphElement
   const cardsContainer = document.getElementById(
     'cardsContainer',
   ) as HTMLDivElement
-  let products = [...cardsContainer.children]
+  let products: Element[] = [...cardsContainer.children]
 
   const filterProducts = (filterField: string, products: Element[]) => {
     const filterBy = filterField
@@ -36,7 +36,7 @@ export const useFilter: useFilter = () => {
     searchURL.searchParams.set('filterBy', filterBy)
     window.history.pushState({}, '', searchURL)
 
-    return products.filter((product): any => {
+    return products.filter((product) => {
       if (filterBy === FilterCategory.RELAX) {
         return product.children[4].textContent === 'relax'
       }
@@ -70,11 +70,11 @@ export const useFilter: useFilter = () => {
     })
   }
 
-  btnsFilter.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
+  const filter = (btn: HTMLInputElement) => {
+    btn.addEventListener('click', (e: MouseEvent) => {
       products = [...cardsContainer.children]
       
-      const selectedBtn = (e as any)?.target
+      const selectedBtn = e.target as HTMLInputElement
 
       if (selectedBtn.checked) {
         selectedBtn.classList.add('checked')
@@ -84,7 +84,7 @@ export const useFilter: useFilter = () => {
         selectedBtn.classList.add('disabled')
       }
 
-      const filterField = (e as any)?.target.id
+      const filterField = (e.target as HTMLInputElement).id
       const filterArray = filterProducts(filterField, products)
 
       products.forEach((product) => {
@@ -101,6 +101,10 @@ export const useFilter: useFilter = () => {
         })
       }
     })
+  }
+
+  btnsFilter.forEach((btn: Element) => {
+    filter(btn as HTMLInputElement)
   })
 
   filterValues?.addEventListener('click', (e: MouseEvent) => {

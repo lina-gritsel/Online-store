@@ -48,6 +48,30 @@
   }
 }
 
+.text {
+  color: var(--white-color);
+  font: var(--font-text-4);
+}
+
+.cartLength {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 1px;
+}
+
+.cartBlock {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.headerCart {
+  height: 25px;
+  width: 25px;
+}
+
 .line {
   background-color: var(--white-color);
   height: 1px;

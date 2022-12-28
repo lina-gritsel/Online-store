@@ -1,4 +1,4 @@
-import { Main } from './Main/Main'
+import { Main } from './Main'
 import { CatalogCardList } from '../CatalogPage/CatalogCardList'
 import mainStyles from './Main/Main.module.scss'
 

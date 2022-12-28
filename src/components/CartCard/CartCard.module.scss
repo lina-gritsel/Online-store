@@ -1,0 +1,123 @@
+.link {
+  color: var(--black-color);
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  position: relative;
+  text-decoration: none;
+}
+
+.cardImage {
+  height: 173px;
+  margin: 0 auto;
+  width: 173px;
+}
+
+.cardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 90%;
+}
+
+.imgBlock {
+  position: relative;
+  z-index: 0;
+}
+
+.cardTitle,
+.cardPrice {
+  font: var(--font-text-2);
+  font-weight: 500;
+  color: var(--black-color);
+}
+
+.cardDesc {
+  font: var(--font-text-5);
+  color: var(--gray-color);
+  line-height: 17px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 53.5px;
+}
+
+.hidden {
+  display: none;
+}
+
+.cart {
+  display: none;
+  height: 21px;
+  right: 10px;
+  position: absolute;
+  top: 10px;
+  width: 18px;
+}
+
+.delete {
+  background: none;
+  border: none;
+  color: var(--black-color);
+  cursor: pointer;
+  font: var(--font-text-5);
+  text-decoration: underline;
+  text-align: start;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.amountBlock {
+  align-items: center;
+  background-color: var(--light-gray-color);
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  height: 51px;
+  justify-content: center;
+  width: 71px;
+}
+
+.amount {
+  color: var(--black-color);
+  font: var(--font-text-5);
+  font-weight: 600;
+}
+
+.arrowBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.arrowAdd {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.5);
+  }
+}
+
+.arrowRemove {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.5);
+  }
+}
+
+.stock {
+  position: absolute;
+  right: 0.2%;
+  bottom: 58%;
+  font: var(--font-text-5)
+}
