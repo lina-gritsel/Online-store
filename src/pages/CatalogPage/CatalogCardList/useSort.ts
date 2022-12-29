@@ -22,7 +22,7 @@ export const useSort: useSort = () => {
   const globalSortBtn = document.getElementById('globalSortBtn') as HTMLElement
   const sortImg = document.getElementById('sortImg') as HTMLImageElement
   const cards = document.getElementById('cardsContainer') as HTMLElement
-  console.log(cards);
+
   const sort = (sortField: string) => {
     const [sortBy, sortOrder] = sortField.split('-')
     const searchURL = new URL((window as any).location)

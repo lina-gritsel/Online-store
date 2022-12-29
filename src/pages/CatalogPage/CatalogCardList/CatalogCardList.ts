@@ -105,10 +105,45 @@ export const CatalogCardList = {
           </div>
           <div class=${styles.line}></div>
           <div class=${styles.sliderBlock}>
-            <p class=${styles.categoryTitle}>Price</p>
-            <input type="range" min="1" max="100" value="0" step="1" class=${
-              styles.slider
-            }>
+
+
+
+
+            <div class=${styles.price} id='filterPrice'>
+              <p class=${styles.categoryTitle}>Price</p>
+              <div class=${styles.slidersControl}>
+                <input
+                  class="${styles.sliderPriceInput} ${styles.startSlider}" 
+                  id="startSlider" 
+                  type="range" 
+                  value="0" 
+                  min="1" 
+                  max="1500"  
+                  step="1">
+                <input 
+                  class=${styles.sliderPriceInput}
+                  id="endSlider" 
+                  type="range" 
+                  value="1500" 
+                  min="1"
+                  max="1500"  
+                  step="1">
+              </div>
+              <div class=${styles.formControl}>
+                <div class=${styles.formControlItems}>
+                  <div class='startValue'></div>
+                  <input class='valuePriceInput' type='number' id='startInput' value='0' min='0' max='1500'>
+                </div>
+                <div class=${styles.formControlItems}>
+                  <div class='startValue'></div>
+                  <input class='valuePriceInput' type='number' id='endInput' value='1500' min='0' max='1500'>
+                </div>
+              </div>
+            </div>
+
+
+
+            
             <p class=${styles.categoryTitle}>Stock</p>
             <input type="range" min="1" max="100" value="0" step="1" class=${
               styles.slider

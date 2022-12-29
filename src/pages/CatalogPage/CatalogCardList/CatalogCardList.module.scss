@@ -14,6 +14,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
   gap: 32px;
+  min-height: 480px;
+  font: var(--font-text-2);
 }
 
 .link {
@@ -255,7 +257,8 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
+  position: relative;
 }
 
 .slider {
@@ -284,4 +287,61 @@
   &:hover {
     opacity: 1;
   }
+}
+
+.price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  width: 100%;
+}
+
+.slidersControl {
+  position: relative;
+  width: 100%;
+  min-height: 20px;
+}
+
+.sliderPriceInput {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  width: 85%;
+  position: absolute;
+  background-color: #c6c6c6;
+  pointer-events: none;
+  left: 20px;
+  top: 10px;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    pointer-events: all;
+    width: 15px;
+    height: 15px;
+    background-color: var(--green-color);
+    border-radius: 50%;
+    // box-shadow: 0 0 0 1px #c6c6c6;
+    cursor: pointer;
+  }
+}
+
+.startSlider {
+  height: 0;
+  z-index: 1;
+}
+
+.formControl {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  width: 100%;
+}
+
+.formControlItems {
+  display: flex;
+  background-color: transparent;
 }
