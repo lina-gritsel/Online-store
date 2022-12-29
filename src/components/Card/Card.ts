@@ -3,7 +3,7 @@ import styles from './Card.module.scss'
 
 export const Card = (card: Products): string => {
   const { id, image, title, description, price, category, brand } = card
-
+  
   return `
         <div class=${styles.card} id='card'>
             <div class=${styles.imgBlock} id='imgBlock'>

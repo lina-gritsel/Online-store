@@ -4,11 +4,11 @@ import styles from './CartCard.module.scss'
 export const CartCard = (card: Products): string => {
   const { id, image, title, description, price, numberOfUnits, stock } = card
   const cardPrice = price * numberOfUnits
-
+  
   return `
         <div class=${styles.card} id='card'>
             <div class=${styles.imgBlock}>
-              <img class=${styles.cardImage} src=${image[0]}/>
+              <img class=${styles.cardImage} src=${image?.[0]}/>
             </div>           
             <div class=${styles.cardInfo}>
               <div class=${styles.cardTitle} id='cardTitle'>${title}</div>
