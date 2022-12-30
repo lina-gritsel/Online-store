@@ -1,24 +1,25 @@
 import styles from './CatalogCardList.module.scss'
+import { filteringBrands, filteringCategories } from './Filters'
+import {deleteNotFoundMessage, addNotFoundMessage} from './constans'
 
 type useFilter = () => void
 
 export const useFilter: useFilter = () => {
-  const body = document.querySelector('body')
   const filterValues = document.getElementById('filterValues')
   const filterWrapper = document.getElementById('filterWrapper')
   const filterImg = document.getElementById('filterImg') as HTMLImageElement
   const btnsFilter = [...document.querySelectorAll('.btnFilter')]
-  const cardsContainer = document.getElementById(
-    'cardsContainer',
-  ) as HTMLElement
-  const notFoundProducts = document.getElementById(
-    'notFoundProducts',
-  ) as HTMLElement
 
-  console.log(notFoundProducts)
-  const products = [...cardsContainer.children]
-  let selectedCategory: string[] = []
-  let selectedBrands: string[] = []
+  const {
+    addCategory,
+    hiddenAllProducts,
+    removeFromCategory,
+    filterProductsByCategory,
+    showAllProducts
+  } = filteringCategories()
+
+  const { addBrand, removeFromBrands, filterProductsByBrand } =
+    filteringBrands()
 
   btnsFilter.forEach((btn) => {
     btn.addEventListener('click', (e: Event) => {
@@ -43,80 +44,54 @@ export const useFilter: useFilter = () => {
         selectedBtn.classList.contains('checked') &&
         selectedBtn.classList.contains('category')
       ) {
-        selectedCategory.push(filterField)
-      } else if (selectedBtn.classList.contains('disabled')) {
-        selectedCategory = selectedCategory.filter((category) => {
-          return category !== filterField
-        })
+        addCategory(filterField)
+      } else {
+        removeFromCategory(filterField)
       }
 
       if (
         selectedBtn.classList.contains('checked') &&
         selectedBtn.classList.contains('brand')
       ) {
-        selectedBrands.push(filterField)
+        addBrand(filterField)
       } else if (selectedBtn.classList.contains('disabled')) {
-        selectedBrands = selectedBrands.filter((brand) => {
-          return brand !== filterField
-        })
+        removeFromBrands(filterField)
       }
 
-      const filteredProductCategory = products.filter((product: Element) => {
-        const currentCategory = product.getAttribute('category') as string
+      const filteredCategories = filterProductsByCategory()
+      const filteredBrands = filterProductsByBrand()
 
-        return selectedCategory.includes(currentCategory)
+      const result = filteredBrands.filter((item) => {
+        return filteredCategories.includes(item)
       })
 
-      const filteredProductBrand = products.filter((product) => {
-        const currentBrand = product
-          .getAttribute('brand')
-          ?.toLowerCase() as string
-
-        return selectedBrands.includes(currentBrand)
-      })
-
-      const result = filteredProductBrand.filter((item) => {
-        return filteredProductCategory.includes(item)
-      })
-
-      const deleteNotFoundMessage = () => {
-        notFoundProducts.classList.remove(`${styles.showNotFoundProducts}`)
-      }
+      hiddenAllProducts()
       deleteNotFoundMessage()
-      
-      products.forEach((product) => {
-        product.classList.add('hidden')
-      })
 
       if (btnsFilter.every((btn) => btn.classList.contains('disabled'))) {
-        products.forEach((product) => {
-          product.classList.remove('hidden')
-        })
+        showAllProducts()
       }
 
       if (result.length) {
         result.forEach((product) => {
           product.classList.remove('hidden')
         })
-      } else if (filteredProductBrand.length) {
-        filteredProductBrand.forEach((product) => {
+      } else if (filteredBrands.length) {
+        filteredBrands.forEach((product) => {
           product.classList.remove('hidden')
         })
-      } else if (filteredProductCategory.length) {
-        filteredProductCategory.forEach((product) => {
+      } else if (filteredCategories.length) {
+        filteredCategories.forEach((product) => {
           product.classList.remove('hidden')
         })
       }
       if (
-        filteredProductCategory.length &&
-        filteredProductBrand.length &&
+        filteredCategories.length &&
+        filteredBrands.length &&
         !result.length
       ) {
-        products.forEach((product) => {
-          product.classList.add('hidden')
-        })
-        notFoundProducts.classList.add(`${styles.showNotFoundProducts}`)
-        notFoundProducts.innerHTML = 'Nothing found for your request'
+        hiddenAllProducts()
+        addNotFoundMessage()
       }
     })
   })
@@ -126,14 +101,4 @@ export const useFilter: useFilter = () => {
     filterImg.classList.toggle(styles.imgRotate)
     e.stopPropagation()
   })
-
-  // body?.addEventListener('click', () => {
-  //   if (
-  //     filterWrapper?.classList.contains(styles.showValues) &&
-  //     filterImg?.classList.contains(styles.imgRotate)
-  //   ) {
-  //     filterWrapper.classList.remove(styles.showValues)
-  //     filterImg.classList.remove(styles.imgRotate)
-  //   }
-  // })
 }
