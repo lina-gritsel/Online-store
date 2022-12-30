@@ -53,6 +53,7 @@ export const useCart: useCart = () => {
     renderSummary(cardPrices, cardNumOfUnits)
 
     cards.forEach((card) => {
+      const cardNum = card.children[0].children[0].children[0]
       const numberOfProducts = card.children[2].children[0]
       const cardId = card.children[3].textContent as string
       const cardPrice = card.children[1].children[2]
@@ -63,6 +64,8 @@ export const useCart: useCart = () => {
       const currentCard = cart.find(
         (product) => product.id.toString() === cardId,
       ) as Products
+
+      cardNum.innerHTML = `${cart.indexOf(currentCard) + 1}`
 
       addItemBtn.addEventListener('click', () => {
         cardPrices = []
@@ -96,6 +99,4 @@ export const useCart: useCart = () => {
       })
     })
   }
-
-
 }

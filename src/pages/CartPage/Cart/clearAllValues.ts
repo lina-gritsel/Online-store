@@ -17,6 +17,9 @@ export const clearAllValues = () => {
   const headerCart = document.getElementById(
     'cartLength',
   ) as HTMLParagraphElement
+  const headerSum = document.getElementById(
+    'cartSum',
+  ) as HTMLParagraphElement
   const promoTotal = document.getElementById(
     'promoTotal',
   ) as HTMLParagraphElement
@@ -28,6 +31,7 @@ export const clearAllValues = () => {
   totalPrice.style.textDecoration = 'none'
   totalAmount.innerHTML = 'Products: 0'
   headerCart.innerHTML = '0'
+  headerSum.innerHTML = 'Cart total: 0$'
   codesContainer.style.display = 'none'
   promoTotal.style.display = 'none'
   appliedEPM.style.display = 'none'

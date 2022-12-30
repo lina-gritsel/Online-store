@@ -8,10 +8,13 @@ export const CartCard = (card: Products): string => {
   return `
         <div class=${styles.card} id='card'>
             <div class=${styles.imgBlock}>
+              <div class=${styles.circle}>
+                <p class=${styles.cardNum} id='cardNum'></p> 
+              </div>
               <img class=${styles.cardImage} src=${image[0]}/>
             </div>           
             <div class=${styles.cardInfo}>
-              <div class=${styles.cardTitle} id='cardTitle'>${title}</div>
+              <a class=${styles.cardTitle} id='cardTitle' href="#/products/${id}">${title}</a>
               <div class=${styles.cardDesc}>${description}</div>
               <div class=${styles.cardPrice} id='cardPrice'>${cardPrice}$</div>
               <button class=${styles.delete} id='deleteItem'>Delete</button>
