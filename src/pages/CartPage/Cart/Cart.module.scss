@@ -177,7 +177,7 @@
   flex-direction: column;
   height: 110px;
   justify-content: center;
-  width: 80%;
+  width: 85%;
 }
 
 .codesTitle {
@@ -218,4 +218,52 @@
 
 .hidden {
   display: none;
+}
+
+.pagesBlock {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.limit {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.limitInput {
+  border-radius: 20px;
+  height: 30px;
+  padding-left: 10px;
+  width: 80px;
+}
+
+.pageNum {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.pageBtn {
+  align-items: center;
+  background: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  height: 20px;
+  justify-content: center;
+  width: 20px;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.arrow {
+  height: 10px;
+  width: 10px;
 }

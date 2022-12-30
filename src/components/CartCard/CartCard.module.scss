@@ -121,3 +121,23 @@
   bottom: 58%;
   font: var(--font-text-5)
 }
+
+.cardNum {
+  color: var(--black-color);
+  left: 47%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.circle {
+  background: none;
+  border: 1px solid var(--black-color);
+  border-radius: 50%;
+  height: 30px;
+  left: -15%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+}

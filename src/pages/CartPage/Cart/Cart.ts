@@ -1,24 +1,33 @@
-import { CartCard } from '../../../components/CartCard'
-import { Products } from './../../../api/types'
+import { usePagination } from './usePagination'
 import styles from './Cart.module.scss'
-import { useCart } from './useCart'
 
 export const Cart = {
   render: async () => {
-    const cart: Products[] =
-      JSON.parse(localStorage.getItem('cart') as string) || []
-
     return `
    <div class=${styles.wrapper}>
      <div class=${styles.cart}>
        <div class=${styles.titleBlock}>
          <p class=${styles.title}>Product</p>
+         <div class=${styles.pagesBlock}>
+           <div class=${styles.limit}>
+             <p class=${styles.title}>Limit:</p>
+             <input class=${styles.limitInput} type="number" value='3' id="limitInput" min="1" max="1">
+           </div>
+           <div class=${styles.pageNum}>
+             <p class=${styles.title}>Page:</p>
+             <button class=${styles.pageBtn} id='prevPage'>
+               <img src='../../../assets/svg/leftArrow.png' class=${styles.arrow}>
+             </button>
+             <p class=${styles.title} id='page'></p>
+             <button class=${styles.pageBtn} id='nextPage'>
+               <img src='../../../assets/svg/rightArrow.png' class=${styles.arrow}>
+             </button>
+           </div>
+         </div>
          <p class=${styles.title}>Amount</p>
        </div>
        <div class=${styles.line}></div>
-       <div class=${styles.cardsContainer} id='cartContainer'>
-    ${cart.map((data) => `${CartCard(data)}`).join('')}
-       </div>
+       <div class=${styles.cardsContainer} id='cartContainer'></div>
        <div class=${styles.btnsBlock}>
          <button class=${styles.deleteAll} id='clear'>Clear cart</button>
          <div class=${styles.linkBlock}>
@@ -66,6 +75,6 @@ export const Cart = {
    `
   },
   afterRender: async () => {
-    useCart()
+    usePagination()
   },
 }

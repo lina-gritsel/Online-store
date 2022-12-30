@@ -9,6 +9,7 @@ export const Header = () =>
           <form class=${styles.searchForm} id='searchForm' autocomplete="off" onsubmit="event.preventDefault();" role="search">
             <input class="${styles.searchInput}" id='search' type="search" placeholder="Search" autofocus required autocomplete="off"/>
           </form>
+          <p class=${styles.text} id='cartSum'></p>
           <nav>
             <ul class=${styles.nav}>
               <a href='#/catalog' class=${styles.navList}>Catalog</a>
