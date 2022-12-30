@@ -1,11 +1,10 @@
-import { setCartStateToLocalStorage } from './setCartStateToLocalStorage'
 import { renderPromoSummary } from './renderPromoSummary'
 import { clearAllValues } from './clearAllValues'
 import { renderSummary } from './renderSummary'
 import { Products } from './../../../api/types'
-import { addItem } from './cartState'
 import { removeItem } from './cartState'
 import { deleteItem } from './cartState'
+import { addItem } from './cartState'
 
 type useCart = () => void
 
@@ -54,15 +53,22 @@ export const useCart: useCart = () => {
     renderSummary(cardPrices, cardNumOfUnits)
 
     cards.forEach((card) => {
+      const numberOfProducts = card.children[2].children[0]
+      const cardId = card.children[3].textContent as string
+      const cardPrice = card.children[1].children[2]
       const removeItemBtn = card.children[2].children[1].children[1]
       const addItemBtn = card.children[2].children[1].children[0]
       const deleteItemBtn = card.children[1].children[3]
+
+      const currentCard = cart.find(
+        (product) => product.id.toString() === cardId,
+      ) as Products
 
       addItemBtn.addEventListener('click', () => {
         cardPrices = []
         cardNumOfUnits = []
 
-        addItem(card, cart)
+        addItem(numberOfProducts, cart, currentCard, cardPrice)
         renderSummary(cardPrices, cardNumOfUnits)
       })
 
@@ -70,7 +76,14 @@ export const useCart: useCart = () => {
         cardPrices = []
         cardNumOfUnits = []
 
-        removeItem(card, cards, products, cart)
+        removeItem(
+          products,
+          cart,
+          numberOfProducts,
+          currentCard,
+          cardPrice,
+          cardId,
+        )
         renderSummary(cardPrices, cardNumOfUnits)
       })
 
@@ -78,9 +91,11 @@ export const useCart: useCart = () => {
         cardPrices = []
         cardNumOfUnits = []
 
-        deleteItem(card, cards, products, cart)
+        deleteItem(products, cart, cardId, currentCard)
         renderSummary(cardPrices, cardNumOfUnits)
       })
     })
   }
+
+
 }
