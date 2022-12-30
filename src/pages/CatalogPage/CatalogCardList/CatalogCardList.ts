@@ -107,9 +107,6 @@ export const CatalogCardList = {
           <div class=${styles.line}></div>
           <div class=${styles.sliderBlock}>
 
-
-
-
             <div class=${styles.price} id='filterPrice'>
               <p class=${styles.categoryTitle}>Price</p>
               <div class=${styles.slidersControl}>
@@ -140,9 +137,6 @@ export const CatalogCardList = {
               </div>
             </div>
 
-
-
-            
             <p class=${styles.categoryTitle}>Stock</p>
             <input type="range" min="1" max="100" value="0" step="1" class=${
               styles.slider
@@ -159,9 +153,10 @@ export const CatalogCardList = {
         </div>
       </div>
       <p class=${
-        styles.notFound
-      } id='notFound'>По вашему запросу ничего не найдено</p>
+        styles.notFoundProducts
+      } id='notFoundProducts'></p>
       <div class=${styles.content} id='cardsContainer'>
+     
       ${data.map((data) => `${Card(data)}`).join('')}
       </div>
     </div>

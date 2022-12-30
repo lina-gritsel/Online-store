@@ -171,11 +171,15 @@
   display: none;
 }
 
-.notFound {
+.notFoundProducts {
   color: var(--black-color);
   display: none;
   font: var(--font-text-2);
   width: 450px;
+}
+
+.showNotFoundProducts{
+  display: block;
 }
 
 .categoryTitle {

@@ -11,7 +11,11 @@ export const useFilter: useFilter = () => {
   const cardsContainer = document.getElementById(
     'cardsContainer',
   ) as HTMLElement
+  const notFoundProducts = document.getElementById(
+    'notFoundProducts',
+  ) as HTMLElement
 
+  console.log(notFoundProducts)
   const products = [...cardsContainer.children]
   let selectedCategory: string[] = []
   let selectedBrands: string[] = []
@@ -75,9 +79,20 @@ export const useFilter: useFilter = () => {
         return filteredProductCategory.includes(item)
       })
 
+      const deleteNotFoundMessage = () => {
+        notFoundProducts.classList.remove(`${styles.showNotFoundProducts}`)
+      }
+      deleteNotFoundMessage()
+      
       products.forEach((product) => {
         product.classList.add('hidden')
       })
+
+      if (btnsFilter.every((btn) => btn.classList.contains('disabled'))) {
+        products.forEach((product) => {
+          product.classList.remove('hidden')
+        })
+      }
 
       if (result.length) {
         result.forEach((product) => {
@@ -91,21 +106,17 @@ export const useFilter: useFilter = () => {
         filteredProductCategory.forEach((product) => {
           product.classList.remove('hidden')
         })
-      } else if (
-        filteredProductCategory &&
+      }
+      if (
+        filteredProductCategory.length &&
         filteredProductBrand.length &&
         !result.length
       ) {
         products.forEach((product) => {
           product.classList.add('hidden')
         })
-        cardsContainer.innerHTML = 'Nothing found for your request'
-      }
-
-      if (btnsFilter.every((btn) => btn.classList.contains('disabled'))) {
-        products.forEach((product) => {
-          product.classList.remove('hidden')
-        })
+        notFoundProducts.classList.add(`${styles.showNotFoundProducts}`)
+        notFoundProducts.innerHTML = 'Nothing found for your request'
       }
     })
   })

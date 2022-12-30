@@ -37,6 +37,7 @@ export const arrayFilterPrice = () => {
         { length: maxPrice - minPrice + 1 },
         (_, i) => minPrice + i,
       )
+      console.log([...cardsContainer.children]);
       const filteredProductPrice = [...cardsContainer.children].filter(
         (product) => {
           const priceProduct = parseFloat(
@@ -46,6 +47,11 @@ export const arrayFilterPrice = () => {
           return priceRange.includes(priceProduct)
         },
       )
+      console.log(filteredProductPrice);
+
+      [...cardsContainer.children].forEach((product) => {
+        product.classList.add('hidden')
+      })
 
       if (filteredProductPrice.length) {
         filteredProductPrice.forEach((product) => {
