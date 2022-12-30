@@ -9,6 +9,7 @@ import { useGrid } from './useGrid'
 import { useSearch } from './useSearch'
 import { useFilter } from './useFilter'
 import { addToCart } from './addToCart'
+import { arrayFilterPrice } from './filterByPrice'
 
 export const CatalogCardList = {
   render: async () => {
@@ -172,6 +173,7 @@ export const CatalogCardList = {
     products.forEach((product) => product.isInCart = false)
 
     useFilter()
+    arrayFilterPrice()
     useSort({ products })
     useGrid()
     useSearch()
