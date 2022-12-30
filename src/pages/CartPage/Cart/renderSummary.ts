@@ -27,6 +27,7 @@ export const renderSummary = (
   const headerCart = document.getElementById(
     'cartLength',
   ) as HTMLParagraphElement
+  const headerSum = document.getElementById('cartSum') as HTMLParagraphElement
   const promoTotal = document.getElementById(
     'promoTotal',
   ) as HTMLParagraphElement
@@ -38,18 +39,22 @@ export const renderSummary = (
     cardPrices.push(price)
     cardNumOfUnits.push(numberOfUnits)
 
-    const totalProductsPrice = cardPrices.reduce((a, b, i) => a + b * cardNumOfUnits[i], 0)
+    const totalProductsPrice = cardPrices.reduce(
+      (a, b, i) => a + b * cardNumOfUnits[i],
+      0,
+    )
     const amountOfProducts = cardNumOfUnits.reduce((a, b) => a + b, 0)
 
     totalPrice.innerHTML = `Total: ${totalProductsPrice}$`
     totalAmount.innerHTML = `Products: ${amountOfProducts}`
     headerCart.innerHTML = `${amountOfProducts}`
+    headerSum.innerHTML = `Cart total: ${totalProductsPrice}$`
 
     localStorage.setItem('amountOfProducts', JSON.stringify(amountOfProducts))
+    localStorage.setItem('priceOfProducts', JSON.stringify(totalProductsPrice))
 
     const totalPriceWithOnePromo = totalProductsPrice - totalProductsPrice * 0.1
-    const totalPriceWithTwoPromo =
-      totalPriceWithOnePromo - totalPriceWithOnePromo * 0.1
+    const totalPriceWithTwoPromo = totalProductsPrice - totalProductsPrice * 0.2
 
     if (!isUseEPM && isUseRS) {
       promoTotal.innerHTML = `Total: ${totalPriceWithOnePromo}$`
