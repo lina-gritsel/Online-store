@@ -14,6 +14,9 @@ export const useFilter: useFilter = () => {
   const priceSlidersParent = document.getElementById(
     'filterPrice',
   ) as HTMLElement
+  const minPriceNumber = document.getElementById('minPriceNumber') as HTMLElement
+  const maxPriceNumber = document.getElementById('maxPriceNumber') as HTMLElement
+
 
   const products = [...cardsContainer.children]
   let selectedCategory: string[] = []
@@ -125,12 +128,6 @@ export const useFilter: useFilter = () => {
   const numberSliders = priceSlidersParent.querySelectorAll(
     'input[type="number"]',
   ) as NodeListOf<HTMLInputElement>
-  let minPriceSlider = rangeSliders[0].value
-  let maxPriceSlider = rangeSliders[1].value
-  let minPriceNumber = numberSliders[0].value
-  let maxPriceNumber = numberSliders[1].value
-
-
 
   rangeSliders.forEach((slider) => {
     slider.addEventListener('change', () => {
@@ -143,28 +140,32 @@ export const useFilter: useFilter = () => {
         [slider1, slider2] = [slider2, slider1]
       }
 
-      numberSliders[0].value  = slider1.toString()
-      numberSliders[1].value = slider2.toString()
+      // numberSliders[0].value  = slider1.toString()
+      // numberSliders[1].value = slider2.toString()
 
       rangeSliders[0].value = slider1.toString()
       rangeSliders[1].value = slider2.toString()
+
+      minPriceNumber.innerHTML = `${slider1.toString()}$`
+      maxPriceNumber.innerHTML = `${slider2.toString()}$`
+
       //   }
       // })
 
-      numberSliders.forEach((price) => {
-        price.oninput = () => {
-          let price1 = parseFloat(numberSliders[0].value )
-          let price2 = parseFloat(numberSliders[1].value)
+      // numberSliders.forEach((price) => {
+      //   price.oninput = () => {
+      //     let price1 = parseFloat(numberSliders[0].value )
+      //     let price2 = parseFloat(numberSliders[1].value)
 
-          if (price1 > price2) {
-            numberSliders[0].value  = price2.toString()
-            numberSliders[1].value = price1.toString()
-          }
+      //     if (price1 > price2) {
+      //       numberSliders[0].value  = price2.toString()
+      //       numberSliders[1].value = price1.toString()
+      //     }
 
-          rangeSliders[0].value = price1.toString()
-          rangeSliders[1].value = price2.toString()
-        }
-      })
+      //     rangeSliders[0].value = price1.toString()
+      //     rangeSliders[1].value = price2.toString()
+      //   }
+      // })
 
       const minPrice = parseFloat(rangeSliders[0].value)
       const maxPrice = parseFloat(rangeSliders[1].value)

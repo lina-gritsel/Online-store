@@ -130,13 +130,11 @@ export const CatalogCardList = {
                   step="1">
               </div>
               <div class=${styles.formControl}>
-                <div class=${styles.formControlItems}>
-                  <div class='startValue'></div>
-                  <input class='valuePriceInput' type='number' id='startInput' value='0' min='0' max='1500'>
+                <div class=${styles.formControlItems} id='minPriceNumber'>
+                  0$
                 </div>
-                <div class=${styles.formControlItems}>
-                  <div class='startValue'></div>
-                  <input class='valuePriceInput' type='number' id='endInput' value='1500' min='0' max='1500'>
+                <div class=${styles.formControlItems} id='maxPriceNumber'>
+                 1500$
                 </div>
               </div>
             </div>
@@ -180,3 +178,8 @@ export const CatalogCardList = {
     addToCart({ products })
   },
 }
+// <div class='startValue'></div>
+                  // <input class='valuePriceInput' type='number' id='startInput' value='0' min='0' max='1500'>
+
+                  // <div class='startValue'></div>
+                  // <input class='valuePriceInput' type='number' id='endInput' value='1500' min='0' max='1500'>
