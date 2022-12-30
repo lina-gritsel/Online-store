@@ -82,7 +82,6 @@ export const addToCart: addToCart = async () => {
       btnAdd.style.display = ''
       btnDelete.style.display = 'none'
       imgBlock.classList.remove(styles.covered)
-      headerCart.innerHTML = `${(cartLength -= 1)}`
 
       localStorage.setItem(
         'amountOfProducts',
@@ -101,6 +100,7 @@ export const addToCart: addToCart = async () => {
             cart.splice(cart.indexOf(item), 1)
 
             cartSum -= cardPrice * item.numberOfUnits
+            headerCart.innerHTML = `${(cartLength -= item.numberOfUnits)}`
             headerSum.innerHTML = `Cart total: ${cartSum}$`
 
             localStorage.setItem('priceOfProducts', JSON.stringify(cartSum))

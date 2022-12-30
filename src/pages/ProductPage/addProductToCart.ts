@@ -20,12 +20,16 @@ export const addProductToCart: addProductToCart = async () => {
   const headerCart = document.getElementById(
     'cartLength',
   ) as HTMLParagraphElement
+  const headerSum = document.getElementById('cartSum') as HTMLParagraphElement
 
   let cartLength =
     JSON.parse(localStorage.getItem('amountOfProducts') as string) ||
     cart.length
+  let cartSum =
+    JSON.parse(localStorage.getItem('priceOfProducts') as string) || 0
 
   headerCart.innerHTML = `${cartLength}`
+  headerSum.innerHTML = `Cart total: ${cartSum}$`
 
   const { id } = parseRequestURL(location.hash.slice(1).toLowerCase())
   const product = await getProduct(id)
@@ -45,8 +49,12 @@ export const addProductToCart: addProductToCart = async () => {
       (item) => item.id.toString() === product.id.toString(),
     ) as Products
 
-    headerCart.innerHTML = `${(cartLength += 1)}`
+    cartSum += product.price
 
+    headerCart.innerHTML = `${(cartLength += 1)}`
+    headerSum.innerHTML = `Cart total: ${cartSum}$`
+
+    localStorage.setItem('priceOfProducts', JSON.stringify(cartSum))
     localStorage.setItem(
       'amountOfProducts',
       JSON.stringify(parseInt(headerCart.textContent as string)),
@@ -72,8 +80,12 @@ export const addProductToCart: addProductToCart = async () => {
       (item) => item.id.toString() === product.id.toString(),
     ) as Products
 
-    headerCart.innerHTML = `${(cartLength -= 1)}`
+    cartSum -= product.price * currentCard.numberOfUnits
 
+    headerCart.innerHTML = `${(cartLength -= currentCard.numberOfUnits)}`
+    headerSum.innerHTML = `Cart total: ${cartSum}$`
+
+    localStorage.setItem('priceOfProducts', JSON.stringify(cartSum))
     localStorage.setItem(
       'amountOfProducts',
       JSON.stringify(parseInt(headerCart.textContent as string)),
