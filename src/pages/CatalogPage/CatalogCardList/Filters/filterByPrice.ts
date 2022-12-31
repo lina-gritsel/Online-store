@@ -47,9 +47,8 @@ export const arrayFilterPrice = () => {
           return priceRange.includes(priceProduct)
         },
       )
-      console.log(filteredProductPrice);
 
-      [...cardsContainer.children].forEach((product) => {
+      ;[...cardsContainer.children].forEach((product) => {
         product.classList.add('hidden')
       })
 

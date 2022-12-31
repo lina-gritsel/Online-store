@@ -9,7 +9,7 @@ import { useGrid } from './useGrid'
 import { useSearch } from './useSearch'
 import { useFilter } from './useFilter'
 import { addToCart } from './addToCart'
-import { arrayFilterPrice } from './filterByPrice'
+import { arrayFilterPrice } from './Filters/filterByPrice'
 
 export const CatalogCardList = {
   render: async () => {
