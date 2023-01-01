@@ -14,6 +14,7 @@ export const filterPrice = () => {
   const cardsContainer = document.getElementById(
     'cardsContainer',
   ) as HTMLElement
+  const cards = [...cardsContainer.children]
 
   const btnsFilter = [...document.querySelectorAll('.btnFilter')]
 
@@ -30,12 +31,12 @@ export const filterPrice = () => {
     const allCategoriesId =
       JSON.parse(localStorage.getItem('selectedCategory') as string) || []
 
-    const categoryElements = [...cardsContainer.children].filter((product) => {
+    const categoryElements = cards.filter((product) => {
       const categoryProduct = product.getAttribute('category')
       return allCategoriesId?.includes(categoryProduct)
     })
 
-    const brandsElements = [...cardsContainer.children].filter((product) => {
+    const brandsElements = cards.filter((product) => {
       const brandProduct = product.getAttribute('brand')
 
       return allBrandsId?.includes(brandProduct?.toLowerCase())
@@ -49,7 +50,9 @@ export const filterPrice = () => {
       if (resultfilteredElements?.length) return resultfilteredElements
       if (brandsElements?.length) return brandsElements
       if (categoryElements?.length) return categoryElements
-      return [...cardsContainer.children]
+
+      const cards = [...cardsContainer.children]
+      return cards
     }
 
     const getFilteredProduct = getElemets()
@@ -60,18 +63,18 @@ export const filterPrice = () => {
   const filter = () => {
     const products = getAvailableProducts()
 
-    let slider1 = parseFloat(rangeSliders[0].value)
-    let slider2 = parseFloat(rangeSliders[1].value)
+    let valueStartSlider = parseFloat(rangeSliders[0].value)
+    let valueEndSlider = parseFloat(rangeSliders[1].value)
 
-    if (slider1 > slider2) {
-      ;[slider1, slider2] = [slider2, slider1]
+    if (valueStartSlider > valueEndSlider) {
+      ;[valueStartSlider, valueEndSlider] = [valueEndSlider, valueStartSlider]
     }
 
-    rangeSliders[0].value = slider1.toString()
-    rangeSliders[1].value = slider2.toString()
+    rangeSliders[0].value = valueStartSlider.toString()
+    rangeSliders[1].value = valueEndSlider.toString()
 
-    minPriceNumber.innerHTML = `${slider1.toString()}$`
-    maxPriceNumber.innerHTML = `${slider2.toString()}$`
+    minPriceNumber.innerHTML = `${valueStartSlider.toString()}$`
+    maxPriceNumber.innerHTML = `${valueEndSlider.toString()}$`
 
     const minPrice = parseFloat(rangeSliders[0].value)
     const maxPrice = parseFloat(rangeSliders[1].value)
@@ -86,7 +89,7 @@ export const filterPrice = () => {
       return priceRange.includes(priceProduct)
     })
 
-    ;[...cardsContainer.children].forEach((product) => {
+    cards.forEach((product) => {
       product.classList.add('hidden')
     })
 

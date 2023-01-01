@@ -37,3 +37,22 @@ export const FilterValues = {
       .join('')}
       `,
 }
+
+interface FilterSlidersProps {
+  className?: string
+  id: string
+  value: string
+}
+
+export const FilterSlider = {
+  render: ({ className, id, value }: FilterSlidersProps) =>
+    `<input 
+         class='${className}'
+         id=${id} 
+         type="range" 
+         value=${value}
+         min="1"
+         max="1500"  
+         step="1"
+    >`,
+}

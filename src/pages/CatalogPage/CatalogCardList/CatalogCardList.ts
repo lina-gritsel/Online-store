@@ -9,12 +9,15 @@ import { useGrid } from './useGrid'
 import { useSearch } from './useSearch'
 import { useFilter } from './useFilter'
 import { addToCart } from './addToCart'
-import { filterPrice } from './Filters/filterByPrice'
-import { FilterValues, SortValues } from './SortValues/sortValues'
+import {
+  FilterSlider,
+  FilterValues,
+  SortValues,
+} from './FilterValues/filterValues'
 import {
   FILTER_VALUES_BRANDS,
   FILTER_VALUES_CATEGORIES,
-} from './SortValues/constants'
+} from './FilterValues/constants'
 
 export const CatalogCardList = {
   render: async () => {
@@ -62,22 +65,16 @@ export const CatalogCardList = {
             <div class=${styles.price} id='filterPrice'>
               <p class=${styles.categoryTitle}>Price</p>
               <div class=${styles.slidersControl}>
-                <input
-                  class="${styles.sliderPriceInput} ${styles.startSlider}" 
-                  id="startSlider" 
-                  type="range" 
-                  value="0" 
-                  min="1" 
-                  max="1500"  
-                  step="1">
-                <input 
-                  class=${styles.sliderPriceInput}
-                  id="endSlider" 
-                  type="range" 
-                  value="1500" 
-                  min="1"
-                  max="1500"  
-                  step="1">
+                ${FilterSlider.render({
+                  id: 'startSlider',
+                  value: '0',
+                  className: `${styles.sliderPriceInput} ${styles.startSlider}`,
+                })}
+                ${FilterSlider.render({
+                  id: 'endSlider',
+                  value: '1500',
+                  className: `${styles.sliderPriceInput}`
+                })}
               </div>
               <div class=${styles.formControl}>
                 <div class=${styles.formControlItems} id='minPriceNumber'>
@@ -88,14 +85,29 @@ export const CatalogCardList = {
                 </div>
               </div>
             </div>
+            <div class=${styles.price}>
             <p class=${styles.categoryTitle}>Stock</p>
-            <input
-              type="range"
-              min="1" 
-              max="100" 
-              value="0" 
-              step="1" 
-              class=${styles.slider}>
+            <div class=${styles.slidersControl}>
+              ${FilterSlider.render({
+                id: 'startSlider',
+                value: '0',
+                className: `${styles.sliderStockInput} ${styles.startSlider}`,
+              })}
+              ${FilterSlider.render({
+                id: 'endSlider',
+                value: '1500',
+                className: `${styles.sliderStockInput}`,
+              })}
+            </div>
+              <div class=${styles.formControl}>
+                <div class=${styles.formControlItems} id='minPriceNumber'>
+                  0$
+                </div>
+                <div class=${styles.formControlItems} id='maxPriceNumber'>
+                 1500$
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class=${styles.orderProducts}>
@@ -109,7 +121,6 @@ export const CatalogCardList = {
       </div>
       <p class=${styles.notFoundProducts} id='notFoundProducts'></p>
       <div class=${styles.content} id='cardsContainer'>
-     
       ${data.map((data) => `${Card(data)}`).join('')}
       </div>
     </div>
@@ -121,7 +132,6 @@ export const CatalogCardList = {
     products.forEach((product) => (product.isInCart = false))
 
     useFilter()
-    filterPrice()
     useSort()
     useGrid()
     useSearch()

@@ -1,3 +1,5 @@
+import styles from '../CatalogCardList.module.scss'
+
 export const SORT_VALUES = [
   { label: 'Order: by name (asc)', value: 'name-asc' },
   { label: 'Order: by name (desc)', value: 'name-desc' },

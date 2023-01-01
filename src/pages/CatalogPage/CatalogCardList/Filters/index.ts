@@ -1,2 +1,3 @@
-export * from './filteringCategories'
-export * from './filteringBrands'
+export * from './filterCategories'
+export * from './filterBrands'
+export * from './filterPrice'

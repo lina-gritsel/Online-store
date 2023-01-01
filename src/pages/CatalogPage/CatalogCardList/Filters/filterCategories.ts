@@ -1,4 +1,4 @@
-export const filteringCategories = () => {
+export const filterCategories = () => {
   const cardsContainer = document.getElementById(
     'cardsContainer',
   ) as HTMLElement

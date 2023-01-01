@@ -1,5 +1,5 @@
 import styles from './CatalogCardList.module.scss'
-import { filteringBrands, filteringCategories } from './Filters'
+import { filterBrands, filterCategories, filterPrice } from './Filters'
 import { deleteNotFoundMessage, addNotFoundMessage } from './constans'
 
 type useFilter = () => void
@@ -16,10 +16,10 @@ export const useFilter: useFilter = () => {
     removeFromCategory,
     filterProductsByCategory,
     showAllProducts,
-  } = filteringCategories()
+  } = filterCategories()
 
   const { addBrand, removeFromBrands, filterProductsByBrand } =
-    filteringBrands()
+    filterBrands()
 
   const setCheckedState = () => {
     const allBrandsId =
@@ -117,6 +117,7 @@ export const useFilter: useFilter = () => {
   })
 
   filterProducts()
+  filterPrice()
 
   filterValues?.addEventListener('click', (e: MouseEvent) => {
     filterWrapper?.classList.toggle(styles.showValues)

@@ -261,7 +261,6 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 10px;
   position: relative;
 }
 
@@ -328,7 +327,32 @@
     height: 15px;
     background-color: var(--green-color);
     border-radius: 50%;
-    // box-shadow: 0 0 0 1px #c6c6c6;
+    box-shadow: 0 0 0 1px #c6c6c6;
+    cursor: pointer;
+  }
+}
+
+.sliderStockInput {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  width: 85%;
+  position: absolute;
+  background-color: #c6c6c6;
+  pointer-events: none;
+  left: 20px;
+  bottom: 10px;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    pointer-events: all;
+    width: 15px;
+    height: 15px;
+    background-color: var(--green-color);
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px #c6c6c6;
     cursor: pointer;
   }
 }
@@ -341,7 +365,7 @@
 .formControl {
   display: flex;
   justify-content: space-between;
-  padding: 15px;
+  padding: 12px 15px 0;
   width: 100%;
 }
 
