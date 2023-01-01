@@ -2,7 +2,7 @@ export const filteringBrands = () => {
   const cardsContainer = document.getElementById(
     'cardsContainer',
   ) as HTMLElement
-  
+
   const storageSelectedBrands =
     JSON.parse(localStorage.getItem('selectedBrands') as string) || []
   let selectedBrands: string[] = storageSelectedBrands || []
@@ -26,7 +26,7 @@ export const filteringBrands = () => {
       const currentBrand = product
         .getAttribute('brand')
         ?.toLowerCase() as string
-
+        
       return selectedBrands.includes(currentBrand)
     })
   }

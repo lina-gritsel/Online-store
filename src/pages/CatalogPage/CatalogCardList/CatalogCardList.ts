@@ -9,7 +9,7 @@ import { useGrid } from './useGrid'
 import { useSearch } from './useSearch'
 import { useFilter } from './useFilter'
 import { addToCart } from './addToCart'
-import { arrayFilterPrice } from './Filters/filterByPrice'
+import { filterPrice } from './Filters/filterByPrice'
 import { FilterValues, SortValues } from './SortValues/sortValues'
 import {
   FILTER_VALUES_BRANDS,
@@ -121,7 +121,7 @@ export const CatalogCardList = {
     products.forEach((product) => (product.isInCart = false))
 
     useFilter()
-    arrayFilterPrice()
+    filterPrice()
     useSort()
     useGrid()
     useSearch()

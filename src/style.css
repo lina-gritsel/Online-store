@@ -25,13 +25,3 @@ a {
 .hidden {
   display: none !important;
 }
-
-
-.checked:checked::before {
-  transform: translateX(100%);
-  background: #fff;
-}
-
-.checked {
-  background: var(--green-color);
-}
