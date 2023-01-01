@@ -9,16 +9,15 @@ export const useSearch: UseSearch = () => {
   const inputEl = document.getElementById('search') as HTMLInputElement
   const notFound = document.getElementById('notFound') as HTMLParagraphElement
   const btnsSort = document.querySelectorAll('.btnSort')
-  let cards = [...cardsContainer.children]
+  const cards = [...cardsContainer.children]
 
   const search = () => {
-    cards = [...cardsContainer.children]
     const inputValue = inputEl.value.toUpperCase().trim()
 
     if (inputValue !== '') {
       cards.forEach((card: Element, index: number) => {
-        const productName = card.children[1].textContent
-        const productPrice = card.children[3].textContent
+        const productName = card.getAttribute('name')
+        const productPrice = card.getAttribute('price')
 
         const allValues =
           productName?.toUpperCase().includes(inputValue) ||
@@ -47,9 +46,11 @@ export const useSearch: UseSearch = () => {
     search()
   })
 
-  btnsSort.forEach((btn) => btn.addEventListener('click', () => {
-    search()
-  }))
+  btnsSort.forEach((btn) =>
+    btn.addEventListener('click', () => {
+      search()
+    }),
+  )
 
   inputEl.addEventListener('search', () => {
     if (inputEl.value === '') {

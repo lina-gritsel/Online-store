@@ -26,7 +26,7 @@ export const useFilter: useFilter = () => {
       e.stopPropagation()
 
       const selectedBtn = e.target as HTMLInputElement
-      const filterField = selectedBtn?.id
+      const filterField = selectedBtn?.id.split('-').join(' ')
 
       const searchURL = new URL((window as any).location)
       searchURL.searchParams.set('filterBy', filterField)
