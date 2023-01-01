@@ -11,11 +11,15 @@ import { useFilter } from './useFilter'
 import { addToCart } from './addToCart'
 import { arrayFilterPrice } from './Filters/filterByPrice'
 import { FilterValues, SortValues } from './SortValues/sortValues'
-import { FILTER_VALUES_BRANDS, FILTER_VALUES_CATEGORIES } from './SortValues/constants'
+import {
+  FILTER_VALUES_BRANDS,
+  FILTER_VALUES_CATEGORIES,
+} from './SortValues/constants'
 
 export const CatalogCardList = {
   render: async () => {
     const data = await getAllProducts()
+
     return `
     <div class=${styles.container}>
       <div class=${styles.wrapper}>
@@ -39,13 +43,19 @@ export const CatalogCardList = {
           <p class=${styles.categoryTitle}>Categories</p>
           <div class=${styles.line}></div>
           <div class=${styles.categoryBox}>
-            ${FilterValues.render({sortValues: FILTER_VALUES_CATEGORIES, className: 'category'})}
+            ${FilterValues.render({
+              sortValues: FILTER_VALUES_CATEGORIES,
+              className: 'category',
+            })}
           </div>
           <div class=${styles.line}></div>
           <p class=${styles.categoryTitle}>Brands</p>
           <div class=${styles.line}></div>
           <div class=${styles.categoryBox}>
-            ${FilterValues.render({sortValues: FILTER_VALUES_BRANDS, className: 'brand'})}
+            ${FilterValues.render({
+              sortValues: FILTER_VALUES_BRANDS,
+              className: 'brand',
+            })}
           </div>
           <div class=${styles.line}></div>
           <div class=${styles.sliderBlock}>
@@ -85,9 +95,7 @@ export const CatalogCardList = {
               max="100" 
               value="0" 
               step="1" 
-              class=${
-              styles.slider
-            }>
+              class=${styles.slider}>
           </div>
         </div>
         <div class=${styles.orderProducts}>
@@ -99,9 +107,7 @@ export const CatalogCardList = {
           </div>
         </div>
       </div>
-      <p class=${
-        styles.notFoundProducts
-      } id='notFoundProducts'></p>
+      <p class=${styles.notFoundProducts} id='notFoundProducts'></p>
       <div class=${styles.content} id='cardsContainer'>
      
       ${data.map((data) => `${Card(data)}`).join('')}

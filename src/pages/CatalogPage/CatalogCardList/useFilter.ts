@@ -1,6 +1,6 @@
 import styles from './CatalogCardList.module.scss'
 import { filteringBrands, filteringCategories } from './Filters'
-import {deleteNotFoundMessage, addNotFoundMessage} from './constans'
+import { deleteNotFoundMessage, addNotFoundMessage } from './constans'
 
 type useFilter = () => void
 
@@ -15,17 +15,70 @@ export const useFilter: useFilter = () => {
     hiddenAllProducts,
     removeFromCategory,
     filterProductsByCategory,
-    showAllProducts
+    showAllProducts,
   } = filteringCategories()
 
   const { addBrand, removeFromBrands, filterProductsByBrand } =
     filteringBrands()
 
-  btnsFilter.forEach((btn) => {
-    btn.addEventListener('click', (e: Event) => {
-      e.stopPropagation()
+  const setCheckedState = () => {
+    const allBrandsId =
+      JSON.parse(localStorage.getItem('selectedBrands') as string) || []
+    const allCategoriesId =
+      JSON.parse(localStorage.getItem('selectedCategory') as string) || []
+    const allSortIdFromStorage = [...allBrandsId, ...allCategoriesId]
 
-      const selectedBtn = e.target as HTMLInputElement
+    const allButtonsElement = document.querySelectorAll('.btnFilter')
+
+    allButtonsElement.forEach((btn: any) => {
+      const selectedBtn = btn as HTMLInputElement
+      const selectedBtnId = selectedBtn.id.split('-').join(' ')
+
+      if (allSortIdFromStorage.includes(selectedBtnId)) {
+        selectedBtn.checked = true
+      } else {
+        selectedBtn.checked = false
+      }
+    })
+  }
+
+  const filterProducts = () => {
+    const filteredCategories = filterProductsByCategory()
+    const filteredBrands = filterProductsByBrand()
+
+    setCheckedState()
+
+    const result = filteredBrands.filter((item) => {
+      return filteredCategories.includes(item)
+    })
+
+    hiddenAllProducts()
+    deleteNotFoundMessage()
+
+    if (result.length) {
+      result.forEach((product) => {
+        product.classList.remove('hidden')
+      })
+    } else if (filteredBrands.length) {
+      filteredBrands.forEach((product) => {
+        product.classList.remove('hidden')
+      })
+    } else if (filteredCategories.length) {
+      filteredCategories.forEach((product) => {
+        product.classList.remove('hidden')
+      })
+    } else {
+      showAllProducts()
+    }
+    if (filteredCategories.length && filteredBrands.length && !result.length) {
+      hiddenAllProducts()
+      addNotFoundMessage()
+    }
+  }
+
+  btnsFilter.forEach((btn) => {
+    btn.addEventListener('click', (event: Event) => {
+      const selectedBtn = event.target as HTMLInputElement
       const filterField = selectedBtn?.id.split('-').join(' ')
 
       const searchURL = new URL((window as any).location)
@@ -54,47 +107,16 @@ export const useFilter: useFilter = () => {
         selectedBtn.classList.contains('brand')
       ) {
         addBrand(filterField)
-      } else if (selectedBtn.classList.contains('disabled')) {
+      } else {
         removeFromBrands(filterField)
       }
 
-      const filteredCategories = filterProductsByCategory()
-      const filteredBrands = filterProductsByBrand()
-
-      const result = filteredBrands.filter((item) => {
-        return filteredCategories.includes(item)
-      })
-
-      hiddenAllProducts()
-      deleteNotFoundMessage()
-
-      if (btnsFilter.every((btn) => btn.classList.contains('disabled'))) {
-        showAllProducts()
-      }
-
-      if (result.length) {
-        result.forEach((product) => {
-          product.classList.remove('hidden')
-        })
-      } else if (filteredBrands.length) {
-        filteredBrands.forEach((product) => {
-          product.classList.remove('hidden')
-        })
-      } else if (filteredCategories.length) {
-        filteredCategories.forEach((product) => {
-          product.classList.remove('hidden')
-        })
-      }
-      if (
-        filteredCategories.length &&
-        filteredBrands.length &&
-        !result.length
-      ) {
-        hiddenAllProducts()
-        addNotFoundMessage()
-      }
+      event.stopPropagation()
+      filterProducts()
     })
   })
+
+  filterProducts()
 
   filterValues?.addEventListener('click', (e: MouseEvent) => {
     filterWrapper?.classList.toggle(styles.showValues)

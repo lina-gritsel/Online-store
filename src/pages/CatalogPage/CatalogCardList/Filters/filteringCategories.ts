@@ -1,22 +1,24 @@
-// import { notFoundMessage } from '../constants'
-
 export const filteringCategories = () => {
   const cardsContainer = document.getElementById(
     'cardsContainer',
   ) as HTMLElement
 
-  let selectedCategory: string[] = []
+  const storageSelectedCategory =
+    JSON.parse(localStorage.getItem('selectedCategory') as string) || []
+  let selectedCategory: string[] = storageSelectedCategory || []
 
   const products = [...cardsContainer.children]
 
   const addCategory = (category: string) => {
     selectedCategory.push(category)
+    localStorage.setItem('selectedCategory', JSON.stringify(selectedCategory))
   }
 
   const removeFromCategory = (category: string) => {
     selectedCategory = selectedCategory.filter((selectedCategory) => {
       return selectedCategory !== category
     })
+    localStorage.setItem('selectedCategory', JSON.stringify(selectedCategory))
   }
 
   const filterProductsByCategory = () => {
@@ -44,6 +46,6 @@ export const filteringCategories = () => {
     removeFromCategory,
     filterProductsByCategory,
     hiddenAllProducts,
-    showAllProducts
+    showAllProducts,
   }
 }
