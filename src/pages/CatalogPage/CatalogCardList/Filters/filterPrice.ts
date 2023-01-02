@@ -80,18 +80,18 @@ export const filterPrice = () => {
     const maxPrice = parseFloat(rangeSliders[1].value)
     localStorage.setItem('storageMinPrice', JSON.stringify(minPrice))
     localStorage.setItem('storageMaxPrice', JSON.stringify(maxPrice))
-    const storagemMinPrice = JSON.parse(
+    const storageMinPrice = JSON.parse(
       localStorage.getItem('storageMinPrice') as string,
     )
-    const storagemMaxPrice = JSON.parse(
+    const storageMaxPrice = JSON.parse(
       localStorage.getItem('storageMaxPrice') as string,
     )
 
     const getArr = () => {
-      if (storagemMinPrice && storagemMaxPrice) {
+      if (storageMinPrice && storageMaxPrice) {
         const priceRange = Array.from(
-          { length: storagemMaxPrice - storagemMinPrice + 1 },
-          (_, i) => storagemMinPrice + i,
+          { length: storageMaxPrice - storageMinPrice + 1 },
+          (_, i) => storageMinPrice + i,
         )
         return priceRange
       } else {

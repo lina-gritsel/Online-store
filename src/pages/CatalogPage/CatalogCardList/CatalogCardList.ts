@@ -27,6 +27,10 @@ export const CatalogCardList = {
       JSON.parse(localStorage.getItem('storageMaxPrice') as string) || '1500'
     const minPrice =
       JSON.parse(localStorage.getItem('storageMinPrice') as string) || '0'
+    const minStock =
+      JSON.parse(localStorage.getItem('minStock') as string) || '0'
+    const maxStock =
+      JSON.parse(localStorage.getItem('maxStock') as string) || '100'
 
     return `
     <div class=${styles.container}>
@@ -97,13 +101,13 @@ export const CatalogCardList = {
               <div class=${styles.slidersControl}>
                 ${FilterSlider.render({
                   id: 'startSlider',
-                  value: '0',
+                  value: minStock,
                   className: `${styles.sliderStockInput} ${styles.startSlider}`,
                   max: '100',
                 })}
                 ${FilterSlider.render({
                   id: 'endSlider',
-                  value: '100',
+                  value: maxStock,
                   className: `${styles.sliderStockInput}`,
                   max: '100',
                 })}

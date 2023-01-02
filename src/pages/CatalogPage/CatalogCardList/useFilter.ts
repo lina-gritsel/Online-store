@@ -1,5 +1,5 @@
 import styles from './CatalogCardList.module.scss'
-import { filterBrands, filterCategories, filterPrice } from './Filters'
+import { filterBrands, filterCategories, filterPrice, filterStock } from './Filters'
 import { deleteNotFoundMessage, addNotFoundMessage } from './constans'
 
 type useFilter = () => void
@@ -118,6 +118,7 @@ export const useFilter: useFilter = () => {
 
   filterProducts()
   filterPrice()
+  filterStock()
 
   filterValues?.addEventListener('click', (e: MouseEvent) => {
     filterWrapper?.classList.toggle(styles.showValues)
