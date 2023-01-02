@@ -58,11 +58,18 @@
       bottom: 0;
     }
 }
-
+.cardTitle{
+  min-height: 53px;
+}
 .cardTitle,
 .cardPrice {
   font: var(--font-text-2);
   font-weight: 500;
+  color: var(--black-color);
+}
+
+.brand {
+  font: var(--font-text-4);
   color: var(--black-color);
 }
 
@@ -75,7 +82,7 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  min-height: 53.5px;
+
 }
 
 .hidden {

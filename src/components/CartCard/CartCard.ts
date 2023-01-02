@@ -4,7 +4,7 @@ import styles from './CartCard.module.scss'
 export const CartCard = (card: Products): string => {
   const { id, image, title, description, price, numberOfUnits, stock } = card
   const cardPrice = price * numberOfUnits
-
+  
   return `
         <div class=${styles.card} id='card'>
             <div class=${styles.imgBlock}>
