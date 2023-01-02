@@ -78,10 +78,32 @@ export const filterPrice = () => {
 
     const minPrice = parseFloat(rangeSliders[0].value)
     const maxPrice = parseFloat(rangeSliders[1].value)
-    const priceRange = Array.from(
-      { length: maxPrice - minPrice + 1 },
-      (_, i) => minPrice + i,
+    localStorage.setItem('storageMinPrice', JSON.stringify(minPrice))
+    localStorage.setItem('storageMaxPrice', JSON.stringify(maxPrice))
+    const storagemMinPrice = JSON.parse(
+      localStorage.getItem('storageMinPrice') as string,
     )
+    const storagemMaxPrice = JSON.parse(
+      localStorage.getItem('storageMaxPrice') as string,
+    )
+
+    const getArr = () => {
+      if (storagemMinPrice && storagemMaxPrice) {
+        const priceRange = Array.from(
+          { length: storagemMaxPrice - storagemMinPrice + 1 },
+          (_, i) => storagemMinPrice + i,
+        )
+        return priceRange
+      } else {
+        const priceRange = Array.from(
+          { length: maxPrice - minPrice + 1 },
+          (_, i) => minPrice + i,
+        )
+        return priceRange
+      }
+    }
+
+    const priceRange = getArr()
 
     const filteredProductPrice = products.filter((product) => {
       const priceProduct = parseFloat(product.getAttribute('price') as string)
@@ -105,4 +127,5 @@ export const filterPrice = () => {
       filter()
     })
   })
+  filter()
 }

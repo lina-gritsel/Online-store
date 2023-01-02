@@ -23,6 +23,11 @@ export const CatalogCardList = {
   render: async () => {
     const data = await getAllProducts()
 
+    const maxPrice =
+      JSON.parse(localStorage.getItem('storageMaxPrice') as string) || '1500'
+    const minPrice =
+      JSON.parse(localStorage.getItem('storageMinPrice') as string) || '0'
+
     return `
     <div class=${styles.container}>
       <div class=${styles.wrapper}>
@@ -67,15 +72,15 @@ export const CatalogCardList = {
               <div class=${styles.slidersControl}>
                 ${FilterSlider.render({
                   id: 'startSlider',
-                  value: '0',
+                  value: minPrice,
                   className: `${styles.sliderPriceInput} ${styles.startSlider}`,
-                  max: '1500'
+                  max: '1500',
                 })}
                 ${FilterSlider.render({
                   id: 'endSlider',
-                  value: '1500',
+                  value: maxPrice,
                   className: `${styles.sliderPriceInput}`,
-                  max: '1500'
+                  max: '1500',
                 })}
               </div>
               <div class=${styles.formControl}>
@@ -94,13 +99,13 @@ export const CatalogCardList = {
                   id: 'startSlider',
                   value: '0',
                   className: `${styles.sliderStockInput} ${styles.startSlider}`,
-                  max: '100'
+                  max: '100',
                 })}
                 ${FilterSlider.render({
                   id: 'endSlider',
                   value: '100',
                   className: `${styles.sliderStockInput}`,
-                  max: '100'
+                  max: '100',
                 })}
               </div>
               <div class=${styles.formControl}>
