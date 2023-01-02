@@ -18,10 +18,20 @@ export const useSearch: UseSearch = () => {
       cards.forEach((card: Element, index: number) => {
         const productName = card.getAttribute('name')
         const productPrice = card.getAttribute('price')
+        const productStock = card.getAttribute('stock')
+        const productBrand = card.getAttribute('brand')
+        const productRating = card.getAttribute('rating')
+        const productCategory = card.getAttribute('category')
+        const productDescription = card.getAttribute('description')
 
         const allValues =
           productName?.toUpperCase().includes(inputValue) ||
-          productPrice?.toUpperCase().includes(inputValue)
+          productPrice?.toUpperCase().includes(inputValue) ||
+          productStock?.toUpperCase().includes(inputValue) ||
+          productBrand?.toUpperCase().includes(inputValue) ||
+          productRating?.toUpperCase().includes(inputValue) ||
+          productCategory?.toUpperCase().includes(inputValue) ||
+          productDescription?.toUpperCase().includes(inputValue)
 
         if (!allValues) {
           cards[index].classList.add(styles.hidden)
