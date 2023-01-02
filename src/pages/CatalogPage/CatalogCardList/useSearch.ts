@@ -7,7 +7,7 @@ export const useSearch: UseSearch = () => {
     'cardsContainer',
   ) as HTMLDivElement
   const inputEl = document.getElementById('search') as HTMLInputElement
-  const notFound = document.getElementById('notFound') as HTMLParagraphElement
+  const notFound = document.getElementById('notFoundProducts') as HTMLElement
   const btnsSort = document.querySelectorAll('.btnSort')
   const cards = [...cardsContainer.children]
 
