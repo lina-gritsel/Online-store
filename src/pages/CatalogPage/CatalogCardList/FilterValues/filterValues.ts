@@ -42,17 +42,18 @@ interface FilterSlidersProps {
   className?: string
   id: string
   value: string
+  max: string
 }
 
 export const FilterSlider = {
-  render: ({ className, id, value }: FilterSlidersProps) =>
+  render: ({ className, id, value, max }: FilterSlidersProps) =>
     `<input 
          class='${className}'
          id=${id} 
          type="range" 
          value=${value}
-         min="1"
-         max="1500"  
+         min="0"
+         max=${max}
          step="1"
     >`,
 }

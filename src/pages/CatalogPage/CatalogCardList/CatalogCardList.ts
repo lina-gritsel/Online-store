@@ -69,11 +69,13 @@ export const CatalogCardList = {
                   id: 'startSlider',
                   value: '0',
                   className: `${styles.sliderPriceInput} ${styles.startSlider}`,
+                  max: '1500'
                 })}
                 ${FilterSlider.render({
                   id: 'endSlider',
                   value: '1500',
-                  className: `${styles.sliderPriceInput}`
+                  className: `${styles.sliderPriceInput}`,
+                  max: '1500'
                 })}
               </div>
               <div class=${styles.formControl}>
@@ -85,26 +87,28 @@ export const CatalogCardList = {
                 </div>
               </div>
             </div>
-            <div class=${styles.price}>
-            <p class=${styles.categoryTitle}>Stock</p>
-            <div class=${styles.slidersControl}>
-              ${FilterSlider.render({
-                id: 'startSlider',
-                value: '0',
-                className: `${styles.sliderStockInput} ${styles.startSlider}`,
-              })}
-              ${FilterSlider.render({
-                id: 'endSlider',
-                value: '1500',
-                className: `${styles.sliderStockInput}`,
-              })}
-            </div>
+            <div class=${styles.price} id='filterStock'>
+              <p class=${styles.categoryTitle}>Stock</p>
+              <div class=${styles.slidersControl}>
+                ${FilterSlider.render({
+                  id: 'startSlider',
+                  value: '0',
+                  className: `${styles.sliderStockInput} ${styles.startSlider}`,
+                  max: '100'
+                })}
+                ${FilterSlider.render({
+                  id: 'endSlider',
+                  value: '100',
+                  className: `${styles.sliderStockInput}`,
+                  max: '100'
+                })}
+              </div>
               <div class=${styles.formControl}>
-                <div class=${styles.formControlItems} id='minPriceNumber'>
-                  0$
+                <div class=${styles.formControlItems} id='minStockValue'>
+                  0
                 </div>
-                <div class=${styles.formControlItems} id='maxPriceNumber'>
-                 1500$
+                <div class=${styles.formControlItems} id='maxStockValue'>
+                 100
                 </div>
               </div>
             </div>
