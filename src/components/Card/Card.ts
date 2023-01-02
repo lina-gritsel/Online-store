@@ -2,10 +2,10 @@ import { Products } from '../../api'
 import styles from './Card.module.scss'
 
 export const Card = (card: Products): string => {
-  const { id, image, title, description, price, category, brand } = card
+  const { id, image, title, description, price, category, brand, stock } = card
 
   return `
-        <div class=${styles.card} id='card'>
+        <div class=${styles.card} id='card' category='${category}' brand='${brand}' name='${title}' price='${price}' stock='${stock}'>
             <div class=${styles.imgBlock} id='imgBlock'>
               <img class=${styles.cardImage} src=${image[0]}/>
               <img class=${styles.addCart} src='../../assets/svg/cart.svg' id='addToCart'/>
@@ -17,6 +17,8 @@ export const Card = (card: Products): string => {
             <div class=${styles.hidden}>${category}</div>
             <div class=${styles.hidden}>${brand}</div>
             <div class=${styles.hidden}>${id}</div>
+            <div class=${styles.brand}>Brand: ${card.brand}</div>
+            <div class=${styles.brand}>Stock: ${card.stock}</div>
         </div>
         `
 }
