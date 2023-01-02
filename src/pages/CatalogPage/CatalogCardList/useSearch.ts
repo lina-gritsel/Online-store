@@ -15,6 +15,7 @@ export const useSearch: UseSearch = () => {
     const inputValue = inputEl.value.toUpperCase().trim()
 
     if (inputValue !== '') {
+      
       cards.forEach((card: Element, index: number) => {
         const productName = card.getAttribute('name')
         const productPrice = card.getAttribute('price')
@@ -50,10 +51,15 @@ export const useSearch: UseSearch = () => {
         notFound.style.display = 'none'
       })
     }
+    
   }
+  
+  const storageSearch = localStorage.getItem('searchValue') as string
+  inputEl.value = storageSearch
 
   inputEl.addEventListener('keyup', () => {
     search()
+    localStorage.setItem('searchValue', inputEl.value)
   })
 
   btnsSort.forEach((btn) =>
@@ -70,4 +76,5 @@ export const useSearch: UseSearch = () => {
       })
     }
   })
+  search()
 }
