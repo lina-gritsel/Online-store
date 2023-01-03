@@ -1,4 +1,4 @@
-import { addNotFoundMessage } from '../constans'
+import { addNotFoundMessage, deleteNotFoundMessage } from '../constans'
 
 export const filterStock = () => {
   const stockSlidersParent = document.getElementById(
@@ -125,6 +125,7 @@ export const filterStock = () => {
     if (filteredProductStock.length) {
       filteredProductStock.forEach((product) => {
         product.classList.remove('hidden')
+        deleteNotFoundMessage()
       })
     }else {
       addNotFoundMessage()
