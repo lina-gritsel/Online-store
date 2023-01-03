@@ -1,3 +1,5 @@
+import { addNotFoundMessage } from '../constans'
+
 export const filterStock = () => {
   const stockSlidersParent = document.getElementById(
     'filterStock',
@@ -59,8 +61,9 @@ export const filterStock = () => {
         allCategoriesId.length &&
         allBrandsId.length &&
         !resultfilteredElements.length
-      )
+      ) {
         return []
+      }
       if (resultfilteredElements?.length) return resultfilteredElements
       if (brandsElements?.length) return brandsElements
       if (categoryElements?.length) return categoryElements
@@ -123,6 +126,8 @@ export const filterStock = () => {
       filteredProductStock.forEach((product) => {
         product.classList.remove('hidden')
       })
+    }else {
+      addNotFoundMessage()
     }
   }
 

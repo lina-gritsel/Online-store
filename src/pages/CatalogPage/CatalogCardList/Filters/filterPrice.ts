@@ -1,3 +1,5 @@
+import { addNotFoundMessage } from '../constans'
+
 export const filterPrice = () => {
   const priceSlidersParent = document.getElementById(
     'filterPrice',
@@ -124,6 +126,8 @@ export const filterPrice = () => {
       filteredProductPrice.forEach((product) => {
         product.classList.remove('hidden')
       })
+    } else {
+      addNotFoundMessage()
     }
   }
 
