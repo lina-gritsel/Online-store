@@ -23,11 +23,13 @@ export const resetFilters = () => {
   const cards = document.getElementById('cardsContainer') as HTMLElement
 
   resetBtn.addEventListener('click', async () => {
-    const data = await getAllProducts()
+    const cardElement = [...cards.children]
+
+    cardElement.forEach((product) => {
+      product.classList.remove('hidden')
+    })
 
     inputEl.value = ''
-    cards.innerHTML = ''
-    cards.innerHTML = `${data.map((data) => `${Card(data)}`).join('')}`
 
     minPrice.value = '0'
     maxPrice.value = '1500'

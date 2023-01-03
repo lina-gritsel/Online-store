@@ -2,6 +2,8 @@ export const filterBrands = () => {
   const cardsContainer = document.getElementById(
     'cardsContainer',
   ) as HTMLElement
+  const resetBtn = document.getElementById('resetBtn') as HTMLButtonElement
+
 
   const storageSelectedBrands =
     JSON.parse(localStorage.getItem('selectedBrands') as string) || []
@@ -20,6 +22,10 @@ export const filterBrands = () => {
     })
     localStorage.setItem('selectedBrands', JSON.stringify(selectedBrands))
   }
+
+  resetBtn.addEventListener('click', () =>{
+    selectedBrands = []
+  })
 
   const filterProductsByBrand = () => {
     return products.filter((product: Element) => {

@@ -45,7 +45,7 @@ export const useFilter: useFilter = () => {
   const filterProducts = () => {
     const filteredCategories = filterProductsByCategory()
     const filteredBrands = filterProductsByBrand()
-
+    
     setCheckedState()
 
     const result = filteredBrands.filter((item) => {
