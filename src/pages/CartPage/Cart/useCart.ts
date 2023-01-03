@@ -1,3 +1,4 @@
+import { clearLocalStorage } from '../../../components/CreateOrderModal/clearLocalStorage'
 import { renderPromoSummary } from './renderPromoSummary'
 import { clearAllValues } from './clearAllValues'
 import { renderSummary } from './renderSummary'
@@ -15,22 +16,29 @@ export const useCart: useCart = () => {
   const cart: Products[] = JSON.parse(localStorage.getItem('cart') as string)
   const cards = [...document.querySelectorAll('#card')]
 
+  const totalAmount = document.getElementById('amount') as HTMLParagraphElement
+  const headerSum = document.getElementById('cartSum') as HTMLParagraphElement
+  const totalPrice = document.getElementById('total') as HTMLParagraphElement
+  const nextPage = document.getElementById('nextPage') as HTMLButtonElement
+  const prevPage = document.getElementById('prevPage') as HTMLButtonElement
+  const btnBuyNow = document.getElementById('buyNow') as HTMLButtonElement
   const appliedEPM = document.getElementById('dropEPM') as HTMLDivElement
   const clearBtn = document.getElementById('clear') as HTMLButtonElement
   const appliedRS = document.getElementById('dropRS') as HTMLDivElement
   const headerCart = document.getElementById(
     'cartLength',
   ) as HTMLParagraphElement
+  const cartContainer = document.getElementById(
+    'cartContainer',
+  ) as HTMLDivElement
 
   let isUseRS: boolean =
     JSON.parse(localStorage.getItem('isRS') as string) || false
   let isUseEPM: boolean =
     JSON.parse(localStorage.getItem('isEPM') as string) || false
 
-  headerCart.innerHTML = `${cart.length}`
-
   clearBtn.addEventListener('click', () => {
-    localStorage.clear()
+    clearLocalStorage()
     clearAllValues()
   })
 
@@ -45,7 +53,16 @@ export const useCart: useCart = () => {
   }
 
   if (!cart || !cart.length) {
-    clearAllValues()
+    headerCart.innerHTML = '0'
+    headerSum.innerHTML = 'Cart total: 0$'
+    cartContainer.innerHTML = 'Cart is empty'
+    totalAmount.innerHTML = 'Products: 0'
+    totalPrice.innerHTML = 'Total: 0$'
+    btnBuyNow.disabled = true
+    nextPage.disabled = true
+    prevPage.disabled = true
+
+    renderPromoSummary.renderSummaryWithoutPromo()
   } else {
     let cardPrices: number[] = []
     let cardNumOfUnits: number[] = []

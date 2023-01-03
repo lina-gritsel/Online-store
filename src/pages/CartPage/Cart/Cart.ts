@@ -1,3 +1,4 @@
+import CreateOrderModal from '../../../components/CreateOrderModal/index'
 import { usePagination } from './usePagination'
 import styles from './Cart.module.scss'
 
@@ -68,13 +69,16 @@ export const Cart = {
          </div>
          <p class=${styles.test}>Promo for test: 'RS', 'EPM'</p>
        </div>
-       <button class=${styles.buy} id='buy'>Buy now</button>
+       <button class=${styles.buy} id='buyNow'>Buy now</button>
       </div>
      </div>
+     ${await CreateOrderModal.render()}
    </div>
    `
   },
   afterRender: async () => {
+    await CreateOrderModal.afterRender()
+
     usePagination()
   },
 }
