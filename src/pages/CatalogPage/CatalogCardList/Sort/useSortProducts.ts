@@ -35,7 +35,6 @@ export const useSort: UseSort = () => {
  const storageSortBy =  localStorage.getItem('sortBy')
  const storageOrderBy =  localStorage.getItem('sortOrder')
   const fieldsJoin = [storageSortBy, storageOrderBy].join('-')
-  console.log(fieldsJoin);
   sort(fieldsJoin)
 
 }

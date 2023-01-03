@@ -47,12 +47,17 @@ export const filterPrice = () => {
     })
 
     const getElemets = () => {
+      if (
+        allCategoriesId.length &&
+        allBrandsId.length &&
+        !resultfilteredElements.length
+      )
+        return []
       if (resultfilteredElements?.length) return resultfilteredElements
       if (brandsElements?.length) return brandsElements
       if (categoryElements?.length) return categoryElements
 
-      const cards = [...cardsContainer.children]
-      return cards
+      return [...cardsContainer.children]
     }
 
     const getFilteredProduct = getElemets()

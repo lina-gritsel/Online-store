@@ -1,5 +1,10 @@
 import styles from './CatalogCardList.module.scss'
-import { filterBrands, filterCategories, filterPrice, filterStock } from './Filters'
+import {
+  filterBrands,
+  filterCategories,
+  filterPrice,
+  filterStock,
+} from './Filters'
 import { deleteNotFoundMessage, addNotFoundMessage } from './constans'
 
 type useFilter = () => void
@@ -18,8 +23,7 @@ export const useFilter: useFilter = () => {
     showAllProducts,
   } = filterCategories()
 
-  const { addBrand, removeFromBrands, filterProductsByBrand } =
-    filterBrands()
+  const { addBrand, removeFromBrands, filterProductsByBrand } = filterBrands()
 
   const setCheckedState = () => {
     const allBrandsId =
@@ -45,7 +49,7 @@ export const useFilter: useFilter = () => {
   const filterProducts = () => {
     const filteredCategories = filterProductsByCategory()
     const filteredBrands = filterProductsByBrand()
-    
+
     setCheckedState()
 
     const result = filteredBrands.filter((item) => {
@@ -71,7 +75,6 @@ export const useFilter: useFilter = () => {
       showAllProducts()
     }
     if (filteredCategories.length && filteredBrands.length && !result.length) {
-      hiddenAllProducts()
       addNotFoundMessage()
     }
   }

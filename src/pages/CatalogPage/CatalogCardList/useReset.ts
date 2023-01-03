@@ -44,7 +44,6 @@ export const resetFilters = () => {
     cardElement
       .sort(() => Math.random() - 0.5)
       .forEach((node) => cards.append(node))
-    console.log(cardElement.sort(() => Math.random() - 0.5))
 
     inputEl.value = ''
 
