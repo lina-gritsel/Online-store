@@ -7,11 +7,11 @@ export const useSort: UseSort = () => {
   const btnsSort = document.querySelectorAll('.btnSort')
   const body = document.querySelector('body')
   const globalSortBtn = document.getElementById('globalSortBtn') as HTMLElement
-
+  
   const onChangeSort = (event: Event) => {
     const selectedBtn = event?.target as HTMLElement
     const sortField = selectedBtn.id
-
+    
     sort(sortField)
     globalSortBtn.innerHTML = ''
     globalSortBtn.innerHTML = `${selectedBtn.textContent}`
@@ -31,4 +31,11 @@ export const useSort: UseSort = () => {
   body?.addEventListener('click', () => {
     onClickOutside()
   })
+
+ const storageSortBy =  localStorage.getItem('sortBy')
+ const storageOrderBy =  localStorage.getItem('sortOrder')
+  const fieldsJoin = [storageSortBy, storageOrderBy].join('-')
+  console.log(fieldsJoin);
+  sort(fieldsJoin)
+
 }

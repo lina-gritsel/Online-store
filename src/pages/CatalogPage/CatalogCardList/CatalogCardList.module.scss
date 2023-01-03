@@ -64,9 +64,9 @@
   border-radius: 20px;
   border: 1px solid var(--mittelgrau-color);
   background-color: transparent;
-  width: 288px;
+  width: 230px;
   height: 41px;
-  padding: 11px 75px 10px 14px;
+  padding: 11px 45px 10px 14px;
   font: var(--font-text-4);
   line-height: 20px;
 }
@@ -81,6 +81,23 @@
   padding: 11px 75px 10px 14px;
   font: var(--font-text-4);
   line-height: 20px;
+}
+
+.filtersReset{
+  position: relative;
+  border-radius: 20px;
+  border: 1px solid var(--mittelgrau-color);
+  background-color: transparent;
+  width: 170px;
+  height: 41px;
+  padding:10px;
+  font: var(--font-text-4);
+  line-height: 20px;
+}
+
+.linkIsCopy{
+  background-color: var(--black-color);
+  color: var(--white-color);
 }
 
 .sortWrapper {
@@ -178,7 +195,7 @@
   width: 450px;
 }
 
-.showNotFoundProducts{
+.showNotFoundProducts {
   display: block;
 }
 

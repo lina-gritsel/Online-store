@@ -18,6 +18,8 @@ import {
   FILTER_VALUES_BRANDS,
   FILTER_VALUES_CATEGORIES,
 } from './FilterValues/constants'
+import { resetFilters } from './useReset'
+import { copyLink } from './useCopy'
 
 export const CatalogCardList = {
   render: async () => {
@@ -39,7 +41,7 @@ export const CatalogCardList = {
         <div class=${styles.sortMainButton}  id='sortValues'>
           <button class=${
             styles.sortValues
-          } id='globalSortBtn'>Order: new first</button>
+          } id='globalSortBtn'>Order options</button>
           <image class=${styles.sortImg} id='sortImg' src=${polygon} />
         </div>
         <div class='${styles.sortWrapper}' id='sortWrapper'>
@@ -75,13 +77,13 @@ export const CatalogCardList = {
               <p class=${styles.categoryTitle}>Price</p>
               <div class=${styles.slidersControl}>
                 ${FilterSlider.render({
-                  id: 'startSlider',
+                  id: 'startPrice',
                   value: minPrice,
                   className: `${styles.sliderPriceInput} ${styles.startSlider}`,
                   max: '1500',
                 })}
                 ${FilterSlider.render({
-                  id: 'endSlider',
+                  id: 'endPrice',
                   value: maxPrice,
                   className: `${styles.sliderPriceInput}`,
                   max: '1500',
@@ -100,13 +102,13 @@ export const CatalogCardList = {
               <p class=${styles.categoryTitle}>Stock</p>
               <div class=${styles.slidersControl}>
                 ${FilterSlider.render({
-                  id: 'startSlider',
+                  id: 'minStock',
                   value: minStock,
                   className: `${styles.sliderStockInput} ${styles.startSlider}`,
                   max: '100',
                 })}
                 ${FilterSlider.render({
-                  id: 'endSlider',
+                  id: 'maxStock',
                   value: maxStock,
                   className: `${styles.sliderStockInput}`,
                   max: '100',
@@ -123,6 +125,8 @@ export const CatalogCardList = {
             </div>
           </div>
         </div>
+        <button class=${styles.filtersReset} id='resetBtn'>Reset all filters</button>
+        <button class=${styles.filtersReset} id='copyLink'>Copy link</button>
         <div class=${styles.orderProducts}>
           <div class='${styles.order} order' id='smallGrid'>
             <img class=${styles.orderBtn} src=${order3}/>
@@ -149,5 +153,7 @@ export const CatalogCardList = {
     useGrid()
     useSearch()
     addToCart({ products })
+    resetFilters()
+    copyLink()
   },
 }
