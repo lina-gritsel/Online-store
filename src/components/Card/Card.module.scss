@@ -24,7 +24,7 @@
     content: '';
     display: none;
     width: 100%;
-    height: 100%;
+    height: 97%;
     position: absolute;
     top: 0;
     left: 0;
@@ -50,7 +50,7 @@
       content: '';
       display: block;
       width: 100%;
-      height: 100%;
+      height: 97%;
       position: absolute;
       top: 0;
       left: 0;
@@ -60,6 +60,10 @@
 }
 .cardTitle{
   min-height: 53px;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 .cardTitle,
 .cardPrice {

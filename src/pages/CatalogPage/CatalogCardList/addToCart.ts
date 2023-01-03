@@ -83,11 +83,6 @@ export const addToCart: addToCart = async () => {
       btnDelete.style.display = 'none'
       imgBlock.classList.remove(styles.covered)
 
-      localStorage.setItem(
-        'amountOfProducts',
-        JSON.stringify(parseInt(headerCart.textContent as string)),
-      )
-
       if (cart.some((item) => item.id.toString() === cardId)) {
         products.forEach((product) => {
           if (product.id.toString() === cardId) {
@@ -104,6 +99,10 @@ export const addToCart: addToCart = async () => {
             headerSum.innerHTML = `Cart total: ${cartSum}$`
 
             localStorage.setItem('priceOfProducts', JSON.stringify(cartSum))
+            localStorage.setItem(
+              'amountOfProducts',
+              JSON.stringify(parseInt(headerCart.textContent as string)),
+            )
           }
         })
 

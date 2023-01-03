@@ -44,6 +44,7 @@ export const removeItem = (
     if (!cart.length) {
       clearAllValues()
       localStorage.setItem('amountOfProducts', JSON.stringify(cart.length))
+      localStorage.setItem('priceOfProducts', JSON.stringify(0))
     }
   } else {
     currentCard.numberOfUnits -= 1
@@ -74,6 +75,7 @@ export const deleteItem = (
   if (!cart.length) {
     clearAllValues()
     localStorage.setItem('amountOfProducts', JSON.stringify(cart.length))
+    localStorage.setItem('priceOfProducts', JSON.stringify(0))
   }
 
   setCartStateToLocalStorage({ products, cart })
