@@ -2,7 +2,7 @@ import styles from './CatalogCardList.module.scss'
 
 export const addNotFoundMessage = () => {
   const notFoundProducts = document.getElementById(
-    'notFoundProducts',
+    'notFound',
   ) as HTMLElement
 
   notFoundProducts.classList.add(`${styles.showNotFoundProducts}`)
@@ -11,7 +11,7 @@ export const addNotFoundMessage = () => {
 
 export const deleteNotFoundMessage = () => {
   const notFoundProducts = document.getElementById(
-    'notFoundProducts',
+    'notFound',
   ) as HTMLElement
 
   notFoundProducts.classList.remove(`${styles.showNotFoundProducts}`)

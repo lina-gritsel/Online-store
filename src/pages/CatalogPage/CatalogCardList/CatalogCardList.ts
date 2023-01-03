@@ -132,7 +132,7 @@ export const CatalogCardList = {
           </div>
         </div>
       </div>
-      <p class=${styles.notFoundProducts} id='notFoundProducts'></p>
+      <p class=${styles.notFoundProducts} id='notFound'></p>
       <div class=${styles.content} id='cardsContainer'>
       ${data.map((data) => `${Card(data)}`).join('')}
       </div>

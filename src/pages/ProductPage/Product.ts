@@ -9,6 +9,9 @@ export default {
   render: async () => {
     const { id } = parseRequestURL(location.hash.slice(1).toLowerCase())
     const product = await getProduct(id)
+
+    localStorage.setItem('product', JSON.stringify(product))
+
     const arrImages = product.image
 
     return `
@@ -43,9 +46,13 @@ export default {
           <div><span>Category:</span> ${product.category}</div>
           <div class=${styles.desc}>${product.description}</div>
           <div class=${styles.wrapperBtns}>
-            <button class=${styles.btnAddToCart} id='addToCart'>Add to cart</button>
-            <button class=${styles.btnDropFromCart} id='dropFromCart'>Drop from cart</button>
-            <button class=${styles.btnBuy} id=buyNow>Buy now</button>
+            <button class=${
+              styles.btnAddToCart
+            } id='addToCart'>Add to cart</button>
+            <button class=${
+              styles.btnDropFromCart
+            } id='dropFromCart'>Drop from cart</button>
+            <button class=${styles.btnBuy} id='buyNow'>Buy now</button>
           </div>
         </div>
         ${await CreateOrderModal.render()}

@@ -90,17 +90,26 @@
 }
 
 .btnBuy {
-  cursor:pointer;
+  align-items: center;
   background: transparent;
+  border: 1px solid var(--black-color);
   border-radius: 10px;
+  cursor:pointer;
+  display: flex;
   font: var(--font-text-4);
+  justify-content: center;
+  height: 50px;
   transition: all 0.5s ease-in-out;
   width: 120px;
-  height: 50px;
 
   &:hover {
     box-shadow: 4px 6px 10px 0px rgba(0, 0, 0, 0.5);
   }
+}
+
+.cartLink {
+  color: var(--black-color);
+  text-decoration: none;
 }
 
 .btnAddToCart {
