@@ -1,5 +1,6 @@
 import { getAllProducts } from '../../../api'
 import { Card } from '../../../components/Card'
+import styles from './CatalogCardList.module.scss'
 
 export const resetFilters = () => {
   const resetBtn = document.getElementById('resetBtn') as HTMLButtonElement
@@ -23,11 +24,27 @@ export const resetFilters = () => {
   const cards = document.getElementById('cardsContainer') as HTMLElement
 
   resetBtn.addEventListener('click', async () => {
+    allButtonsElement.forEach((btn: any) => {
+      btn.checked = false
+    })
+
     const cardElement = [...cards.children]
 
     cardElement.forEach((product) => {
       product.classList.remove('hidden')
     })
+
+    cards?.classList.remove(styles.newOrder)
+    cards?.classList.add(styles.content)
+
+    cardElement.forEach((card: any) => {
+      card.classList.remove(styles.newViewCard)
+    })
+
+    cardElement
+      .sort(() => Math.random() - 0.5)
+      .forEach((node) => cards.append(node))
+    console.log(cardElement.sort(() => Math.random() - 0.5))
 
     inputEl.value = ''
 
@@ -40,12 +57,6 @@ export const resetFilters = () => {
     maxPriceNumber.innerHTML = '1500$'
     minStockValue.innerHTML = `0`
     maxStockValue.innerHTML = `100`
-
-    allButtonsElement.forEach((btn: any) => {
-      const selectedBtn = btn as HTMLInputElement
-
-      selectedBtn.checked = false
-    })
 
     globalSortBtn.innerHTML = ''
     globalSortBtn.innerHTML = 'Order options'

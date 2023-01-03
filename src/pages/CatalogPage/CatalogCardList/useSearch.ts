@@ -9,13 +9,19 @@ export const useSearch: UseSearch = () => {
   const inputEl = document.getElementById('search') as HTMLInputElement
   const notFound = document.getElementById('notFoundProducts') as HTMLElement
   const btnsSort = document.querySelectorAll('.btnSort')
+  const resetBtn = document.getElementById('resetBtn') as HTMLButtonElement
+
   const cards = [...cardsContainer.children]
 
   const search = () => {
     const inputValue = inputEl.value.toUpperCase().trim()
-
+    resetBtn.addEventListener('click', () => {
+      cards.forEach((card: Element) => {
+        card.classList.remove(styles.hidden)
+        notFound.style.display = 'none'
+      })
+    })
     if (inputValue !== '') {
-      
       cards.forEach((card: Element, index: number) => {
         const productName = card.getAttribute('name')
         const productPrice = card.getAttribute('price')
@@ -51,9 +57,8 @@ export const useSearch: UseSearch = () => {
         notFound.style.display = 'none'
       })
     }
-    
   }
-  
+
   const storageSearch = localStorage.getItem('searchValue') as string
   inputEl.value = storageSearch
 
