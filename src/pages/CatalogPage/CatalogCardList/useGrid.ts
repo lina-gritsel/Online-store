@@ -27,22 +27,28 @@ export const useGrid = () => {
     })
   }
 
-  orderBtns.forEach((btn: any) => {
-    const elementId = btn.id
-    btn.addEventListener('click', () => {
-      
-      const searchURL = new URL((window as any).location)
-      searchURL.searchParams.set('order', elementId)
-      window.history.pushState({}, '', searchURL)
+  const gridResize = (gridSize: string) => {
+    const searchURL = new URL((window as any).location)
+    searchURL.searchParams.set('order', gridSize)
+    window.history.pushState({}, '', searchURL)
 
-      if (btn.id === OrderCards.MANY) {
-        cardsContainer?.classList.add(`${styles.newOrder}`)
-        setLargeGrid()
-      }
-      if (btn.id === OrderCards.SMALL) {
-        cardsContainer?.classList.remove(`${styles.newOrder}`)
-        setSmallGrid()
-      }
+    if (gridSize === OrderCards.MANY) {
+      setLargeGrid()
+    }
+    if (gridSize === OrderCards.SMALL) {
+      setSmallGrid()
+    }
+  }
+
+  orderBtns.forEach((btn: any) => {
+    btn.addEventListener('click', () => {
+      localStorage.setItem('grid', btn.id)
+
+      const btnId = localStorage.getItem('grid') || btn.id
+      gridResize(btnId)
     })
   })
+
+  const storageGridSize = localStorage.getItem('grid') || OrderCards.SMALL
+  gridResize(storageGridSize)
 }
