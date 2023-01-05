@@ -9,6 +9,7 @@
     "test": "jest"
   },
   "devDependencies": {
+    "@types/jest": "^29.2.5",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^8.1.1",
     "css-loader": "^5.2.7",
@@ -17,6 +18,7 @@
     "mini-css-extract-plugin": "^1.6.2",
     "sass": "^1.42.1",
     "sass-loader": "^11.1.1",
+    "ts-jest": "^29.0.3",
     "ts-loader": "^9.2.6",
     "typescript": "^4.4.3",
     "webpack": "^5.58.1",
