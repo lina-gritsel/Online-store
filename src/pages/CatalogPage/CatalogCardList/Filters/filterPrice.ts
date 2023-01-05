@@ -69,7 +69,7 @@ export const filterPrice = () => {
 
   const filter = () => {
     const products = getAvailableProducts()
-
+  
     let valueStartSlider = parseFloat(rangeSliders[0].value)
     let valueEndSlider = parseFloat(rangeSliders[1].value)
 

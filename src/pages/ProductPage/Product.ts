@@ -17,7 +17,7 @@ export default {
     return `
     <div class=${styles.header}></div>
     <div class=${styles.wrapperPath}>
-      <a href='#/catalog' class=${styles.path}>Catalog</a>
+      <a href='#/catalog' class=${styles.path}>Store</a>
       <img class=${styles.arrow} src=${arrow}/>
       <div class=${styles.path}>${product.category}</div>
       <img class=${styles.arrow} src=${arrow}/>
