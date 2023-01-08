@@ -4,6 +4,7 @@ import { getProduct } from '../../api/requests'
 import arrow from '../../assets/svg/arrow.svg'
 import { parseRequestURL } from '../../utils'
 import styles from './Product.module.scss'
+import { Products } from '../../api'
 
 export default {
   render: async () => {
@@ -66,7 +67,17 @@ export default {
     const allImages = [...document.querySelectorAll('.secondImg')]
 
     const { id } = parseRequestURL(location.hash.slice(1).toLowerCase())
-    const product = await getProduct(id)
+    const productData = await getProduct(id)
+
+    class Product {
+      data: Products;
+
+      public constructor(data: Products) {
+        this.data = data;
+      }
+    }
+          
+    const product = {...(new Product(productData)).data};
 
     allImages.forEach((image) => {
       image.addEventListener('click', () => {
