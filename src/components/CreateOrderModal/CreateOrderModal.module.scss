@@ -11,6 +11,11 @@ input::-webkit-inner-spin-button {
 
 .formWrapper {
   display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
   z-index: 9;
 }
 
@@ -27,9 +32,6 @@ input::-webkit-inner-spin-button {
   align-items: center;
   flex-direction: column;
   padding: 30px 30px 25px;
-  position: absolute;
-  right: 35%;
-  top: 5%;
   text-align: center;
 }
 
@@ -60,7 +62,7 @@ input::-webkit-inner-spin-button {
   cursor: pointer;
   color: var(--black-color);
   height: 40px;
-  transition:  all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
   width: 100%;
 
   &:hover {
@@ -70,11 +72,11 @@ input::-webkit-inner-spin-button {
 }
 
 .error input {
-  border: 3px solid rgb(206, 35, 35);
+  border-bottom: 3px solid rgb(206, 35, 35);
 }
 
 .success input {
-  border: 3px solid rgb(54, 174, 24);
+  border-bottom: 3px solid rgb(54, 174, 24);
 }
 
 .error span {
@@ -127,10 +129,6 @@ input::-webkit-inner-spin-button {
   display: block;
   opacity: 0.6;
   z-index: 7;
-}
-
-.lock {
-  overflow: hidden;
 }
 
 /*CARD*/
@@ -235,19 +233,19 @@ input::-webkit-inner-spin-button {
   border: 1px solid var(--black-color);
   border-radius: 50px;
   display: none;
-  height: 60px;
+  height: 160px;
   justify-content: center;
   position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 350px;
+  width: 550px;
   z-index: 100;
 }
 
 .text {
   color: var(--black-color);
-  font: var(--font-text-5);
+  font: var(--font-text-2);
   padding: 5px;
   width: 60%;
 }
