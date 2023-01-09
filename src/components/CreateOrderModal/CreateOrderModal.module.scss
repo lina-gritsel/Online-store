@@ -75,6 +75,10 @@ input::-webkit-inner-spin-button {
   border-bottom: 3px solid rgb(206, 35, 35);
 }
 
+.error div {
+  border-bottom: 3px solid rgb(206, 35, 35);
+}
+
 .success input {
   border-bottom: 3px solid rgb(54, 174, 24);
 }
@@ -144,8 +148,8 @@ input::-webkit-inner-spin-button {
   flex-direction: column;
   gap: 15px;
   padding: 20px;
-  width: 350px;
-  height: 200px;
+  width: 370px;
+  height: 230px;
   position: relative;
   z-index: 1;
 }
@@ -170,7 +174,6 @@ input::-webkit-inner-spin-button {
   color: var(--white-color);
   display: flex;
   text-align: center;
-
   height: 40px;
   font: var(--font-text-2);
   outline: none;
@@ -180,6 +183,8 @@ input::-webkit-inner-spin-button {
   background-color: transparent;
   border: none;
   color: var(--white-color);
+  display: flex;
+  text-align: center;
   width: 100px;
   height: 36px;
   font: var(--font-text-3);

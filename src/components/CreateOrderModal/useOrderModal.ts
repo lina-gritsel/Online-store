@@ -13,6 +13,8 @@ import {
   checkIsAddressValid,
   checkIsEmailValid,
   checkIsCardNumberValid,
+  checkIsMonthValid,
+  checkIsYearValid,
   checkIsCvvValid,
 } from './modules/fieldsValidate'
 
@@ -32,6 +34,7 @@ export const useOrderModal: useOrderModal = () => {
   const popupWrapper = document.getElementById('popupWrapper') as HTMLDivElement
 
   let isOrderingForOneProduct = false
+  let checkSuccessArr: boolean[] = []
 
   if (window.location.hash !== '#/cart') {
     btnBuyProductNow()
@@ -89,6 +92,8 @@ export const useOrderModal: useOrderModal = () => {
   const address = document.getElementById('address') as HTMLInputElement
   const email = document.getElementById('email') as HTMLInputElement
   const cardNumber = document.getElementById('cardNumber') as HTMLInputElement
+  const month = document.getElementById('month') as HTMLInputElement
+  const year = document.getElementById('year') as HTMLInputElement
   const cvv = document.getElementById('cvv') as HTMLInputElement
 
   const returnToMainPage = () => {
@@ -100,7 +105,6 @@ export const useOrderModal: useOrderModal = () => {
       )
 
       dropProductFromCart()
-    
     } else {
       clearAllValues()
       clearLocalStorage()
@@ -118,25 +122,22 @@ export const useOrderModal: useOrderModal = () => {
     }, 3000)
   }
 
-  let isSuccessUserName = userName.parentElement?.className !== 'undefined'
-  let isSuccessPhone = userName.parentElement?.className !== 'undefined'
-  let isSuccessAddress = userName.parentElement?.className !== 'undefined'
-  let isSuccessEmail = userName.parentElement?.className !== 'undefined'
-  let isSuccessCardNum = userName.parentElement?.className !== 'undefined'
-  let isSuccessCvv = userName.parentElement?.className !== 'undefined'
+  let isSuccessUserName = false
+  let isSuccessPhone = false
+  let isSuccessAddress = false
+  let isSuccessEmail = false
+  let isSuccessCardNum = false
+  let isSuccessMonth = false
+  let isSuccessYear = false
+  let isSuccessCvv = false
 
   form?.addEventListener('submit', (e: SubmitEvent) => {
     e.preventDefault()
     checkInputs()
 
-    if (
-      isSuccessUserName &&
-      isSuccessPhone &&
-      isSuccessAddress &&
-      isSuccessEmail &&
-      isSuccessCardNum &&
-      isSuccessCvv
-    ) {
+    const isTrue = (value: boolean) => value === true
+
+    if (checkSuccessArr.every(isTrue)) {
       returnToMainPage()
     }
   })
@@ -147,6 +148,8 @@ export const useOrderModal: useOrderModal = () => {
     const addressValue = address.value.trim()
     const emailValue = email.value.trim()
     const cardNumberValue = cardNumber.value.trim()
+    const monthValue = month.value.trim()
+    const yearValue = year.value.trim()
     const cvvValue = cvv.value.trim()
 
     checkIsUserNameValid(userNameValue)
@@ -154,14 +157,39 @@ export const useOrderModal: useOrderModal = () => {
     checkIsAddressValid(addressValue)
     checkIsEmailValid(emailValue)
     checkIsCardNumberValid(cardNumberValue)
+    checkIsMonthValid(monthValue)
+    checkIsYearValid(yearValue)
     checkIsCvvValid(cvvValue)
 
-    isSuccessUserName = userName.parentElement?.className !== 'undefined'
-    isSuccessPhone = userName.parentElement?.className !== 'undefined'
-    isSuccessAddress = userName.parentElement?.className !== 'undefined'
-    isSuccessEmail = userName.parentElement?.className !== 'undefined'
-    isSuccessCardNum = userName.parentElement?.className !== 'undefined'
-    isSuccessCvv = userName.parentElement?.className !== 'undefined'
+    let userNameWrapper = userName.parentElement as HTMLInputElement
+    let phoneWrapper = phone.parentElement as HTMLInputElement
+    let addressWrapper = address.parentElement as HTMLInputElement
+    let emailWrapper = email.parentElement as HTMLInputElement
+    let cardNumWrapper = cardNumber.parentElement as HTMLInputElement
+    let monthWrapper = month.parentElement as HTMLInputElement
+    let yearWrapper = year.parentElement as HTMLInputElement
+    let cvvWrapper = cvv.parentElement as HTMLInputElement
+
+    isSuccessUserName = userNameWrapper.classList.contains('isSuccess')
+    isSuccessPhone = phoneWrapper.classList.contains('isSuccess')
+    isSuccessAddress = addressWrapper.classList.contains('isSuccess')
+    isSuccessEmail = emailWrapper.classList.contains('isSuccess')
+    isSuccessCardNum = cardNumWrapper.classList.contains('isSuccess')
+    isSuccessMonth = monthWrapper.classList.contains('isSuccess')
+    isSuccessYear = yearWrapper.classList.contains('isSuccess')
+    isSuccessCvv = cvvWrapper.classList.contains('isSuccess')
+
+    checkSuccessArr = []
+    checkSuccessArr.push(
+      isSuccessUserName,
+      isSuccessPhone,
+      isSuccessAddress,
+      isSuccessEmail,
+      isSuccessCardNum,
+      isSuccessMonth,
+      isSuccessYear,
+      isSuccessCvv,
+    )
   }
 
   checkCardTerm()

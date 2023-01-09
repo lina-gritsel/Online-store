@@ -9,6 +9,7 @@ interface MonthInputProps {
  export const MonthInput = {
     render: ({ id, placeholder, maxlength = '' }: MonthInputProps) => {
       return `
+        <div class=${styles.monthWrapper}>
         <input
           autocomplete="off"
           class=${styles.exp}
@@ -20,6 +21,7 @@ interface MonthInputProps {
           maxlength=${maxlength}
           inputmode="numerical" 
         />
+        </div>
       `
     },
   }

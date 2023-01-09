@@ -68,6 +68,14 @@ const validateCardNumber = (cardValue: string) => {
   if (cardValue.length !== 19) return 'Card length 16 digits'
 }
 
+const validateMonthCard = (monthValue: string) => {
+  if (isEmpty(monthValue)) return ' '
+}
+
+const validateYearCard = (yearValue: string) => {
+  if (isEmpty(yearValue)) return ' '
+}
+
 const validateCvvCard = (cvvValue: string) => {
   if (isEmpty(cvvValue)) return 'CVV cannot be blank'
 }
@@ -77,11 +85,19 @@ const setErrorFor = (input: HTMLInputElement, message: string) => {
   const span = formControl?.querySelector('span') as HTMLSpanElement
   span.innerText = message
   formControl.className = `${styles.error}`
+  formControl.classList.add('isError')
+}
+
+const setErrorForDate = (input: HTMLInputElement) => {
+  const formControl = input.parentElement as HTMLDivElement
+  formControl.className = `${styles.error}`
+  formControl.classList.add('isError')
 }
 
 const setSuccessFor = (input: HTMLInputElement) => {
-  const formControl = input.parentElement as HTMLElement
+  const formControl = input.parentElement as HTMLDivElement
   formControl.className = `${styles.success}`
+  formControl.classList.add('isSuccess')
 }
 
 export const checkIsUserNameValid = (userNameValue: string): void => {
@@ -136,6 +152,28 @@ export const checkIsCardNumberValid = (emailValue: string) => {
     setErrorFor(cardNumber, message)
   } else {
     setSuccessFor(cardNumber)
+  }
+}
+
+export const checkIsMonthValid = (monthValue: string) => {
+  const month = document.getElementById('month') as HTMLInputElement
+  const message = validateMonthCard(monthValue)
+
+  if (message) {
+    setErrorForDate(month)
+  } else {
+    setSuccessFor(month)
+  }
+}
+
+export const checkIsYearValid = (yearValue: string) => {
+  const year = document.getElementById('year') as HTMLInputElement
+  const message = validateYearCard(yearValue)
+
+  if (message) {
+    setErrorForDate(year)
+  } else {
+    setSuccessFor(year)
   }
 }
 

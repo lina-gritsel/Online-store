@@ -5,20 +5,19 @@ export const checkCardTerm = (): void => {
   const yearInput = document.getElementById('year') as HTMLInputElement
 
   const focusSibling = (
-    target: Element,
     direction: string,
     callback?: (value?: Element) => void,
   ) => {
-   if (direction === 'nextElementSibling') {
-    const nextTarget = target.nextElementSibling as HTMLInputElement
-    nextTarget && nextTarget.focus()
-    callback && callback(nextTarget)
-   }
-   if (direction === 'previousElementSibling') {
-    const nextTarget = target.previousElementSibling as HTMLInputElement
-    nextTarget && nextTarget.focus()
-    callback && callback(nextTarget)
-   }
+    if (direction === 'nextElementSibling') {
+      const nextTarget = document.getElementById('year') as HTMLInputElement
+      nextTarget && nextTarget.focus()
+      callback && callback(nextTarget)
+    }
+    if (direction === 'previousElementSibling') {
+      const nextTarget = document.getElementById('month') as HTMLInputElement
+      nextTarget && nextTarget.focus()
+      callback && callback(nextTarget)
+    }
   }
 
   monthInput?.addEventListener('input', (event: Event) => {
@@ -35,7 +34,7 @@ export const checkCardTerm = (): void => {
     } else if (valueNumber > MOUNTHS_IN_YEAR) {
       ;(event.target as HTMLInputElement).value = '12'
     }
-    value.length >= 2 && focusSibling(event.target as Element, 'nextElementSibling')
+    value.length >= 2 && focusSibling('nextElementSibling')
     event.stopImmediatePropagation()
   })
 
@@ -44,17 +43,20 @@ export const checkCardTerm = (): void => {
       event.key === 'Backspace' &&
       (event.target as HTMLInputElement).selectionStart === 0
     ) {
-      focusSibling(event.target as Element, 'previousElementSibling')
+      focusSibling('previousElementSibling')
       event.stopImmediatePropagation()
     }
   })
 
   const inputMatchesPattern = (e: KeyboardEvent) => {
-    const { value, selectionStart, selectionEnd, pattern } = e.target as HTMLInputElement
+    const { value, selectionStart, selectionEnd, pattern } =
+      e.target as HTMLInputElement
 
     const character = String.fromCharCode(e.which)
     const proposedEntry =
-      value.slice(0, selectionStart as number) + character + value.slice(selectionEnd as number)
+      value.slice(0, selectionStart as number) +
+      character +
+      value.slice(selectionEnd as number)
     const match = proposedEntry.match(pattern)
 
     return (
