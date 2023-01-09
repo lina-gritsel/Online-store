@@ -123,43 +123,6 @@ export const useFilter: useFilter = () => {
   filterPrice()
   filterStock()
 
-//   btnsFilter.forEach((btn) => {
-//     btn.addEventListener('click', () => {
-//       const cardsContainer = document.getElementById(
-//         'cardsContainer',
-//       ) as HTMLElement
-//       const products = [...cardsContainer.children]
-// console.log(products);
-//       const priceSlidersParent = document.getElementById(
-//         'filterPrice',
-//       ) as HTMLElement
-
-//       const rangeSliders = priceSlidersParent.querySelectorAll(
-//         'input[type="range"]',
-//       ) as NodeListOf<HTMLInputElement>
-
-//       const productsPrices = [] as number[]
-//       products.forEach((product) => {
-//         if (!product.classList.contains('hidden')) {
-//           const productPrice = product.getAttribute('price') as string
-
-//           productsPrices?.push(parseFloat(productPrice))
-//         }
-//       })
-
-//       console.log(productsPrices)
-
-//       const minValueproductsPrices = Math.min(...productsPrices)
-//       const maxValueproductsPrices = Math.max(...productsPrices)
-
-//       rangeSliders[0].value = '0'
-//       rangeSliders[1].value = '1500'
-
-      // rangeSliders[0].value = minValueproductsPrices.toString()
-      // rangeSliders[1].value = maxValueproductsPrices.toString()
-    // })
-  // })
-
   filterValues?.addEventListener('click', (e: MouseEvent) => {
     filterWrapper?.classList.toggle(styles.showValues)
     filterImg.classList.toggle(styles.imgRotate)

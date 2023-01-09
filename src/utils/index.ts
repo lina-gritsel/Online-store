@@ -9,7 +9,10 @@ export const compareNumbers = (
   return 0
 }
 
-export const parseRequestURL = (url: string): any => {
+export const parseRequestURL = (url: string): {
+  resource: string
+  id: string
+} => {
   const [, resource, id] = url.split('/')
 
   return { resource, id }

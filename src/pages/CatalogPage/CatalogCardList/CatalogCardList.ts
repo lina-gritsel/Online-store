@@ -125,7 +125,9 @@ export const CatalogCardList = {
             </div>
           </div>
         </div>
-        <button class=${styles.filtersReset} id='resetBtn'>Reset all filters</button>
+        <button class=${
+          styles.filtersReset
+        } id='resetBtn'>Reset all filters</button>
         <button class=${styles.filtersReset} id='copyLink'>Copy link</button>
         <div class=${styles.orderProducts}>
           <div class='${styles.order} order' id='smallGrid'>
