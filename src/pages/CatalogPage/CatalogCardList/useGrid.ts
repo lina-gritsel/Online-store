@@ -15,20 +15,20 @@ export const useGrid = () => {
 
   const setLargeGrid = () => {
     cardsContainer?.classList.add(`${styles.newOrder}`)
-    cards.forEach((card: any) => {
+    cards.forEach((card: Element) => {
       card.classList.add(`${styles.newViewCard}`)
     })
   }
 
   const setSmallGrid = () => {
     cardsContainer?.classList.remove(`${styles.newOrder}`)
-    cards.forEach((card: any) => {
+    cards.forEach((card: Element) => {
       card.classList.remove(`${styles.newViewCard}`)
     })
   }
 
   const gridResize = (gridSize: string) => {
-    const searchURL = new URL((window as any).location)
+    const searchURL = new URL(window.location.href)
     searchURL.searchParams.set('order', gridSize)
     window.history.pushState({}, '', searchURL)
 
@@ -40,7 +40,7 @@ export const useGrid = () => {
     }
   }
 
-  orderBtns.forEach((btn: any) => {
+  orderBtns.forEach((btn: Element) => {
     btn.addEventListener('click', () => {
       localStorage.setItem('grid', btn.id)
 

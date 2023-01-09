@@ -25,8 +25,9 @@ export const usePagination = () => {
     rowsPerPage: number,
     page: number,
   ) => {
-    const cartURL = new URL((window as any).location)
+    const cartURL = new URL(window.location.href)
     cartURL.searchParams.set('limit', `${rows}`)
+    cartURL.searchParams.set('page', `${page}`)
     window.history.pushState({}, '', cartURL)
 
     page--

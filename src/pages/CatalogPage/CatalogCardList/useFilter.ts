@@ -34,7 +34,7 @@ export const useFilter: useFilter = () => {
 
     const allButtonsElement = document.querySelectorAll('.btnFilter')
 
-    allButtonsElement.forEach((btn: any) => {
+    allButtonsElement.forEach((btn: Element) => {
       const selectedBtn = btn as HTMLInputElement
       const selectedBtnId = selectedBtn.id.split('-').join(' ')
 
@@ -85,7 +85,7 @@ export const useFilter: useFilter = () => {
       const selectedBtn = event.target as HTMLInputElement
       const filterField = selectedBtn?.id.split('-').join(' ')
 
-      const searchURL = new URL((window as any).location)
+      const searchURL = new URL(window.location.href)
       searchURL.searchParams.set('filterBy', filterField)
       window.history.pushState({}, '', searchURL)
 

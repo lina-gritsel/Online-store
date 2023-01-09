@@ -1,10 +1,14 @@
+import styles from './Cart.module.scss'
+
 export const clearAllValues = () => {
   const totalAmount = document.getElementById('amount') as HTMLParagraphElement
   const addPromoRS = document.getElementById('addPromoRS') as HTMLButtonElement
   const totalPrice = document.getElementById('total') as HTMLParagraphElement
   const codesContainer = document.getElementById('codes') as HTMLDivElement
+  const pageNum = document.getElementById('page') as HTMLParagraphElement
   const appliedEPM = document.getElementById('dropEPM') as HTMLDivElement
   const appliedRS = document.getElementById('dropRS') as HTMLDivElement
+
   
   const cartContainer = document.getElementById(
     'cartContainer',
@@ -22,7 +26,10 @@ export const clearAllValues = () => {
     'promoTotal',
   ) as HTMLParagraphElement
 
-  cartContainer.innerHTML = 'Cart is empty'
+  cartContainer.innerHTML = ''
+  cartContainer.insertAdjacentHTML('beforeend', `
+  <p class=${styles.text}>Cart is empty</p>
+  `)
   totalPrice.innerHTML = 'Total: 0$'
   totalPrice.style.textDecoration = 'none'
   totalAmount.innerHTML = 'Products: 0'

@@ -5,13 +5,20 @@ export const checkCardTerm = (): void => {
   const yearInput = document.getElementById('year') as HTMLInputElement
 
   const focusSibling = (
-    target: any,
+    target: Element,
     direction: string,
-    callback?: (value?: any) => void,
+    callback?: (value?: Element) => void,
   ) => {
-    const nextTarget = target[direction]
+   if (direction === 'nextElementSibling') {
+    const nextTarget = target.nextElementSibling as HTMLInputElement
     nextTarget && nextTarget.focus()
     callback && callback(nextTarget)
+   }
+   if (direction === 'previousElementSibling') {
+    const nextTarget = target.previousElementSibling as HTMLInputElement
+    nextTarget && nextTarget.focus()
+    callback && callback(nextTarget)
+   }
   }
 
   monthInput?.addEventListener('input', (event: Event) => {
@@ -28,7 +35,7 @@ export const checkCardTerm = (): void => {
     } else if (valueNumber > MOUNTHS_IN_YEAR) {
       ;(event.target as HTMLInputElement).value = '12'
     }
-    value.length >= 2 && focusSibling(event.target, 'nextElementSibling')
+    value.length >= 2 && focusSibling(event.target as Element, 'nextElementSibling')
     event.stopImmediatePropagation()
   })
 
@@ -37,17 +44,17 @@ export const checkCardTerm = (): void => {
       event.key === 'Backspace' &&
       (event.target as HTMLInputElement).selectionStart === 0
     ) {
-      focusSibling(event.target, 'previousElementSibling')
+      focusSibling(event.target as Element, 'previousElementSibling')
       event.stopImmediatePropagation()
     }
   })
 
-  const inputMatchesPattern = (e: any) => {
-    const { value, selectionStart, selectionEnd, pattern } = e.target
+  const inputMatchesPattern = (e: KeyboardEvent) => {
+    const { value, selectionStart, selectionEnd, pattern } = e.target as HTMLInputElement
 
     const character = String.fromCharCode(e.which)
     const proposedEntry =
-      value.slice(0, selectionStart) + character + value.slice(selectionEnd)
+      value.slice(0, selectionStart as number) + character + value.slice(selectionEnd as number)
     const match = proposedEntry.match(pattern)
 
     return (
@@ -60,7 +67,7 @@ export const checkCardTerm = (): void => {
 
   document.querySelectorAll('input[data-pattern-validate]').forEach((el) =>
     el.addEventListener('keypress', (e) => {
-      if (!inputMatchesPattern(e)) {
+      if (!inputMatchesPattern(e as KeyboardEvent)) {
         return e.preventDefault()
       }
     }),

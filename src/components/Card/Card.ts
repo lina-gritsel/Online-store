@@ -21,8 +21,6 @@ export const Card = (card: Products): string => {
             <div class=${styles.brand}>Stock: ${stock}</div>
             <div class=${styles.brand}>Rating: ${rating}</div>
             <div class=${styles.brand}>Сategory: ${category}</div>
-
-
         </div>
         `
 }
