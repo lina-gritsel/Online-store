@@ -1,6 +1,6 @@
 import styles from '../CreateOrderModal.module.scss'
 
-const isEmpty = (value: string): boolean => {
+ const isEmpty = (value: string): boolean => {
   return !value
 }
 
@@ -37,7 +37,7 @@ const validateUserName = (userNameValue: string) => {
     return 'Name length of at least 3 characters'
 }
 
-const validatePhoneNumber = (phoneValue: string) => {
+ const validatePhoneNumber = (phoneValue: string) => {
   const valueNumber = phoneValue.slice(1)
   const isExistPlus = phoneValue.slice(0, 1) === '+'
 
