@@ -5,6 +5,7 @@ import { renderSummary } from './renderSummary'
 import { Products } from './../../../api/types'
 import { removeItem } from './cartState'
 import { deleteItem } from './cartState'
+import styles from './Cart.module.scss'
 import { addItem } from './cartState'
 
 type useCart = () => void
@@ -55,7 +56,13 @@ export const useCart: useCart = () => {
   if (!cart || !cart.length) {
     headerCart.innerHTML = '0'
     headerSum.innerHTML = 'Cart total: 0$'
-    cartContainer.innerHTML = 'Cart is empty'
+    cartContainer.innerHTML = ''
+    cartContainer.insertAdjacentHTML(
+      'beforeend',
+      `
+  <p class=${styles.text}>Cart is empty</p>
+  `,
+    )
     totalAmount.innerHTML = 'Products: 0'
     totalPrice.innerHTML = 'Total: 0$'
     btnBuyNow.disabled = true

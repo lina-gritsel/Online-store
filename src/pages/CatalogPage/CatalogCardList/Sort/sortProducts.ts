@@ -10,7 +10,7 @@ export const sort = (sortField: string) => {
   const storageSortBy = localStorage.getItem('sortBy') as string
   const storagesortOrder = localStorage.getItem('sortOrder') as string
 
-  const searchURL = new URL((window as any).location)
+  const searchURL = new URL(window.location.href)
   searchURL.searchParams.set('sortBy', sortBy)
   searchURL.searchParams.set('sortOrder', sortOrder)
   window.history.pushState({}, '', searchURL)

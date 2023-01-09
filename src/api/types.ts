@@ -14,5 +14,5 @@ export interface Products {
 
 export interface Categories {
   title: string
-  image: any
+  image: string
 }

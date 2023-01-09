@@ -34,7 +34,7 @@ const validateUserName = (userNameValue: string) => {
   if (isIncludeNumber(splitUserName)) return 'Enter the string'
   if (isValidLength(splitUserName, 2)) return 'Required number of words - 2'
   if (validSplitNames.includes(true))
-    return 'Name or surname length of at least 3 characters'
+    return 'Name length of at least 3 characters'
 }
 
 const validatePhoneNumber = (phoneValue: string) => {

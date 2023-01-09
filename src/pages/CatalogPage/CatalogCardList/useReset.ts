@@ -24,8 +24,8 @@ export const resetFilters = () => {
   const cards = document.getElementById('cardsContainer') as HTMLElement
 
   resetBtn.addEventListener('click', async () => {
-    allButtonsElement.forEach((btn: any) => {
-      btn.checked = false
+    allButtonsElement.forEach((btn: Element) => {
+      (btn as HTMLInputElement).checked = false
     })
 
     const cardElement = [...cards.children]
@@ -37,7 +37,7 @@ export const resetFilters = () => {
     cards?.classList.remove(styles.newOrder)
     cards?.classList.add(styles.content)
 
-    cardElement.forEach((card: any) => {
+    cardElement.forEach((card: Element) => {
       card.classList.remove(styles.newViewCard)
     })
 
