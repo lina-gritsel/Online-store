@@ -46,7 +46,7 @@ export default {
                   onkeypress="${onCardNumberHandler()}"
                   class=${styles.cardNumberInput}
                   id="cardNumber"
-                  placeholder='**** **** **** ****'
+                  placeholder='**** **** **** ****'>
                 <span></span>
               </div>
               <div class=${styles.cardInfo}>
@@ -69,6 +69,7 @@ export default {
                   placeholder='CVV' 
                   oninput="${onlyNumberVoid()}" 
                   onKeyDown="${onCodeHandler()}">
+                  <span></span>
                 </div>
               </div>
             </div>

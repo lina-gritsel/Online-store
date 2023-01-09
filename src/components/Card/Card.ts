@@ -12,15 +12,16 @@ export const Card = (card: Products): string => {
               <img class=${styles.deleteCart} src='../../assets/svg/delete.png' id='deleteFromCart'/>
             </div>           
             <a class=${styles.cardTitle} id='cardTitle' href="#/products/${id}">${title}</a>
-            <div class='${styles.cardDesc} descriptionProduct' id='descriptionProduct'>${description}</div>
+            <div class='${styles.cardDesc} descriptionProduct' id='descriptionProduct'>
+              <span class=${styles.brand}>
+                ${category} / ${brand} / Stock: ${stock} / Rating: ${rating} <br /> 
+              </span>
+              ${description}
+            </div>
             <div class=${styles.cardPrice} id='cardPrice'>${price}$</div>
             <div class=${styles.hidden}>${category}</div>
             <div class=${styles.hidden}>${brand}</div>
             <div class=${styles.hidden}>${id}</div>
-            <div class=${styles.brand}>Brand: ${brand}</div>
-            <div class=${styles.brand}>Stock: ${stock}</div>
-            <div class=${styles.brand}>Rating: ${rating}</div>
-            <div class=${styles.brand}>Сategory: ${category}</div>
         </div>
         `
 }
