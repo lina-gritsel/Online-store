@@ -45,87 +45,90 @@ export const CatalogCardList = {
           <image class=${styles.sortImg} id='sortImg' src=${polygon} />
         </div>
         <div class='${styles.sortWrapper}' id='sortWrapper'>
-        ${SortValues.render()}
+          ${SortValues.render()}
         </div>
         <div class=${styles.filterMainButton}  id='filterValues'>
           <button class=${
             styles.filterValues
           } id='globalFilterBtn'>Filters</button>
           <image class=${styles.filterImg} id='filterImg' src=${polygon} />
-        </div>
-        <div class='${styles.filterWrapper}' id='filterWrapper'>
-          <p class=${styles.categoryTitle}>Categories</p>
-          <div class=${styles.line}></div>
-          <div class=${styles.categoryBox}>
-            ${FilterValues.render({
-              sortValues: FILTER_VALUES_CATEGORIES,
-              className: 'category',
-            })}
-          </div>
-          <div class=${styles.line}></div>
-          <p class=${styles.categoryTitle}>Brands</p>
-          <div class=${styles.line}></div>
-          <div class=${styles.categoryBox}>
-            ${FilterValues.render({
-              sortValues: FILTER_VALUES_BRANDS,
-              className: 'brand',
-            })}
-          </div>
-          <div class=${styles.line}></div>
-          <div class=${styles.sliderBlock}>
-            <div class=${styles.price} id='filterPrice'>
-              <p class=${styles.categoryTitle}>Price</p>
-              <div class=${styles.slidersControl}>
-                ${FilterSlider.render({
-                  id: 'startPrice',
-                  value: minPrice,
-                  className: `${styles.sliderPriceInput} ${styles.startSlider}`,
-                  max: '1500',
-                })}
-                ${FilterSlider.render({
-                  id: 'endPrice',
-                  value: maxPrice,
-                  className: `${styles.sliderPriceInput}`,
-                  max: '1500',
-                })}
-              </div>
-              <div class=${styles.formControl}>
-                <div class=${styles.formControlItems} id='minPriceNumber'>
-                  0$
+          <div class='${styles.filterWrapper}' id='filterWrapper'>
+            <p class=${styles.categoryTitle}>Categories</p>
+            <div class=${styles.line}></div>
+            <div class=${styles.categoryBox}>
+              ${FilterValues.render({
+                sortValues: FILTER_VALUES_CATEGORIES,
+                className: 'category',
+              })}
+            </div>
+            <div class=${styles.line}></div>
+            <p class=${styles.categoryTitle}>Brands</p>
+            <div class=${styles.line}></div>
+            <div class=${styles.categoryBox}>
+              ${FilterValues.render({
+                sortValues: FILTER_VALUES_BRANDS,
+                className: 'brand',
+              })}
+            </div>
+            <div class=${styles.line}></div>
+            <div class=${styles.sliderBlock}>
+              <div class=${styles.price} id='filterPrice'>
+                <p class=${styles.categoryTitle}>Price</p>
+                <div class=${styles.slidersControl}>
+                  ${FilterSlider.render({
+                    id: 'startPrice',
+                    value: minPrice,
+                    className: `${styles.sliderPriceInput} ${styles.startSlider}`,
+                    max: '1500',
+                  })}
+                  ${FilterSlider.render({
+                    id: 'endPrice',
+                    value: maxPrice,
+                    className: `${styles.sliderPriceInput}`,
+                    max: '1500',
+                  })}
                 </div>
-                <div class=${styles.formControlItems} id='maxPriceNumber'>
-                 1500$
+                <div class=${styles.formControl}>
+                  <div class=${styles.formControlItems} id='minPriceNumber'>
+                    0$
+                  </div>
+                  <div class=${styles.formControlItems} id='maxPriceNumber'>
+                   1500$
+                  </div>
+                </div>
+              </div>
+              <div class=${styles.price} id='filterStock'>
+                <p class=${styles.categoryTitle}>Stock</p>
+                <div class=${styles.slidersControl}>
+                  ${FilterSlider.render({
+                    id: 'minStock',
+                    value: minStock,
+                    className: `${styles.sliderStockInput} ${styles.startSlider}`,
+                    max: '100',
+                  })}
+                  ${FilterSlider.render({
+                    id: 'maxStock',
+                    value: maxStock,
+                    className: `${styles.sliderStockInput}`,
+                    max: '100',
+                  })}
+                </div>
+                <div class=${styles.formControl}>
+                  <div class=${styles.formControlItems} id='minStockValue'>
+                    0
+                  </div>
+                  <div class=${styles.formControlItems} id='maxStockValue'>
+                   100
+                  </div>
                 </div>
               </div>
             </div>
-            <div class=${styles.price} id='filterStock'>
-              <p class=${styles.categoryTitle}>Stock</p>
-              <div class=${styles.slidersControl}>
-                ${FilterSlider.render({
-                  id: 'minStock',
-                  value: minStock,
-                  className: `${styles.sliderStockInput} ${styles.startSlider}`,
-                  max: '100',
-                })}
-                ${FilterSlider.render({
-                  id: 'maxStock',
-                  value: maxStock,
-                  className: `${styles.sliderStockInput}`,
-                  max: '100',
-                })}
-              </div>
-              <div class=${styles.formControl}>
-                <div class=${styles.formControlItems} id='minStockValue'>
-                  0
-                </div>
-                <div class=${styles.formControlItems} id='maxStockValue'>
-                 100
-                </div>
-              </div>
-            </div>
           </div>
         </div>
-        <button class=${styles.filtersReset} id='resetBtn'>Reset all filters</button>
+        
+        <button class=${
+          styles.filtersReset
+        } id='resetBtn'>Reset all filters</button>
         <button class=${styles.filtersReset} id='copyLink'>Copy link</button>
         <div class=${styles.orderProducts}>
           <div class='${styles.order} order' id='smallGrid'>

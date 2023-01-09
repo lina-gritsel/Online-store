@@ -81,6 +81,7 @@ export const useFilter: useFilter = () => {
 
   btnsFilter.forEach((btn) => {
     btn.addEventListener('click', (event: Event) => {
+      event.stopPropagation()
       const selectedBtn = event.target as HTMLInputElement
       const filterField = selectedBtn?.id.split('-').join(' ')
 
@@ -127,5 +128,20 @@ export const useFilter: useFilter = () => {
     filterWrapper?.classList.toggle(styles.showValues)
     filterImg.classList.toggle(styles.imgRotate)
     e.stopPropagation()
+  })
+  const body = document.querySelector('body')
+
+
+  body?.addEventListener('click', () => {
+    const sortWrapper = document.getElementById('filterWrapper')
+    const sortImg = document.getElementById('filterImg') as HTMLImageElement
+  
+    if (
+      sortWrapper?.classList.contains(styles.showValues) &&
+      sortImg?.classList.contains(styles.imgRotate)
+    ) {
+      sortWrapper.classList.remove(styles.showValues)
+      sortImg.classList.remove(styles.imgRotate)
+    }
   })
 }
