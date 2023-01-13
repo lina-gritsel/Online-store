@@ -5,8 +5,9 @@ import { renderSummary } from './renderSummary'
 import { Products } from './../../../api/types'
 import { removeItem } from './cartState'
 import { deleteItem } from './cartState'
-import styles from './Cart.module.scss'
 import { addItem } from './cartState'
+
+import styles from './Cart.module.scss'
 
 type useCart = () => void
 
@@ -60,8 +61,8 @@ export const useCart: useCart = () => {
     cartContainer.insertAdjacentHTML(
       'beforeend',
       `
-  <p class=${styles.text}>Cart is empty</p>
-  `,
+        <p class=${styles.text}>Cart is empty</p>
+      `,
     )
     totalAmount.innerHTML = 'Products: 0'
     totalPrice.innerHTML = 'Total: 0$'

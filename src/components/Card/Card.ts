@@ -1,4 +1,5 @@
 import { Products } from '../../api'
+
 import styles from './Card.module.scss'
 
 export const Card = (card: Products): string => {

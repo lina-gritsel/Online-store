@@ -1,5 +1,6 @@
-import styles from './Footer.module.scss'
 import Logo from '../../assets/svg/rs-school.svg'
+
+import styles from './Footer.module.scss'
 
 export const Footer = (): string =>
   `

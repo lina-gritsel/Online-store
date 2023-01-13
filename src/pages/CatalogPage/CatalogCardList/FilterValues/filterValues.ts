@@ -1,5 +1,6 @@
-import styles from '../CatalogCardList.module.scss'
 import { SORT_VALUES } from './constants'
+
+import styles from '../CatalogCardList.module.scss'
 
 export const SortValues = {
   render: () =>

@@ -1,6 +1,7 @@
 import { Products } from './../../../api'
 import { getAllProducts } from '../../../api'
 import { setCartStateToLocalStorage } from '../../CartPage/Cart/setCartStateToLocalStorage'
+
 import styles from '../../../components/Card/Card.module.scss'
 
 type addToCart = (args: { products: Products[] }) => void

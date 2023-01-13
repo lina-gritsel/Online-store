@@ -1,5 +1,4 @@
-import { Products } from '../../api'
-import { getAllProducts } from '../../api'
+import { Products, getAllProducts } from '../../api'
 import { clearAllValues } from '../../pages/CartPage/Cart/clearAllValues'
 import { clearLocalStorage } from './clearLocalStorage'
 import { setCartStateToLocalStorage } from '../../pages/CartPage/Cart/setCartStateToLocalStorage'

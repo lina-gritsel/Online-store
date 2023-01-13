@@ -1,4 +1,3 @@
-import styles from './CreateOrderModal.module.scss'
 import { MonthInput } from './Fields/MountInput'
 import { useOrderModal } from './useOrderModal'
 import { FormField } from './Fields/Fields'
@@ -7,6 +6,8 @@ import {
   onlyNumberVoid,
   onCardNumberHandler,
 } from './modules/validation'
+
+import styles from './CreateOrderModal.module.scss'
 
 export default {
   render: async () => {

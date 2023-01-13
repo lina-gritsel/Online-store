@@ -1,5 +1,6 @@
 import { Main } from './Main'
 import { Cart } from './Cart'
+
 import mainStyles from './Main/Main.module.scss'
 
 export default {

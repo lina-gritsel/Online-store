@@ -1,6 +1,5 @@
 import { getAllProducts } from '../../../api'
 import { Card } from '../../../components/Card'
-import styles from './CatalogCardList.module.scss'
 import polygon from '../../../assets/svg/polygon.svg'
 import order5 from '../../../assets/svg/order5.svg'
 import order3 from '../../../assets/svg/order3.svg'
@@ -20,6 +19,8 @@ import {
 } from './FilterValues/constants'
 import { resetFilters } from './useReset'
 import { copyLink } from './useCopy'
+
+import styles from './CatalogCardList.module.scss'
 
 export const CatalogCardList = {
   render: async () => {
