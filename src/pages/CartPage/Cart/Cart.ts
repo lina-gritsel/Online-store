@@ -1,5 +1,6 @@
 import CreateOrderModal from '../../../components/CreateOrderModal/index'
 import { usePagination } from './usePagination'
+
 import styles from './Cart.module.scss'
 
 export const Cart = {

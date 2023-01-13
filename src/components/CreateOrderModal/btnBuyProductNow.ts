@@ -1,5 +1,4 @@
-import { Products } from '../../api'
-import { getAllProducts } from '../../api'
+import { Products, getAllProducts } from '../../api'
 import { setCartStateToLocalStorage } from '../../pages/CartPage/Cart/setCartStateToLocalStorage'
 
 export const btnBuyProductNow = async () => {
@@ -38,7 +37,7 @@ export const btnBuyProductNow = async () => {
     currentCard = cart.find(
       (item) => item.id.toString() === product.id.toString(),
     ) as Products
-    
+
     if (!currentCard) {
       isOrderingForOneProduct = true
 

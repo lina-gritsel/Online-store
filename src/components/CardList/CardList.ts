@@ -1,5 +1,6 @@
 import { getAllProducts } from '../../api'
 import { Card } from '../Card'
+
 import styles from './CardList.module.scss'
 
 export const CardList = {

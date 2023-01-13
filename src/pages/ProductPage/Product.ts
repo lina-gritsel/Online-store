@@ -3,8 +3,9 @@ import { addProductToCart } from './addProductToCart'
 import { getProduct } from '../../api/requests'
 import arrow from '../../assets/svg/arrow.svg'
 import { parseRequestURL } from '../../utils'
-import styles from './Product.module.scss'
 import { Products } from '../../api'
+
+import styles from './Product.module.scss'
 
 export default {
   render: async () => {

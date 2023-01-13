@@ -4,7 +4,6 @@ import { cardNumberSeparation } from './modules/helpers'
 import { clearLocalStorage } from './clearLocalStorage'
 import { btnBuyProductNow } from './btnBuyProductNow'
 import { setCardImage } from './modules/setCardImage'
-import styles from './CreateOrderModal.module.scss'
 import { checkCardTerm } from './modules/cardTerm'
 import { Products } from './../../api/types'
 import {
@@ -17,6 +16,8 @@ import {
   checkIsYearValid,
   checkIsCvvValid,
 } from './modules/fieldsValidate'
+
+import styles from './CreateOrderModal.module.scss'
 
 type useOrderModal = () => void
 

@@ -1,4 +1,3 @@
-import styles from './CatalogCardList.module.scss'
 import {
   filterBrands,
   filterCategories,
@@ -6,6 +5,8 @@ import {
   filterStock,
 } from './Filters'
 import { deleteNotFoundMessage, addNotFoundMessage } from './constans'
+
+import styles from './CatalogCardList.module.scss'
 
 type useFilter = () => void
 
