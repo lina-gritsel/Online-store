@@ -35,6 +35,7 @@ export const useOrderModal: useOrderModal = () => {
   const popupWrapper = document.getElementById('popupWrapper') as HTMLDivElement
 
   let isOrderingForOneProduct = false
+  const isBlackoutActive = [...blackout.classList].includes(`${styles.blackoutActive}`)
   let checkSuccessArr: boolean[] = []
 
   if (window.location.hash !== '#/cart') {
@@ -49,7 +50,7 @@ export const useOrderModal: useOrderModal = () => {
       body?.classList.toggle(`${styles.lock}`)
       totalPrice.innerHTML = `Total: ${product.price}$`
 
-      if ([...blackout.classList].includes(`${styles.blackoutActive}`)) {
+      if (isBlackoutActive) {
         blackout.classList.remove(`${styles.blackoutActive}`)
       } else {
         blackout.classList.add(`${styles.blackoutActive}`)
