@@ -4,19 +4,18 @@ export const checkCardTerm = (): void => {
   const monthInput = document.getElementById('month') as HTMLInputElement
   const yearInput = document.getElementById('year') as HTMLInputElement
 
-  const focusSibling = (
-    direction: string,
-    callback?: (value?: Element) => void,
-  ) => {
+  const getDirection = (id: string, callback?: (value?: Element) => void) => {
+    const nextTarget = document.getElementById(id) as HTMLInputElement
+    nextTarget && nextTarget.focus()
+    callback && callback(nextTarget)
+  }
+
+  const focusSibling = (direction: string) => {
     if (direction === 'nextElementSibling') {
-      const nextTarget = document.getElementById('year') as HTMLInputElement
-      nextTarget && nextTarget.focus()
-      callback && callback(nextTarget)
+      getDirection('year')
     }
     if (direction === 'previousElementSibling') {
-      const nextTarget = document.getElementById('month') as HTMLInputElement
-      nextTarget && nextTarget.focus()
-      callback && callback(nextTarget)
+      getDirection('month')
     }
   }
 
