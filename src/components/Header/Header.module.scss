@@ -1,0 +1,113 @@
+@import '../../scss/variables';
+
+.header {
+  height: 77px;
+  width: 100%;
+}
+
+.wrapper {
+  position: absolute;
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 0;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.title {
+  color: var(--white-color);
+  font: var(--font-h3);
+  transition: all 0.5s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.nav {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  list-style-type: none;
+}
+
+.navList {
+  color: var(--white-color);
+  cursor: pointer;
+  font: var(--font-text-4);
+  transition: all 0.5s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.text {
+  color: var(--white-color);
+  font: var(--font-text-4);
+}
+
+.cartLength {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 1px;
+}
+
+.cartBlock {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.headerCart {
+  height: 25px;
+  width: 25px;
+}
+
+.line {
+  background-color: var(--white-color);
+  height: 1px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.searchForm {
+  background: none;
+  border: 1px solid var(--white-color);
+  border-radius: 20px;
+  width: 220px;
+}
+
+.searchInput {
+  appearance: none;
+  background: none;
+  border: none;
+  color: var(--white-color);
+  font: var(--font-text-4);
+  height: 40px;
+  outline: none;
+  padding: 0 10px;
+  width: 100%;
+
+  &::-webkit-input-placeholder {
+    color: var(--white-color);
+  }
+
+  &::-webkit-search-cancel-button {
+    background: url('../../assets/svg/close.svg');
+    background-repeat: no-repeat;
+    height: 15px;
+    margin-right: 5px;
+    width: 15px;
+    -webkit-appearance: none;
+  }
+}

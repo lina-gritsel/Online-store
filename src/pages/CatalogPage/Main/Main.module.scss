@@ -1,0 +1,20 @@
+@import '../../../scss/variables';
+
+.main {
+  background-image: url('../../../assets/images/main-bg-catalog.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 400px;
+  width: 100%;
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 200px;
+}
+
+.title {
+  color: var(--white-color);
+  font: var(--font-h1);
+}

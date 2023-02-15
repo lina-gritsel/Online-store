@@ -1,0 +1,116 @@
+.link {
+  color: var(--black-color);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.cardImage {
+  height: 250px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.imgBlock {
+  position: relative;
+  z-index: 0;
+
+  &:before {
+    background-color: rgba(0, 0, 0, 0.5);
+    content: '';
+    display: none;
+    width: 100%;
+    height: 97%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &:hover {
+    .addCart {
+      display: block;
+    }
+
+    &:before {
+      display: block;
+    }
+  }
+}
+
+.covered {
+
+    &:before {
+      background-color: rgba(0, 0, 0, 0.5);
+      content: '';
+      display: block;
+      width: 100%;
+      height: 97%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+}
+.cardTitle{
+  min-height: 43px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+.cardTitle,
+.cardPrice {
+  font: var(--font-text-2);
+  font-weight: 500;
+  color: var(--black-color);
+}
+
+.brand {
+  font: var(--font-text-4);
+  color: var(--black-color);
+}
+
+.cardDesc {
+  font: var(--font-text-5);
+  color: var(--gray-color);
+  line-height: 17px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+
+.hidden {
+  display: none;
+}
+
+.addCart {
+  cursor: pointer;
+  display: none;
+  height: 50px !important;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px !important;
+}
+
+.deleteCart {
+  cursor: pointer;
+  display: none;
+  height: 50px !important;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px !important;
+}

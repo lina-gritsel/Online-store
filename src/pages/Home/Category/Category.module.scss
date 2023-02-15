@@ -1,0 +1,55 @@
+@import '../../../scss/variables';
+
+.category {
+  width: 100%;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+  padding: 63px 0 73px;
+}
+
+.title {
+  color: var(--black-color);
+  font: var(--font-h2);
+  line-height: 59px;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 17px;
+}
+
+.card {
+  height: 415px;
+  max-width: 383px;
+  position: relative;
+  width: 100%;
+  background-repeat: no-repeat;
+}
+
+.card:nth-child(1) {
+  max-width: 583px;
+  width: 100%;
+  background-repeat: no-repeat;
+}
+
+.card:nth-child(2) {
+  max-width: 583px;
+  width: 100%;
+  background-repeat: no-repeat;
+}
+
+.text {
+  color: var(--white-color);
+  font: var(--font-text-1);
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-transform: uppercase;
+}
